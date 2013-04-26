@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/fjcaetano/NSStringMask"
   s.license      = 'MIT'
   s.author       = { "Flávio Caetano" => "flavio@vieiracaetano.com" }
-  s.source       = { :git => "git@github.com:fjcaetano/NSStringMask.git", :tag => "1.0" }
+  s.source       = { :git => "https://github.com/fjcaetano/NSStringMask.git", :tag => "1.0" }
 
   s.ios.deployment_target = '4.0'
   s.osx.deployment_target = '10.6'
