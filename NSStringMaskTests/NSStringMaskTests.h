@@ -66,6 +66,10 @@
  */
 - (void)testFormat;
 
+/** Tests for the instance method validCharactersForString:
+ */
+- (void)testValidCharactersForString;
+
 #pragma mark - Class Methods
 /// @name Class Methods
 

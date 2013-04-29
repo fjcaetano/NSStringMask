@@ -46,6 +46,15 @@
  */
 - (NSString *)getStepPattern:(NSMutableString **)pattern iter:(long)i;
 
+/** Returns a NSString containing the valid characters in _string_ that match the groups within _pattern_.
+ 
+ @param string A string to be filtered.
+ @param pattern A pointer to the pattern. It will be edited to replace the first regex group with the matching result based on the iteration i.
+ 
+ @return A filtered NSString (may be empty).
+ */
+- (NSString *)validCharactersFromString:(NSString *)string withPattern:(NSMutableString *)pattern;
+
 // _regex setter
 - (void)setRegex:(NSRegularExpression *)regex;
 
@@ -140,10 +149,12 @@
 {
     if (string == nil || ! _regex) return nil;
     
+    NSString *validCharacters = [self validCharactersForString:string];
+    
     NSMutableString *pattern = [NSMutableString stringWithString:_regex.pattern];
     NSMutableString *formattedString = [[NSMutableString new] autorelease];
     
-    NSString *newPattern = [self patternStep:&pattern onString:string iterCount:1 resultFetcher:&formattedString range:NSMakeRange(0, string.length) placeholder:self.placeholder];
+    NSString *newPattern = [self patternStep:&pattern onString:validCharacters iterCount:1 resultFetcher:&formattedString range:NSMakeRange(0, validCharacters.length) placeholder:self.placeholder];
     
     // Replacing the occurrences newPattern with the results of pattern on the var formattedString
     [formattedString replaceOccurrencesOfString:newPattern
@@ -152,6 +163,16 @@
                                           range:NSMakeRange(0, formattedString.length)];
     
     return [formattedString copy];
+}
+
+// Returns a NSString containing the valid characters in _string_ that match the groups within the instance's _regex_.
+- (NSString *)validCharactersForString:(NSString *)string
+{
+    if (string == nil || ! _regex) return nil;
+    
+    NSMutableString *pattern = [NSMutableString stringWithString:_regex.pattern];
+    
+    return [self validCharactersFromString:string withPattern:pattern];
 }
 
 #pragma mark - Properties
@@ -169,6 +190,49 @@
 }
 
 #pragma mark - Private Methods
+
+// Returns a NSString containing the valid characters in _string_ that match the groups within _pattern_.
+- (NSString *)validCharactersFromString:(NSString *)string withPattern:(NSMutableString *)pattern
+{
+    NSError *error = nil;
+    
+    NSMutableSet *setValidPatterns = [[NSMutableSet new] autorelease];
+    NSString *firstGroupPattern = [self getStepPattern:&pattern iter:1];
+    
+    for (int i = 2; firstGroupPattern != nil; i++)
+    {
+        firstGroupPattern = [NSString stringWithFormat:@"(%@)", firstGroupPattern];
+        
+        // Gets the expected repetition for the current group
+        NSRegularExpression *numRepetEx = [NSRegularExpression regularExpressionWithPattern:@"\\{(\\d+)?(?:,(\\d+)?)?\\}" options:NSMatchingWithoutAnchoringBounds error:&error];
+        NSTextCheckingResult *numRep = [numRepetEx firstMatchInString:firstGroupPattern options:NSMatchingWithoutAnchoringBounds range:NSMakeRange(0, firstGroupPattern.length)];
+        
+        // Replaces the expected repetition on the group pattern with "+".
+        firstGroupPattern = [firstGroupPattern stringByReplacingCharactersInRange:numRep.range withString:@"+"];
+        [setValidPatterns addObject:firstGroupPattern];
+        
+        firstGroupPattern = [self getStepPattern:&pattern iter:i];
+    }
+
+    NSString *regexPattern = [NSString stringWithFormat:@"(?:%@)", [setValidPatterns.allObjects componentsJoinedByString:@"|"]];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexPattern
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    
+    NSArray *arrayResults = [regex matchesInString:string options:NSMatchingWithoutAnchoringBounds range:NSMakeRange(0, string.length)];
+    NSMutableString *validCharacters = [[NSMutableString new] autorelease];
+    
+    for (int i = 0; i < arrayResults.count; i++)
+    {
+        NSTextCheckingResult *result = [arrayResults objectAtIndex:i];
+        NSRange range = result.range;
+        NSString *substring = [string substringWithRange:range];
+        
+        [validCharacters appendString:substring];
+    }
+    
+    return validCharacters;
+}
 
 // Recursive method to format the given string based on the given pattern and placeholder, returning the new regex pattern to be used on NSMutableString's replaceOccurrencesOfString:withString:options:range: and editing the pattern to match this method's replacement string.
 - (NSString *)patternStep:(NSMutableString **)pattern onString:(NSString *)string iterCount:(long)i resultFetcher:(NSMutableString **)mutableResult range:(NSRange)range placeholder:(NSString *)placeholder

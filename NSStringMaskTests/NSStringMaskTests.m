@@ -175,14 +175,14 @@
     STAssertNoThrow((result = [mask format:@"12345678909"]), @"[no throw] empty mask formatting valid string");
     STAssertTrue(([result isEqualToString:@"123.456.789-09"]), @"[true] valid mask formatting valid string");
     
-    STAssertNoThrow((result = [mask format:@"12345"]), @"[no throw] empty mask formatting short string");
+    STAssertNoThrow((result = [mask format:@"12345"]), @"[no throw] valid mask formatting short string");
     STAssertTrue(([result isEqualToString:@"12345"]), @"[true] valid mask formatting short string");
     
-    STAssertNoThrow((result = [mask format:@"1234567890987654321"]), @"[no throw] empty mask formatting big string");
+    STAssertNoThrow((result = [mask format:@"1234567890987654321"]), @"[no throw] valid mask formatting big string");
     STAssertTrue(([result isEqualToString:@"123.456.789-09"]), @"[true] valid mask formatting big string");
     
-    STAssertNoThrow((result = [mask format:@"123abc456def78909"]), @"[no throw] empty mask formatting alphanumeric  string");
-    STAssertTrue(([result isEqualToString:@"123.456.789-09"]), @"[true] valid mask alphanumeric  string");
+    STAssertNoThrow((result = [mask format:@"123abc456def78909"]), @"[no throw] valid mask formatting alphanumeric string");
+    STAssertTrue(([result isEqualToString:@"123.456.789-09"]), @"[true] valid mask alphanumeric string");
     
     // Placeholder
     mask.placeholder = @"_";
@@ -204,6 +204,38 @@
     
     STAssertNoThrow((result = [mask format:@"123abc456def78909"]), @"[no throw] empty mask formatting alphanumeric  string");
     STAssertTrue(([result isEqualToString:@"123.456.789-09"]), @"[true] valid mask alphanumeric  string");
+}
+
+- (void)testValidCharactersForString
+{
+    NSString *result;
+    
+    NSStringMask *mask = [NSStringMask new];
+    
+    // Empty mask
+    STAssertNoThrow((result = [mask validCharactersForString:nil]), @"[no throw] empty mask validating nil string");
+    STAssertNil(result, @"[nil] empty mask validating nil string");
+    
+    STAssertNoThrow((result = [mask validCharactersForString:@""]), @"[no throw] empty mask validating empty string");
+    STAssertNil(result, @"[nil] empty mask validating empty string");
+    
+    STAssertNoThrow((result = [mask validCharactersForString:@"123"]), @"[no throw] empty mask validating valid string");
+    STAssertNil(result, @"[nil] empty mask validating valid string");
+    
+    // Valid mask
+    mask = [NSStringMask maskWithPattern:@"(\\d{3}).(\\d{3}).(\\d{3})-(\\d{2})"];
+    
+    STAssertNoThrow((result = [mask validCharactersForString:nil]), @"[no throw] valid mask validating nil string");
+    STAssertNil(result, @"[nil] valid mask validating nil string");
+    
+    STAssertNoThrow((result = [mask validCharactersForString:@""]), @"[no throw] valid mask validating empty string");
+    STAssertTrue(([result isEqualToString:@""]), @"[true] valid mask validating empty string");
+    
+    STAssertNoThrow((result = [mask validCharactersForString:@"12345678909"]), @"[no throw] valid mask validating valid string");
+    STAssertTrue(([result isEqualToString:@"12345678909"]), @"[true] valid mask validating valid string");
+    
+    STAssertNoThrow((result = [mask validCharactersForString:@"123abc456def78909"]), @"[no throw] valid mask validating alphanumeric string");
+    STAssertTrue(([result isEqualToString:@"12345678909"]), @"[true] valid mask validating string");
 }
 
 #pragma mark - Class Methods
@@ -262,7 +294,7 @@
 }
 
 // Tests for class methods with patterns.
-- (void)testClasscWithPattern
+- (void)testClassWithPattern
 {
     NSString *result;
     NSString *pattern = @"\\((\\d{2})\\) (\\d{4})-(\\d{4,5})";

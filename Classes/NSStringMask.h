@@ -227,4 +227,13 @@
  */
 - (NSString *)format:(NSString *)string;
 
+/** Returns a NSString containing the valid characters in _string_ that match the groups within the instance's _regex_.
+ 
+ @param string A string to be filtered.
+ 
+ @return A filtered NSString.
+ @return nil if _string_ or _regex_ is nil.
+ */
+- (NSString *)validCharactersForString:(NSString *)string;
+
 @end
