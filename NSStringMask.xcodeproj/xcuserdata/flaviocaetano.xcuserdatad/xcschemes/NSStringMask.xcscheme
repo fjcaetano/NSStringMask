@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7209052017284FBE0091402D"
+               BlueprintIdentifier = "F200B03D172EEC88003CB54A"
                BuildableName = "libNSStringMask.a"
                BlueprintName = "NSStringMask"
                ReferencedContainer = "container:NSStringMask.xcodeproj">

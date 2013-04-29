@@ -59,7 +59,7 @@
 // Initiates the instance with a given pattern.
 - (id)initWithPattern:(NSString *)pattern
 {
-    NSError *error;
+    NSError *error = nil;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
                                                                            options:NSRegularExpressionCaseInsensitive
                                                                              error:&error];
@@ -88,13 +88,13 @@
 // Returns an NSStringMask instance set with the given NSRegularExpression.
 + (id)maskWithRegex:(NSRegularExpression *)regex
 {
-    return [[NSStringMask alloc] initWithRegex:regex];
+    return [[[NSStringMask alloc] initWithRegex:regex] autorelease];
 }
 
 // Returns a NSStringMask instance set with the given pattern.
 + (id)maskWithPattern:(NSString *)pattern
 {
-    return [[NSStringMask alloc] initWithPattern:pattern];
+    return [[[NSStringMask alloc] initWithPattern:pattern] autorelease];
 }
 
 #pragma mark - Class Methods
@@ -125,7 +125,7 @@
 {
     if (! pattern) return nil;
     
-    NSError *error;
+    NSError *error = nil;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
                                                                            options:NSRegularExpressionCaseInsensitive
                                                                              error:&error];
@@ -141,7 +141,7 @@
     if (string == nil || ! _regex) return nil;
     
     NSMutableString *pattern = [NSMutableString stringWithString:_regex.pattern];
-    NSMutableString *formattedString = [NSMutableString new];
+    NSMutableString *formattedString = [[NSMutableString new] autorelease];
     
     NSString *newPattern = [self patternStep:&pattern onString:string iterCount:1 resultFetcher:&formattedString range:NSMakeRange(0, string.length) placeholder:self.placeholder];
     
@@ -179,7 +179,7 @@
     // If there's no group on the pattern, end the recursion.
     if (! firstGroupPattern) return @"";
     
-    NSError *error;
+    NSError *error = nil;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:firstGroupPattern options:NSMatchingWithoutAnchoringBounds error:&error];
     
     NSTextCheckingResult *result = [regex firstMatchInString:string options:NSMatchingWithoutAnchoringBounds range:range];
@@ -235,7 +235,7 @@
 // Returns the first regex group and replaces it in the pattern with the current i.
 - (NSString *)getStepPattern:(NSMutableString **)pattern iter:(long)i
 {
-    NSError *error;
+    NSError *error = nil;
     
     // Extracts the content of parentheses if it's not preceded by slash.
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(?<!\\\\)\\((.*?)(?<!\\\\)\\)"

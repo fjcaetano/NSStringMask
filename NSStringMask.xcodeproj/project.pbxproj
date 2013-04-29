@@ -21,28 +21,15 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		7209052517284FBE0091402D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7209052417284FBE0091402D /* Cocoa.framework */; };
 		7209053717284FBF0091402D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7209053617284FBF0091402D /* SenTestingKit.framework */; };
 		7209053817284FBF0091402D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7209052417284FBE0091402D /* Cocoa.framework */; };
-		7209053B17284FBF0091402D /* libNSStringMask.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7209052117284FBE0091402D /* libNSStringMask.a */; };
 		7209054117284FBF0091402D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7209053F17284FBF0091402D /* InfoPlist.strings */; };
 		7209054417284FBF0091402D /* NSStringMaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7209054317284FBF0091402D /* NSStringMaskTests.m */; };
 		F2E39919172AF4ED007F4FC1 /* NSStringMask.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */; };
-		F2E3992E172AF7DD007F4FC1 /* NSStringMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E3992D172AF7DD007F4FC1 /* NSStringMask.m */; };
+		F2E3992E172AF7DD007F4FC1 /* NSStringMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E3992D172AF7DD007F4FC1 /* NSStringMask.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		7209053917284FBF0091402D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7209051817284FBE0091402D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7209052017284FBE0091402D;
-			remoteInfo = NSStringMask;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		7209052117284FBE0091402D /* libNSStringMask.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNSStringMask.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7209052417284FBE0091402D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7209052717284FBE0091402D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		7209052817284FBE0091402D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -53,6 +40,10 @@
 		7209054017284FBF0091402D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7209054217284FBF0091402D /* NSStringMaskTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NSStringMaskTests.h; path = NSStringMaskTests/NSStringMaskTests.h; sourceTree = SOURCE_ROOT; };
 		7209054317284FBF0091402D /* NSStringMaskTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSStringMaskTests.m; sourceTree = "<group>"; };
+		F200B03F172EEC88003CB54A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F200B043172EEC88003CB54A /* NSStringMask-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSStringMask-Prefix.pch"; sourceTree = "<group>"; };
+		F200B044172EEC88003CB54A /* NSStringMask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSStringMask.h; sourceTree = "<group>"; };
+		F200B046172EEC88003CB54A /* NSStringMask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSStringMask.m; sourceTree = "<group>"; };
 		F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NSStringMask.podspec; sourceTree = "<group>"; };
 		F2E3992A172AF7D1007F4FC1 /* NSStringMask-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStringMask-Prefix.pch"; sourceTree = "<group>"; };
 		F2E3992C172AF7DD007F4FC1 /* NSStringMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringMask.h; sourceTree = "<group>"; };
@@ -60,21 +51,12 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7209051E17284FBE0091402D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7209052517284FBE0091402D /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7209053117284FBF0091402D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7209053717284FBF0091402D /* SenTestingKit.framework in Frameworks */,
 				7209053817284FBF0091402D /* Cocoa.framework in Frameworks */,
-				7209053B17284FBF0091402D /* libNSStringMask.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +69,7 @@
 				F2E3992F172AF7F9007F4FC1 /* Supporting Files */,
 				F2E3992B172AF7DD007F4FC1 /* Classes */,
 				7209053C17284FBF0091402D /* NSStringMaskTests */,
+				F200B041172EEC88003CB54A /* NSStringMask */,
 				7209052317284FBE0091402D /* Frameworks */,
 				7209052217284FBE0091402D /* Products */,
 			);
@@ -95,7 +78,6 @@
 		7209052217284FBE0091402D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7209052117284FBE0091402D /* libNSStringMask.a */,
 				7209053517284FBF0091402D /* NSStringMaskTests.octest */,
 			);
 			name = Products;
@@ -106,6 +88,7 @@
 			children = (
 				7209052417284FBE0091402D /* Cocoa.framework */,
 				7209053617284FBF0091402D /* SenTestingKit.framework */,
+				F200B03F172EEC88003CB54A /* Foundation.framework */,
 				7209052617284FBE0091402D /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -140,6 +123,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F200B041172EEC88003CB54A /* NSStringMask */ = {
+			isa = PBXGroup;
+			children = (
+				F200B044172EEC88003CB54A /* NSStringMask.h */,
+				F200B046172EEC88003CB54A /* NSStringMask.m */,
+				F200B042172EEC88003CB54A /* Supporting Files */,
+			);
+			path = NSStringMask;
+			sourceTree = "<group>";
+		};
+		F200B042172EEC88003CB54A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F200B043172EEC88003CB54A /* NSStringMask-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		F2E3992B172AF7DD007F4FC1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,34 +161,7 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		7209051F17284FBE0091402D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		7209052017284FBE0091402D /* NSStringMask */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7209054717284FBF0091402D /* Build configuration list for PBXNativeTarget "NSStringMask" */;
-			buildPhases = (
-				7209051D17284FBE0091402D /* Sources */,
-				7209051E17284FBE0091402D /* Frameworks */,
-				7209051F17284FBE0091402D /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = NSStringMask;
-			productName = NSStringMask;
-			productReference = 7209052117284FBE0091402D /* libNSStringMask.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 		7209053417284FBF0091402D /* NSStringMaskTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7209054A17284FBF0091402D /* Build configuration list for PBXNativeTarget "NSStringMaskTests" */;
@@ -200,7 +174,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				7209053A17284FBF0091402D /* PBXTargetDependency */,
 			);
 			name = NSStringMaskTests;
 			productName = NSStringMaskTests;
@@ -228,7 +201,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7209052017284FBE0091402D /* NSStringMask */,
 				7209053417284FBF0091402D /* NSStringMaskTests */,
 				F2E3990C1729A1D8007F4FC1 /* Documentation */,
 			);
@@ -277,13 +249,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7209051D17284FBE0091402D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7209053017284FBF0091402D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -294,14 +259,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7209053A17284FBF0091402D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7209052017284FBE0091402D /* NSStringMask */;
-			targetProxy = 7209053917284FBF0091402D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7209053F17284FBF0091402D /* InfoPlist.strings */ = {
@@ -368,31 +325,13 @@
 			};
 			name = Release;
 		};
-		7209054817284FBF0091402D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NSStringMask/NSStringMask-Prefix.pch";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		7209054917284FBF0091402D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NSStringMask/NSStringMask-Prefix.pch";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		7209054B17284FBF0091402D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NSStringMask/NSStringMask-Prefix.pch";
+				GCC_PREFIX_HEADER = "NSStringMask-Prefix.pch";
 				INFOPLIST_FILE = "NSStringMaskTests/NSStringMaskTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -409,7 +348,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NSStringMask/NSStringMask-Prefix.pch";
+				GCC_PREFIX_HEADER = "NSStringMask-Prefix.pch";
 				INFOPLIST_FILE = "NSStringMaskTests/NSStringMaskTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -442,15 +381,6 @@
 			buildConfigurations = (
 				7209054517284FBF0091402D /* Debug */,
 				7209054617284FBF0091402D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7209054717284FBF0091402D /* Build configuration list for PBXNativeTarget "NSStringMask" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7209054817284FBF0091402D /* Debug */,
-				7209054917284FBF0091402D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
