@@ -199,6 +199,8 @@
     NSMutableSet *setValidPatterns = [[NSMutableSet new] autorelease];
     NSString *firstGroupPattern = [self getStepPattern:&pattern iter:1];
     
+    NSUInteger maxLength = 0;
+    
     for (int i = 2; firstGroupPattern != nil; i++)
     {
         firstGroupPattern = [NSString stringWithFormat:@"(%@)", firstGroupPattern];
@@ -206,6 +208,13 @@
         // Gets the expected repetition for the current group
         NSRegularExpression *numRepetEx = [NSRegularExpression regularExpressionWithPattern:@"\\{(\\d+)?(?:,(\\d+)?)?\\}" options:NSMatchingWithoutAnchoringBounds error:&error];
         NSTextCheckingResult *numRep = [numRepetEx firstMatchInString:firstGroupPattern options:NSMatchingWithoutAnchoringBounds range:NSMakeRange(0, firstGroupPattern.length)];
+        NSRange numRange = [numRep rangeAtIndex:2];
+        if (numRange.location == NSNotFound)
+        {
+            numRange = [numRep rangeAtIndex:1];
+        }
+        
+        maxLength += [firstGroupPattern substringWithRange:numRange].integerValue;
         
         // Replaces the expected repetition on the group pattern with "+".
         firstGroupPattern = [firstGroupPattern stringByReplacingCharactersInRange:numRep.range withString:@"+"];
@@ -226,6 +235,8 @@
     {
         NSTextCheckingResult *result = [arrayResults objectAtIndex:i];
         NSRange range = result.range;
+        range.length = MIN(maxLength - validCharacters.length, range.length);
+        
         NSString *substring = [string substringWithRange:range];
         
         [validCharacters appendString:substring];

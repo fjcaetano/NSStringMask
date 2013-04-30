@@ -234,6 +234,9 @@
     STAssertNoThrow((result = [mask validCharactersForString:@"12345678909"]), @"[no throw] valid mask validating valid string");
     STAssertTrue(([result isEqualToString:@"12345678909"]), @"[true] valid mask validating valid string");
     
+    STAssertNoThrow((result = [mask validCharactersForString:@"1234567890987654321"]), @"[no throw] valid mask validating big string");
+    STAssertTrue(([result isEqualToString:@"12345678909"]), @"[true] valid mask validating big string");
+    
     STAssertNoThrow((result = [mask validCharactersForString:@"123abc456def78909"]), @"[no throw] valid mask validating alphanumeric string");
     STAssertTrue(([result isEqualToString:@"12345678909"]), @"[true] valid mask validating string");
 }
