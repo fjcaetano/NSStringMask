@@ -2,8 +2,9 @@
 // Prefix header for all source files of the 'NSStringMask' target in the 'NSStringMask' project
 //
 
-# define _DLog(format, ...) NSLog((@"%s [%d] " format), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#define _DLog(format, ...) NSLog((@"%s [%d] " format), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
 #ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
 #endif

@@ -11,18 +11,16 @@
 /** Category declaring private ivars and methods for the NSStringMask
  */
 @interface NSStringMask ()
-{
-    // The regex to be applied when formatting.
-    NSRegularExpression *_regex;
-}
+
+@property (nonatomic, strong) NSRegularExpression *regex;
 
 /** Recursive method to format the given string based on the given pattern and character, returning the new regex pattern to be used on NSMutableString's replaceOccurrencesOfString:withString:options:range: and editing the pattern to match this method's replacement string.
  
  @warning This is a recursive method! Its external call must have `i = 1`, `range = (0, string.length)`, `mutableResult = &([NSMutableString new])`:
  
-    NSMutableString *formattedString = [NSMutableString new];
+ NSMutableString *formattedString = [NSMutableString new];
  
-    NSString *newPattern = [self patternStep:&pattern onString:string iterCount:1 resultFetcher:&formattedString range:NSMakeRange(0, string.length) placeholder:self.placeholder];
+ NSString *newPattern = [self patternStep:&pattern onString:string iterCount:1 resultFetcher:&formattedString range:NSMakeRange(0, string.length) placeholder:self.placeholder];
  
  @param pattern A pointer to the pattern. It will be edited to replace the first regex group with the matching result based on the iteration i.
  @param string The NSString to be formatted.
@@ -55,12 +53,6 @@
  */
 - (NSString *)validCharactersFromString:(NSString *)string withPattern:(NSMutableString *)pattern;
 
-// _regex setter
-- (void)setRegex:(NSRegularExpression *)regex;
-
-// _regex getter
-- (NSRegularExpression *)regex;
-
 @end
 
 @implementation NSStringMask
@@ -86,7 +78,8 @@
     
     if (self)
     {
-        [self setRegex:regex];
+        self.regex = regex;
+        [regex retain];
     }
     
     return self;
@@ -147,11 +140,11 @@
 // Formats the given string based on the regex set on the instance.
 - (NSString *)format:(NSString *)string
 {
-    if (string == nil || ! _regex) return nil;
+    if (string == nil || ! self.regex) return nil;
     
     NSString *validCharacters = [self validCharactersForString:string];
     
-    NSMutableString *pattern = [NSMutableString stringWithString:_regex.pattern];
+    NSMutableString *pattern = [NSMutableString stringWithString:self.regex.pattern];
     NSMutableString *formattedString = [[NSMutableString new] autorelease];
     
     NSString *newPattern = [self patternStep:&pattern onString:validCharacters iterCount:1 resultFetcher:&formattedString range:NSMakeRange(0, validCharacters.length) placeholder:self.placeholder];
@@ -165,12 +158,12 @@
     return [formattedString copy];
 }
 
-// Returns a NSString containing the valid characters in _string_ that match the groups within the instance's _regex_.
+// Returns only the valid characters in _string_ that matches the instance's _regex_ limited by the expected length.
 - (NSString *)validCharactersForString:(NSString *)string
 {
-    if (string == nil || ! _regex) return nil;
+    if (string == nil || ! self.regex) return nil;
     
-    NSMutableString *pattern = [NSMutableString stringWithString:_regex.pattern];
+    NSMutableString *pattern = [NSMutableString stringWithString:self.regex.pattern];
     
     return [self validCharactersFromString:string withPattern:pattern];
 }
@@ -199,7 +192,7 @@
     NSMutableSet *setValidPatterns = [[NSMutableSet new] autorelease];
     NSString *firstGroupPattern = [self getStepPattern:&pattern iter:1];
     
-    NSUInteger maxLength = 0;
+    float maxLength = 0;
     
     for (int i = 2; firstGroupPattern != nil; i++)
     {
@@ -208,21 +201,31 @@
         // Gets the expected repetition for the current group
         NSRegularExpression *numRepetEx = [NSRegularExpression regularExpressionWithPattern:@"\\{(\\d+)?(?:,(\\d+)?)?\\}" options:NSMatchingWithoutAnchoringBounds error:&error];
         NSTextCheckingResult *numRep = [numRepetEx firstMatchInString:firstGroupPattern options:NSMatchingWithoutAnchoringBounds range:NSMakeRange(0, firstGroupPattern.length)];
-        NSRange numRange = [numRep rangeAtIndex:2];
-        if (numRange.location == NSNotFound)
+        if (numRep)
         {
-            numRange = [numRep rangeAtIndex:1];
+            NSRange numRange = [numRep rangeAtIndex:2];
+            if (numRange.location == NSNotFound)
+            {
+                numRange = [numRep rangeAtIndex:1];
+            }
+            
+            int num = [firstGroupPattern substringWithRange:numRange].integerValue;
+            
+            maxLength += ( num ? num : INFINITY );
+            
+            // Replaces the expected repetition on the group pattern with "+".
+            firstGroupPattern = [firstGroupPattern stringByReplacingCharactersInRange:numRep.range withString:@"+"];
+        }
+        else
+        {
+            maxLength += INFINITY;
         }
         
-        maxLength += [firstGroupPattern substringWithRange:numRange].integerValue;
-        
-        // Replaces the expected repetition on the group pattern with "+".
-        firstGroupPattern = [firstGroupPattern stringByReplacingCharactersInRange:numRep.range withString:@"+"];
         [setValidPatterns addObject:firstGroupPattern];
         
         firstGroupPattern = [self getStepPattern:&pattern iter:i];
     }
-
+    
     NSString *regexPattern = [NSString stringWithFormat:@"(?:%@)", [setValidPatterns.allObjects componentsJoinedByString:@"|"]];
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexPattern
                                                                            options:NSRegularExpressionCaseInsensitive
@@ -326,18 +329,6 @@
     [*pattern replaceCharactersInRange:checkingResult.range withString:[NSString stringWithFormat:@"$%ld", i]];
     
     return result;
-}
-
-// _regex setter
-- (void)setRegex:(NSRegularExpression *)regex
-{
-    _regex = regex;
-}
-
-// _regex setter
-- (NSRegularExpression *)regex
-{
-    return _regex;
 }
 
 @end
