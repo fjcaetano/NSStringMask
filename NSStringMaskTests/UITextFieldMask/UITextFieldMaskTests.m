@@ -9,7 +9,9 @@
 #import "UITextFieldMaskTests.h"
 
 #import "UITextFieldMask.h"
+
 #import "FakeTextField.h"
+#import "FakeNYITextField.h"
 
 @implementation UITextFieldMaskTests
 
@@ -123,6 +125,107 @@
     STAssertNoThrow((result = [tfMask textField:textField shouldChangeCharactersInRange:NSMakeRange(1, 3) replacementString:@"1234"]), @"[no throw] replacing middle string");
     STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
     STAssertTrue([textField.text isEqualToString:@"0.123"], [NSString stringWithFormat:@"[%@]", textField.text]);
+}
+
+#pragma mark - Testing Extensions
+
+- (void)testExtensionWithoutOptionalMethods
+{
+    FakeNYITextField *fakeTextField = [FakeNYITextField new];
+    fakeTextField.text = @"";
+    
+    UITextField *textField = (UITextField *)fakeTextField;
+    
+    NSStringMask *mask = [NSStringMask maskWithPattern:@"(\\w+)"];
+    mask.placeholder = @"x";
+    
+    UITextFieldMask *tfMask = [[UITextFieldMask alloc] initWithMask:mask];
+    tfMask.extension = fakeTextField;
+    
+    BOOL result = NO;
+    
+    STAssertNoThrow(([tfMask textFieldDidBeginEditing:textField]), @"[no throw] textFieldDidBeginEditing:");
+    
+    STAssertNoThrow(([tfMask textFieldDidEndEditing:textField]), @"[no throw] textFieldDidEndEditing:");
+    
+    result = NO;
+    STAssertNoThrow((result = [tfMask textFieldShouldBeginEditing:textField]), @"[no throw] textFieldShouldBeginEditing:");
+    STAssertTrue(result, [NSString stringWithFormat:@"[%d]", result]);
+    
+    result = NO;
+    STAssertNoThrow((result = [tfMask textFieldShouldClear:textField]), @"[no throw] textFieldShouldClear:");
+    STAssertTrue(result, [NSString stringWithFormat:@"[%d]", result]);
+    
+    result = NO;
+    STAssertNoThrow((result = [tfMask textFieldShouldEndEditing:textField]), @"[no throw] textFieldShouldEndEditing:");
+    STAssertTrue(result, [NSString stringWithFormat:@"[%d]", result]);
+    
+    result = NO;
+    STAssertNoThrow((result = [tfMask textFieldShouldReturn:textField]), @"[no throw] textFieldShouldReturn:");
+    STAssertTrue(result, [NSString stringWithFormat:@"[%d]", result]);
+    
+    result = YES;
+    STAssertNoThrow((result = [tfMask textField:textField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"1234567890987654321"]), @"[no throw] textField:shouldChangeCharactersInRange:replacementString:");
+    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
+    STAssertTrue([textField.text isEqualToString:@"1234567890987654321"], [NSString stringWithFormat:@"[%@]", textField.text]);
+}
+
+- (void)testExtensionWithOptionalMethods
+{
+    FakeTextField *fakeTextField = [FakeTextField new];
+    fakeTextField.text = @"";
+    
+    UITextField *textField = (UITextField *)fakeTextField;
+    
+    NSStringMask *mask = [NSStringMask maskWithPattern:@"(\\w+)"];
+    mask.placeholder = @"abcdefghijklmnopqrstuvwxyz";
+    
+    UITextFieldMask *tfMask = [[UITextFieldMask alloc] initWithMask:mask];
+    tfMask.extension = fakeTextField;
+    
+    BOOL result = YES;
+    
+    fakeTextField.text = @"";
+    STAssertNoThrow(([tfMask textFieldDidBeginEditing:textField]), @"[no throw] textFieldDidBeginEditing:");
+    STAssertTrue([textField.text isEqualToString:@"-[FakeTextField textFieldDidBeginEditing:]"], [NSString stringWithFormat:@"[%@]", textField.text]);
+    
+    STAssertNoThrow(([tfMask textFieldDidEndEditing:textField]), @"[no throw] textFieldDidEndEditing:");
+    STAssertTrue([textField.text isEqualToString:@"-[FakeTextField textFieldDidEndEditing:]"], [NSString stringWithFormat:@"[%@]", textField.text]);
+    
+    result = YES;
+    fakeTextField.text = @"";
+    STAssertNoThrow((result = [tfMask textFieldShouldBeginEditing:textField]), @"[no throw] textFieldShouldBeginEditing:");
+    STAssertTrue([textField.text isEqualToString:@"-[FakeTextField textFieldShouldBeginEditing:]"], [NSString stringWithFormat:@"[%@]", textField.text]);
+    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
+    
+    result = YES;
+    fakeTextField.text = @"";
+    STAssertNoThrow((result = [tfMask textFieldShouldClear:textField]), @"[no throw] textFieldShouldClear:");
+    STAssertTrue([textField.text isEqualToString:@"-[FakeTextField textFieldShouldClear:]"], [NSString stringWithFormat:@"[%@]", textField.text]);
+    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
+    
+    result = YES;
+    fakeTextField.text = @"";
+    STAssertNoThrow((result = [tfMask textFieldShouldEndEditing:textField]), @"[no throw] textFieldShouldEndEditing:");
+    STAssertTrue([textField.text isEqualToString:@"-[FakeTextField textFieldShouldEndEditing:]"], [NSString stringWithFormat:@"[%@]", textField.text]);
+    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
+    
+    result = YES;
+    fakeTextField.text = @"";
+    STAssertNoThrow((result = [tfMask textFieldShouldReturn:textField]), @"[no throw] textFieldShouldReturn:");
+    STAssertTrue([textField.text isEqualToString:@"-[FakeTextField textFieldShouldReturn:]"], [NSString stringWithFormat:@"[%@]", textField.text]);
+    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
+    
+    result = YES;
+    fakeTextField.text = @"";
+    STAssertNoThrow((result = [tfMask textField:textField shouldChangeCharactersInRange:NSMakeRange(NSNotFound, 0) replacementString:@"1234567890987654321"]), @"[no throw] textField:shouldChangeCharactersInRange:replacementString:");
+    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
+    STAssertTrue([textField.text isEqualToString:@""], [NSString stringWithFormat:@"[%@]", textField.text]);
+    
+    result = YES;
+    STAssertNoThrow((result = [tfMask textField:textField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"1234567890987654321"]), @"[no throw] textField:shouldChangeCharactersInRange:replacementString:");
+    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
+    STAssertTrue([textField.text isEqualToString:@"1234567890987654321"], [NSString stringWithFormat:@"[%@]", textField.text]);
 }
 
 @end

@@ -28,6 +28,7 @@
 		F230991217346F870028F669 /* FakeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F230991117346F870028F669 /* FakeTextField.m */; };
 		F23B9FF617344AE5001957D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23B9FF417344ADE001957D5 /* UIKit.framework */; };
 		F23B9FFC17344B21001957D5 /* UITextFieldMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F23B9FFB17344B21001957D5 /* UITextFieldMask.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F24E5BA0173833F10006CA92 /* FakeNYITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F24E5B9F173833F10006CA92 /* FakeNYITextField.m */; };
 		F2DEFC9B17344A2800B6E00A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2DEFC9917344A2200B6E00A /* SenTestingKit.framework */; };
 		F2DEFC9C17344A3200B6E00A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7209052917284FBE0091402D /* Foundation.framework */; };
 		F2E39919172AF4ED007F4FC1 /* NSStringMask.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */; };
@@ -52,6 +53,8 @@
 		F23B9FF417344ADE001957D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F23B9FFA17344B21001957D5 /* UITextFieldMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextFieldMask.h; sourceTree = "<group>"; };
 		F23B9FFB17344B21001957D5 /* UITextFieldMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextFieldMask.m; sourceTree = "<group>"; };
+		F24E5B9E173833F10006CA92 /* FakeNYITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FakeNYITextField.h; path = UITextFieldMask/FakeNYITextField.h; sourceTree = "<group>"; };
+		F24E5B9F173833F10006CA92 /* FakeNYITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FakeNYITextField.m; path = UITextFieldMask/FakeNYITextField.m; sourceTree = "<group>"; };
 		F2DEFC9917344A2200B6E00A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NSStringMask.podspec; sourceTree = "<group>"; };
 		F2E3992A172AF7D1007F4FC1 /* NSStringMask-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStringMask-Prefix.pch"; sourceTree = "<group>"; };
@@ -143,14 +146,24 @@
 		F230990617345F6D0028F669 /* UITextFieldMask */ = {
 			isa = PBXGroup;
 			children = (
+				F24E5B9C173833C90006CA92 /* Extensions */,
 				F230990717345FDC0028F669 /* ExampleTFD.h */,
 				F230990817345FDC0028F669 /* ExampleTFD.m */,
 				F230990D173460850028F669 /* UITextFieldMaskTests.h */,
 				F230990E173460850028F669 /* UITextFieldMaskTests.m */,
-				F230991017346F870028F669 /* FakeTextField.h */,
-				F230991117346F870028F669 /* FakeTextField.m */,
 			);
 			name = UITextFieldMask;
+			sourceTree = "<group>";
+		};
+		F24E5B9C173833C90006CA92 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F230991017346F870028F669 /* FakeTextField.h */,
+				F230991117346F870028F669 /* FakeTextField.m */,
+				F24E5B9E173833F10006CA92 /* FakeNYITextField.h */,
+				F24E5B9F173833F10006CA92 /* FakeNYITextField.m */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		F2E3992B172AF7DD007F4FC1 /* Classes */ = {
@@ -273,6 +286,7 @@
 				F230990917345FDC0028F669 /* ExampleTFD.m in Sources */,
 				F230990F173460850028F669 /* UITextFieldMaskTests.m in Sources */,
 				F230991217346F870028F669 /* FakeTextField.m in Sources */,
+				F24E5BA0173833F10006CA92 /* FakeNYITextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

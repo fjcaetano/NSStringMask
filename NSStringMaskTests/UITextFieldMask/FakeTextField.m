@@ -23,4 +23,48 @@
     return self;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    BOOL result = range.location != NSNotFound;
+    return result;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.text = [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.text = [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    self.text = [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__];
+    
+    return NO;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    self.text = [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__];
+    
+    return NO;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    self.text = [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__];
+    
+    return NO;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    self.text = [NSString stringWithFormat:@"%s", __PRETTY_FUNCTION__];
+    
+    return NO;
+}
+
 @end
