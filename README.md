@@ -13,6 +13,20 @@ You can clone the repository and copy the NSStringMask.[hm] to your project or v
 
 Take a look on the [complete documentation](http://fjcaetano.github.io/NSStringMask/).
 
+Please, note that this is still in development and may be unstable. Suggestions and improvements are always welcome, specially with tests that are not my greatest skill.
+
+I'll try to keep the branch `master` with the most stable updates, even before deploying new features.
+
+### Changelog:
+
+- [NSStringMask validCharactersForString:]
+- UITextFieldMask
+
+### TODO:
+
+- Fix/review [NSStringMask validCharactersForString:]
+
+
 ## Usage Example
 
 Whenever you set a string pattern or a regex, it must have at least one capturing parentheses `[group]`. This is because the class comprehends that everything that is in between parentheses are the strings that must be matched and replaced. If you need explicit parentheses in your format, escape it with slashes:
