@@ -15,6 +15,7 @@
 
 @implementation UITextFieldMaskTests
 
+// Testing the initialization with invalid masks.
 - (void)testEmptyMask
 {
     UITextFieldMask *tfMask;
@@ -29,6 +30,7 @@
     STAssertNil(tfMask, [NSString stringWithFormat:@"[%@]", tfMask]);
 }
 
+// Testing the initialization with valid masks.
 - (void)testValidMask
 {
     NSStringMask *mask = [NSStringMask maskWithPattern:@"(\\d+)"];
@@ -44,6 +46,7 @@
     STAssertNotNil(tfMask, [NSString stringWithFormat:@"[%@]", tfMask]);
 }
 
+// Testing UITextFieldDelegate methods without extension.
 - (void)testNilExtension
 {
     UITextFieldMask *tfMask;
@@ -129,6 +132,7 @@
 
 #pragma mark - Testing Extensions
 
+// Testing parcially implemented UITextFieldDelegate methods with extension.
 - (void)testExtensionWithoutOptionalMethods
 {
     FakeNYITextField *fakeTextField = [FakeNYITextField new];
@@ -170,6 +174,7 @@
     STAssertTrue([textField.text isEqualToString:@"1234567890987654321"], [NSString stringWithFormat:@"[%@]", textField.text]);
 }
 
+// Testing fully implemented UITextFieldDelegate methods with extension.
 - (void)testExtensionWithOptionalMethods
 {
     FakeTextField *fakeTextField = [FakeTextField new];

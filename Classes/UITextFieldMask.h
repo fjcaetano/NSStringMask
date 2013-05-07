@@ -66,7 +66,7 @@
 #pragma mark - Properties
 /// @name Properties
 
-/** The class "extension" if a custom UITextFieldDelegate is needed. Has preference over self.
+/** An "extension" of the instance if a custom UITextFieldDelegate is needed. Has preference over self.
  */
 @property (nonatomic, assign) id<UITextFieldDelegate> extension;
 

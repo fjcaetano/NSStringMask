@@ -13,6 +13,7 @@
     NSRange selectionRange;
 }
 
+// init
 - (id)init
 {
     self = [super init];
@@ -22,6 +23,8 @@
     }
     return self;
 }
+
+#pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {

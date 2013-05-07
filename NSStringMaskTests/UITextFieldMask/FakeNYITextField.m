@@ -13,6 +13,7 @@
     NSRange selectionRange;
 }
 
+// init
 - (id)init
 {
     self = [super init];

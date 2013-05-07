@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+/** Fakes an UITextField without implementing any methods of UITextFieldDelegate
+ */
 @interface FakeNYITextField : NSObject <UITextFieldDelegate>
 
+/// The text displayed by the text field.
 @property (nonatomic, strong) NSString *text;
 
 @end
