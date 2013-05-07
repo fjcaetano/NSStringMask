@@ -70,6 +70,8 @@
 	
 	<option value="//api/name/initWithRegex:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithRegex:</option>
 	
+	<option value="//api/name/validCharactersForString:">&nbsp;&nbsp;&nbsp;&nbsp;- validCharactersForString:</option>
+	
 	
 	
 </select>
@@ -134,6 +136,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithRegex:">initWithRegex:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/validCharactersForString:">validCharactersForString:</a></span></li>
+	
 </ul></li>
 
 
@@ -175,10 +179,9 @@
 
 <p>Suppose you want to format a Social Security Number &ldquo;12345678&rdquo;, its regex is &ldquo;(\d{3})&ndash;(\d{2})&ndash;(\d{3})&rdquo;. You can easily format it using:</p>
 
-<pre><code>NStringMask maskString:@"12345678" withPattern:@"(\\d{3})-(\\d{2})-(\\d{3})"];
+<p>NStringMask maskString:@&ldquo;12345678&rdquo; withPattern:@&ldquo;(\d{3})&ndash;(\d{2})&ndash;(\d{3})&rdquo;];</p>
 
-// result: "123-45-678"
-</code></pre>
+<p>// result: &ldquo;123-45-678&rdquo;</p>
 
 <h2>Examples of valid patterns</h2>
 
@@ -220,7 +223,7 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/maskWithRegex:">+&nbsp;maskWithRegex:</a></code>
-		<span class="tooltip"><p>Returns an NSStringMask instance setted with the given <em>regex</em>.</p></span>
+		<span class="tooltip"><p>Returns an NSStringMask instance set with the given <em>regex</em>.</p></span>
 	</span>
 	
 	
@@ -234,7 +237,7 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/maskWithPattern:">+&nbsp;maskWithPattern:</a></code>
-		<span class="tooltip"><p>Returns a NSStringMask instance setted with the given <em>pattern</em>.</p></span>
+		<span class="tooltip"><p>Returns a NSStringMask instance set with the given <em>pattern</em>.</p></span>
 	</span>
 	
 	
@@ -292,7 +295,14 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/format:">&ndash;&nbsp;format:</a></code>
-		<span class="tooltip"><p>Formats the given <em>string</em> based on the <em>regex</em> setted on the instance, filling missing characters with <em><a href="#//api/name/placeholder">placeholder</a></em> if not nil.</p></span>
+		<span class="tooltip"><p>Formats the given <em>string</em> based on the <em>regex</em> set on the instance, filling missing characters with <em><a href="#//api/name/placeholder">placeholder</a></em> if not nil.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/validCharactersForString:">&ndash;&nbsp;validCharactersForString:</a></code>
+		<span class="tooltip"><p>Returns only the valid characters in <em>string</em> that matches the instance&rsquo;s <em>regex</em> limited by the expected length.</p></span>
 	</span>
 	
 	
@@ -420,17 +430,15 @@
 
 <p>If <em>string</em> is shorter than expected, the method returns a cleaned <a href="NSString">NSString</a> based on regex groups in <em>pattern</em>, but without <a href="#//api/name/format:">format:</a></p>
 
-<pre><code>[NSStringMask maskString:@"123abcd" withPattern:@"(\\d).(\\d{4})"];
-// result: @"123";
-</code></pre>
+<p>[NSStringMask maskString:@&ldquo;123abcd&rdquo; withPattern:@&ldquo;(\d).(\d{4})&rdquo;];
+// result: @&ldquo;123&rdquo;;</p>
 
 <p>This is because the <em>pattern</em> is expecting 5 &ldquo;formattable&rdquo; numbers but only 3 are being passed. So it doesn&rsquo;t know how to handle it.</p>
 
 <p>If <em>string</em> is longer than expected, the method returns a formatted NSString until the expected length:</p>
 
-<pre><code>[NSStringMask maskString:@"314159265359" withPattern:@"(\\d).(\\d{4})"];
-// result: @"3.1415";
-</code></pre><div class="warning"><p><strong>Warning:</strong> If <em>pattern</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
+<p>[NSStringMask maskString:@&ldquo;314159265359&rdquo; withPattern:@&ldquo;(\d).(\d{4})&rdquo;];
+// result: @&ldquo;3.1415&rdquo;;</p><div class="warning"><p><strong>Warning:</strong> If <em>pattern</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
 	</div>
 	
 	
@@ -500,15 +508,13 @@
 
 <p>Similar to <a href="#//api/name/maskString:withPattern:">maskString:withPattern:</a> except when <em>string</em> is shorter than expected. Then it fills the missing characters with the <em><a href="#//api/name/placeholder">placeholder</a></em>:</p>
 
-<pre><code>[NSStringMask maskString:@"123" withPattern:@"(\\d).(\\d{3}).(\\d{2})" placeholder:@"_"];
-// result: @"1.23__";
-</code></pre>
+<p>[NSStringMask maskString:@&ldquo;123&rdquo; withPattern:@&ldquo;(\d).(\d{3}).(\d{2})&rdquo; placeholder:@&ldquo;_&rdquo;];
+// result: @&ldquo;1.23__&rdquo;;</p>
 
 <p>The <em><a href="#//api/name/placeholder">placeholder</a></em> length can be bigger than 1, then the method will repeat the <em>placeholder</em> for each group:</p>
 
-<pre><code>[NSStringMask maskString:@"123" withPattern:@"(\\d).(\\d{3}).(\\d{2})" placeholder:@"abcdefg"];
-// result: @"1.23a.ab";
-</code></pre><div class="warning"><p><strong>Warning:</strong> If <em>pattern</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
+<p>[NSStringMask maskString:@&ldquo;123&rdquo; withPattern:@&ldquo;(\d).(\d{3}).(\d{2})&rdquo; placeholder:@&ldquo;abcdefg&rdquo;];
+// result: @&ldquo;1.23a.ab&rdquo;;</p><div class="warning"><p><strong>Warning:</strong> If <em>pattern</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
 	</div>
 	
 	
@@ -582,25 +588,23 @@
 
 <p>If <em>string</em> is shorter than expected, the method returns a cleaned NSString based on <em>regex</em>`s groups, but without <a href="#//api/name/format:">format:</a></p>
 
-<pre><code>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{4})"
-                                                                       options:NSRegularExpressionCaseInsensitive
-                                                                         error:&amp;error];
+<p>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@&ldquo;(\d).(\d{4})&rdquo;
+options:NSRegularExpressionCaseInsensitive
+error:&amp;error];</p>
 
-[NSStringMask maskString:@"123abcd" withRegex:regex];
-// result: "123"
-</code></pre>
+<p>[NSStringMask maskString:@&ldquo;123abcd&rdquo; withRegex:regex];
+// result: &ldquo;123&rdquo;</p>
 
 <p>This is because <em>regex</em> is expecting 5 &ldquo;formattable&rdquo; numbers but only 3 are being passed. So it doesn&rsquo;t know how to handle it.</p>
 
 <p>If <em>string</em> is longer than expected, the method returns a formatted NSString until the expected length:</p>
 
-<pre><code>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{4})"
-                                                                       options:NSRegularExpressionCaseInsensitive
-                                                                         error:&amp;error];
+<p>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@&ldquo;(\d).(\d{4})&rdquo;
+options:NSRegularExpressionCaseInsensitive
+error:&amp;error];</p>
 
-[NSStringMask maskString:@"1234567890" withRegex:regex];
-// result: @"1.2345";
-</code></pre><div class="warning"><p><strong>Warning:</strong> If <em>regex</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
+<p>[NSStringMask maskString:@&ldquo;1234567890&rdquo; withRegex:regex];
+// result: @&ldquo;1.2345&rdquo;;</p><div class="warning"><p><strong>Warning:</strong> If <em>regex</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
 	</div>
 	
 	
@@ -670,23 +674,21 @@
 
 <p>Similar to <a href="#//api/name/maskString:withRegex:">maskString:withRegex:</a> except when <em>string</em> is shorted than expected. Then it fills the missing characters with the placeholder:</p>
 
-<pre><code>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{3}).(\\d{2})"
-                                                                       options:NSRegularExpressionCaseInsensitive
-                                                                         error:&amp;error];
+<p>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@&ldquo;(\d).(\d{3}).(\d{2})&rdquo;
+options:NSRegularExpressionCaseInsensitive
+error:&amp;error];</p>
 
-[NSStringMask maskString:@"123" withRegex:regex placeholder:@"_"];
-// result: @"1.23__";
-</code></pre>
+<p>[NSStringMask maskString:@&ldquo;123&rdquo; withRegex:regex placeholder:@&ldquo;_&rdquo;];
+// result: @&ldquo;1.23__&rdquo;;</p>
 
 <p>The <em>placeholder</em> length can be bigger than 1, then the method will repeat the <em>placeholder</em> for each group:</p>
 
-<pre><code>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{3}).(\\d{2})"
-                                                                       options:NSRegularExpressionCaseInsensitive
-                                                                         error:&amp;error];
+<p>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@&ldquo;(\d).(\d{3}).(\d{2})&rdquo;
+options:NSRegularExpressionCaseInsensitive
+error:&amp;error];</p>
 
-[NSStringMask maskString:@"123" withRegex:regex placeholder:@"abcdefg"];
-// result: @"1.23a.ab";
-</code></pre><div class="warning"><p><strong>Warning:</strong> If <em>regex</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
+<p>[NSStringMask maskString:@&ldquo;123&rdquo; withRegex:regex placeholder:@&ldquo;abcdefg&rdquo;];
+// result: @&ldquo;1.23a.ab&rdquo;;</p><div class="warning"><p><strong>Warning:</strong> If <em>regex</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
 	</div>
 	
 	
@@ -719,7 +721,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns a NSStringMask instance setted with the given <em>pattern</em>.</p>
+		<p>Returns a NSStringMask instance set with the given <em>pattern</em>.</p>
 	</div>		
 	
     
@@ -751,7 +753,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns a NSStringMask instance setted with the given <em>pattern</em>.</p>
+		<p>Returns a NSStringMask instance set with the given <em>pattern</em>.</p>
 
 <p>A NSRegularExpression is created based on the <em>pattern</em> passed.</p><div class="warning"><p><strong>Warning:</strong> If <em>pattern</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
 	</div>
@@ -777,7 +779,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns an NSStringMask instance setted with the given <em>regex</em>.</p>
+		<p>Returns an NSStringMask instance set with the given <em>regex</em>.</p>
 	</div>		
 	
     
@@ -809,7 +811,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns an NSStringMask instance setted with the given <em>regex</em>.</p><div class="warning"><p><strong>Warning:</strong> If <em>regex</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
+		<p>Returns an NSStringMask instance set with the given <em>regex</em>.</p><div class="warning"><p><strong>Warning:</strong> If <em>regex</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
 	</div>
 	
 	
@@ -841,7 +843,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Formats the given <em>string</em> based on the <em>regex</em> setted on the instance, filling missing characters with <em><a href="#//api/name/placeholder">placeholder</a></em> if not nil.</p>
+		<p>Formats the given <em>string</em> based on the <em>regex</em> set on the instance, filling missing characters with <em><a href="#//api/name/placeholder">placeholder</a></em> if not nil.</p>
 	</div>		
 	
     
@@ -873,7 +875,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Formats the given <em>string</em> based on the <em>regex</em> setted on the instance, filling missing characters with <em><a href="#//api/name/placeholder">placeholder</a></em> if not nil.</p>
+		<p>Formats the given <em>string</em> based on the <em>regex</em> set on the instance, filling missing characters with <em><a href="#//api/name/placeholder">placeholder</a></em> if not nil.</p>
 	</div>
 	
 	
@@ -1004,6 +1006,64 @@
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/validCharactersForString:" title="validCharactersForString:"></a>
+	<h3 class="subsubtitle method-title">validCharactersForString:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns only the valid characters in <em>string</em> that matches the instance&rsquo;s <em>regex</em> limited by the expected length.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)validCharactersForString:(NSString *)<em>string</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>A string to be validated.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A cleaned string with the expected characters limited to the expected length.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns only the valid characters in <em>string</em> that matches the instance&rsquo;s <em>regex</em> limited by the expected length.</p>
+
+<p>If <em>string</em> has more valid characters than expected, returns only the expected length.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSStringMask.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -1017,7 +1077,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Flávio Caetano. All rights reserved. (Last updated: 2013-04-26)</span><br />
+						<p><span class="copyright">&copy; 2013 Flávio Caetano. All rights reserved. (Last updated: 2013-05-07)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
