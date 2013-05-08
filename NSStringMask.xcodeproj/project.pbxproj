@@ -24,10 +24,10 @@
 		7209054117284FBF0091402D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7209053F17284FBF0091402D /* InfoPlist.strings */; };
 		7209054417284FBF0091402D /* NSStringMaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7209054317284FBF0091402D /* NSStringMaskTests.m */; };
 		F230990F173460850028F669 /* UITextFieldMaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F230990E173460850028F669 /* UITextFieldMaskTests.m */; };
-		F230991217346F870028F669 /* FakeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F230991117346F870028F669 /* FakeTextField.m */; };
+		F230991217346F870028F669 /* CompleteExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F230991117346F870028F669 /* CompleteExtension.m */; };
 		F23B9FF617344AE5001957D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23B9FF417344ADE001957D5 /* UIKit.framework */; };
 		F23B9FFC17344B21001957D5 /* UITextFieldMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F23B9FFB17344B21001957D5 /* UITextFieldMask.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F24E5BA0173833F10006CA92 /* FakeNYITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F24E5B9F173833F10006CA92 /* FakeNYITextField.m */; };
+		F24E5BA0173833F10006CA92 /* IncompleteExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F24E5B9F173833F10006CA92 /* IncompleteExtension.m */; };
 		F2DEFC9B17344A2800B6E00A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2DEFC9917344A2200B6E00A /* SenTestingKit.framework */; };
 		F2DEFC9C17344A3200B6E00A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7209052917284FBE0091402D /* Foundation.framework */; };
 		F2E39919172AF4ED007F4FC1 /* NSStringMask.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */; };
@@ -45,13 +45,13 @@
 		7209054317284FBF0091402D /* NSStringMaskTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSStringMaskTests.m; sourceTree = "<group>"; };
 		F230990D173460850028F669 /* UITextFieldMaskTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UITextFieldMaskTests.h; path = UITextFieldMask/UITextFieldMaskTests.h; sourceTree = "<group>"; };
 		F230990E173460850028F669 /* UITextFieldMaskTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UITextFieldMaskTests.m; path = UITextFieldMask/UITextFieldMaskTests.m; sourceTree = "<group>"; };
-		F230991017346F870028F669 /* FakeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FakeTextField.h; path = UITextFieldMask/FakeTextField.h; sourceTree = "<group>"; };
-		F230991117346F870028F669 /* FakeTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FakeTextField.m; path = UITextFieldMask/FakeTextField.m; sourceTree = "<group>"; };
+		F230991017346F870028F669 /* CompleteExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompleteExtension.h; path = UITextFieldMask/CompleteExtension.h; sourceTree = "<group>"; };
+		F230991117346F870028F669 /* CompleteExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CompleteExtension.m; path = UITextFieldMask/CompleteExtension.m; sourceTree = "<group>"; };
 		F23B9FF417344ADE001957D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F23B9FFA17344B21001957D5 /* UITextFieldMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextFieldMask.h; sourceTree = "<group>"; };
 		F23B9FFB17344B21001957D5 /* UITextFieldMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextFieldMask.m; sourceTree = "<group>"; };
-		F24E5B9E173833F10006CA92 /* FakeNYITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FakeNYITextField.h; path = UITextFieldMask/FakeNYITextField.h; sourceTree = "<group>"; };
-		F24E5B9F173833F10006CA92 /* FakeNYITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FakeNYITextField.m; path = UITextFieldMask/FakeNYITextField.m; sourceTree = "<group>"; };
+		F24E5B9E173833F10006CA92 /* IncompleteExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IncompleteExtension.h; path = UITextFieldMask/IncompleteExtension.h; sourceTree = "<group>"; };
+		F24E5B9F173833F10006CA92 /* IncompleteExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IncompleteExtension.m; path = UITextFieldMask/IncompleteExtension.m; sourceTree = "<group>"; };
 		F2DEFC9917344A2200B6E00A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NSStringMask.podspec; sourceTree = "<group>"; };
 		F2E3992A172AF7D1007F4FC1 /* NSStringMask-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStringMask-Prefix.pch"; sourceTree = "<group>"; };
@@ -153,10 +153,10 @@
 		F24E5B9C173833C90006CA92 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F230991017346F870028F669 /* FakeTextField.h */,
-				F230991117346F870028F669 /* FakeTextField.m */,
-				F24E5B9E173833F10006CA92 /* FakeNYITextField.h */,
-				F24E5B9F173833F10006CA92 /* FakeNYITextField.m */,
+				F230991017346F870028F669 /* CompleteExtension.h */,
+				F230991117346F870028F669 /* CompleteExtension.m */,
+				F24E5B9E173833F10006CA92 /* IncompleteExtension.h */,
+				F24E5B9F173833F10006CA92 /* IncompleteExtension.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -279,8 +279,8 @@
 				F2E3992E172AF7DD007F4FC1 /* NSStringMask.m in Sources */,
 				F23B9FFC17344B21001957D5 /* UITextFieldMask.m in Sources */,
 				F230990F173460850028F669 /* UITextFieldMaskTests.m in Sources */,
-				F230991217346F870028F669 /* FakeTextField.m in Sources */,
-				F24E5BA0173833F10006CA92 /* FakeNYITextField.m in Sources */,
+				F230991217346F870028F669 /* CompleteExtension.m in Sources */,
+				F24E5BA0173833F10006CA92 /* IncompleteExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,10 +12,6 @@
  */
 @interface UITextFieldMaskTests : SenTestCase
 
-/** Testing the initialization with invalid masks.
- */
-- (void)testEmptyMask;
-
 /** Testing the initialization with valid masks.
  */
 - (void)testValidMask;

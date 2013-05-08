@@ -12,22 +12,20 @@
 
 #import "NSStringMask.h"
 
-/** An adapter of UITextFieldDelegate to easily integrate with NSStringMask.
+/** This subclass of UITextField is used to adapt a text field to NSStringMask.
  
- This delegate should go between a UITextField and your UITextFieldDelegate. That is, the text field's delegate __must be__ an instance of UITextFieldMask, but if you need a custom UITextFieldDelegate, than it will be your mask delegate's _extension_. The _extension_ must conform to UITextFieldDelegate
+ UITextFieldMask implements all methods in UITextFieldDelegate to be able to integrate and format its text, but it sends the delegate's method's calls forward in case a custom UITextFieldDelegate implementation is needed. In this case, the custom delegate's returns have preference over UITextFieldMask own responses.
+ 
+ For the instance to apply a mask to its text, an instance of NSStringMask must be supplied. It's recommended that the mask is passed in the initialization of the text field, so if the text field is in a nib, the mask must be passed inside `[UIViewController viewDidLoad]` or `[UIView awakeFromNib]`.
  
  ## Usage Example
  
  Example.h
  
-    @interface Example : NSObject <UITextFieldDelegate>
+    @interface Example : UIView <UITextFieldDelegate>
     {
-        UITextFieldMask *maskDelegate;
- 
-        UITextField *textField;
+        UITextFieldMask *textFieldMask;
     }
- 
-    - (void)start;
  
     - (BOOL)doSearch:(NSString *)text;
  
@@ -37,14 +35,12 @@
  
     @implementation Example
     
-    - (void)start
+    - (void)awakeFromNib
     {
         NSStringMask *mask = [NSStringMask maskWithPattern:@"(\\d+)"];
  
-        maskDelegate = [[UITextFieldMask alloc] initWithMask:mask];
-        maskDelegate.extension = self;
- 
-        textField.delegate = maskDelegate
+        textFieldMask.mask = mask;
+        textFieldMask.delegate = self;
     }
  
     - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -56,19 +52,13 @@
     
     @end
  
- Note that the _textField_'s delegate is _maskDelegate_ and not self!
- 
- The _extension_ methods will always be called __before__ and their results have preference. Therefore, if _Example_'s `textFieldShouldReturn:` return `NO`, UITextFieldMask will repass it to _textField_.
+ The instance's methods that conforms to UITextFieldDelegate will always be called __before__ UITextFieldMask's methods and their results have preference. Therefore, if _Example_'s `textFieldShouldReturn:` return `NO`, UITextFieldMask will not evaluate the mask.
  
  */
-@interface UITextFieldMask : NSObject <UITextFieldDelegate>
+@interface UITextFieldMask : UITextField <UITextFieldDelegate>
 
 #pragma mark - Properties
 /// @name Properties
-
-/** An "extension" of the instance if a custom UITextFieldDelegate is needed. Has preference over self.
- */
-@property (nonatomic, assign) id<UITextFieldDelegate> extension;
 
 /** The mask to be applied to the text field.
  */
