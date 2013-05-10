@@ -257,6 +257,12 @@
     
     STAssertNoThrow((result = [mask validCharactersForString:@"123abc456def78909"]), @"[no throw] valid mask validating alphanumeric string");
     STAssertTrue(([result isEqualToString:@"12345678909"]), [NSString stringWithFormat:@"[%@]", result]);
+    
+    // Valid mask
+    mask = [NSStringMask maskWithPattern:@"(\\d{2}$)"];
+    
+    STAssertNoThrow((result = [mask validCharactersForString:@"1234567890"]), @"[no throw] valid mask validating nil string");
+    STAssertTrue(([result isEqualToString:@"90"]), [NSString stringWithFormat:@"[%@]", result]);
 }
 
 #pragma mark - Class Methods
