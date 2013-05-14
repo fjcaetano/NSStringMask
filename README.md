@@ -7,7 +7,7 @@ For instance, suppose you have the string `12345678` and want to format it as a 
 
 ## Installation
 
-You can clone the repository and copy the NSStringMask.[hm] to your project or via cocoa pods.
+You can clone the repository and copy the folder `Classes` to your project or install it via cocoa pods.
 
 ## Documentation
 
@@ -24,7 +24,7 @@ I'll try to keep the branch `master` with the most stable updates, even before d
 
 ### TODO:
 
-- Fix/review [NSStringMask validCharactersForString:]
+- Fix cursor position when editing UITextFieldMask
 
 
 ## Usage Example
@@ -70,11 +70,15 @@ It can also be a long string. In this case, the replacement will restart for eac
 	[NSStringMask maskString:@"" withPattern:@"(\\d{2})/(\\d{2})/(\\d{4})" placeholder:@"abcde"]
 	// result: ab/ab/abcd
 	
-### NSRegularExpression
+#### NSRegularExpression
 
 You may also provide an instance of NSRegularExpression instead of a pattern, the result is the same.
 
 When a pattern is passed, the class creates a NSRegularExpression object with NSRegularExpressionCaseInsensitive option. If you need it to be different, it may be interesting to provide the regex and not a string pattern.
+
+### UITextFieldMask
+
+To create a text field with a mask, just set it as an instance `UITextFieldMask` in your class or nib (if using the Interface Builder). It’s recommended that the mask is passed in the initialization of the text field, so if the text field is in a nib, the mask must be passed inside `[UIViewController viewDidLoad]` or `[UIView awakeFromNib]`.
 	
 ## License
 
