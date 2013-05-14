@@ -16,9 +16,9 @@
  
  Suppose you want to format a Social Security Number "12345678", its regex is "(\\d{3})-(\\d{2})-(\\d{3})". You can easily format it using:
  
- NStringMask maskString:@"12345678" withPattern:@"(\\d{3})-(\\d{2})-(\\d{3})"];
+    NStringMask maskString:@"12345678" withPattern:@"(\\d{3})-(\\d{2})-(\\d{3})"];
  
- // result: "123-45-678"
+    // result: "123-45-678"
  
  ## Examples of valid patterns
  
@@ -47,7 +47,7 @@
  - "" -> result = "0" `// same as above`
  
  */
-@property (nonatomic, strong) NSString *placeholder;
+@property (nonatomic, retain) NSString *placeholder;
 
 #pragma mark - inits
 /// @name inits

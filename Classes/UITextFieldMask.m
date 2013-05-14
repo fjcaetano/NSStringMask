@@ -10,9 +10,6 @@
 
 @interface UITextFieldMask ()
 {
-    // The instance's mask to be applied.
-    NSStringMask *_mask;
-    
     id<UITextFieldDelegate> extension;
 }
 
@@ -34,17 +31,12 @@
     self = [super init];
     if (self)
     {
-        _mask = mask;
+        self.mask = mask;
     }
     return self;
 }
 
 #pragma mark - Properties
-
-- (NSStringMask *)mask
-{
-    return _mask;
-}
 
 - (void)setDelegate:(id<UITextFieldDelegate>)delegate
 {
@@ -73,11 +65,11 @@
         newRange = [mutableString rangeOfString:[clean substringFromIndex:clean.length-1] options:NSBackwardsSearch];
         if (newRange.location == NSNotFound)
         {
-            newRange.location = mutableString.length;
+            newRange.location = mutableString.length - range.length;
         }
         else
         {
-            newRange.location += newRange.length;
+            newRange.location += newRange.length - range.length;
         }
         
         newRange.length = 0;
@@ -144,6 +136,13 @@
     }
     
     return YES;
+}
+
+- (void)dealloc
+{
+    [_mask release], _mask = nil;
+    
+    [super dealloc];
 }
 
 @end

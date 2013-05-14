@@ -34,7 +34,7 @@
  Example.m
  
     @implementation Example
-    
+ 
     - (void)awakeFromNib
     {
         NSStringMask *mask = [NSStringMask maskWithPattern:@"(\\d+)"];
@@ -49,7 +49,7 @@
     }
  
     ...
-    
+ 
     @end
  
  The instance's methods that conforms to UITextFieldDelegate will always be called __before__ UITextFieldMask's methods and their results have preference. Therefore, if _Example_'s `textFieldShouldReturn:` return `NO`, UITextFieldMask will not evaluate the mask.
@@ -62,7 +62,7 @@
 
 /** The mask to be applied to the text field.
  */
-@property (nonatomic, readonly) NSStringMask *mask;
+@property (nonatomic, retain) NSStringMask *mask;
 
 #pragma mark - Instance Methods
 /// @name Instance Methods

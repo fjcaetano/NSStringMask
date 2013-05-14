@@ -8,6 +8,8 @@
 
 #import "NSStringMask.h"
 
+/** Struct for returning multiple values.
+ */
 typedef struct
 {
     NSString *result;
@@ -92,6 +94,14 @@ typedef struct
     }
     
     return self;
+}
+
+// dealloc
+- (void)dealloc
+{
+    [_regex release], _regex = nil;
+    
+    [super dealloc];
 }
 
 #pragma mark - Class Initializers
