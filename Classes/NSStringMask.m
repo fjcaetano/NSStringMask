@@ -208,7 +208,7 @@ typedef struct
             
             [validCharacters appendString:matchedString];
             
-            n += adaptingResult.length;
+            n += result.range.length;
         }
         while (result.range.length != adaptingResult.length);
         
