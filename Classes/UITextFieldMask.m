@@ -65,11 +65,11 @@
         newRange = [mutableString rangeOfString:[clean substringFromIndex:clean.length-1] options:NSBackwardsSearch];
         if (newRange.location == NSNotFound)
         {
-            newRange.location = mutableString.length - range.length;
+            newRange.location = mutableString.length;
         }
         else
         {
-            newRange.location += newRange.length - range.length;
+            newRange.location += newRange.length;
         }
         
         newRange.length = 0;
