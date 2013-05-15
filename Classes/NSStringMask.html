@@ -189,6 +189,7 @@
 <ol>
 <li>Social Security Number: <code>(\d{3})-(\d{2})-(\d{3})</code></li>
 <li>Phone numbers: <code>(\d{3})-(\d{3})-(\d{4})</code></li>
+<li>Zip Codes: <code>(\d{5})</code> or <code>(\d{5})-(\d{3})</code></li>
 </ol>
 <div class="warning"><p><strong>Warning:</strong> When passing a pattern or regex, at least one capturing parentheses <code>[group]</code> must be informed. This is because NSStringMask will only format the expressions within groups.  This way, if you have a pattern &ldquo;<code>\d</code>&rdquo; the formatting won&rsquo;t replace any numbers because in its understanding, that&rsquo;s part of the mask, and not a &ldquo;replacing regex&rdquo;.</p></div><div class="warning"><p><strong>Warning:</strong> Always remember to use double slashes to escape the pattern&rsquo;s special characters!</p></div>
 					</div>
@@ -431,15 +432,17 @@
 
 <p>If <em>string</em> is shorter than expected, the method returns a cleaned <a href="NSString">NSString</a> based on regex groups in <em>pattern</em>, but without <a href="#//api/name/format:">format:</a></p>
 
-<p>[NSStringMask maskString:@&ldquo;123abcd&rdquo; withPattern:@&ldquo;(\d).(\d{4})&rdquo;];
-// result: @&ldquo;123&rdquo;;</p>
+<pre><code>[NSStringMask maskString:@"123abcd" withPattern:@"(\\d).(\\d{4})"];
+// result: @"123";
+</code></pre>
 
 <p>This is because the <em>pattern</em> is expecting 5 &ldquo;formattable&rdquo; numbers but only 3 are being passed. So it doesn&rsquo;t know how to handle it.</p>
 
 <p>If <em>string</em> is longer than expected, the method returns a formatted NSString until the expected length:</p>
 
-<p>[NSStringMask maskString:@&ldquo;314159265359&rdquo; withPattern:@&ldquo;(\d).(\d{4})&rdquo;];
-// result: @&ldquo;3.1415&rdquo;;</p><div class="warning"><p><strong>Warning:</strong> If <em>pattern</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
+<pre><code>[NSStringMask maskString:@"314159265359" withPattern:@"(\\d).(\\d{4})"];
+// result: @"3.1415";
+</code></pre><div class="warning"><p><strong>Warning:</strong> If <em>pattern</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
 	</div>
 	
 	
@@ -509,13 +512,15 @@
 
 <p>Similar to <a href="#//api/name/maskString:withPattern:">maskString:withPattern:</a> except when <em>string</em> is shorter than expected. Then it fills the missing characters with the <em><a href="#//api/name/placeholder">placeholder</a></em>:</p>
 
-<p>[NSStringMask maskString:@&ldquo;123&rdquo; withPattern:@&ldquo;(\d).(\d{3}).(\d{2})&rdquo; placeholder:@&ldquo;_&rdquo;];
-// result: @&ldquo;1.23__&rdquo;;</p>
+<pre><code>[NSStringMask maskString:@"123" withPattern:@"(\\d).(\\d{3}).(\\d{2})" placeholder:@"_"];
+// result: @"1.23__";
+</code></pre>
 
 <p>The <em><a href="#//api/name/placeholder">placeholder</a></em> length can be bigger than 1, then the method will repeat the <em>placeholder</em> for each group:</p>
 
-<p>[NSStringMask maskString:@&ldquo;123&rdquo; withPattern:@&ldquo;(\d).(\d{3}).(\d{2})&rdquo; placeholder:@&ldquo;abcdefg&rdquo;];
-// result: @&ldquo;1.23a.ab&rdquo;;</p><div class="warning"><p><strong>Warning:</strong> If <em>pattern</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
+<pre><code>[NSStringMask maskString:@"123" withPattern:@"(\\d).(\\d{3}).(\\d{2})" placeholder:@"abcdefg"];
+// result: @"1.23a.ab";
+</code></pre><div class="warning"><p><strong>Warning:</strong> If <em>pattern</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
 	</div>
 	
 	
@@ -589,23 +594,25 @@
 
 <p>If <em>string</em> is shorter than expected, the method returns a cleaned NSString based on <em>regex</em>`s groups, but without <a href="#//api/name/format:">format:</a></p>
 
-<p>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@&ldquo;(\d).(\d{4})&rdquo;
+<pre><code>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{4})"
 options:NSRegularExpressionCaseInsensitive
-error:&amp;error];</p>
+error:&amp;error];
 
-<p>[NSStringMask maskString:@&ldquo;123abcd&rdquo; withRegex:regex];
-// result: &ldquo;123&rdquo;</p>
+[NSStringMask maskString:@"123abcd" withRegex:regex];
+// result: "123"
+</code></pre>
 
 <p>This is because <em>regex</em> is expecting 5 &ldquo;formattable&rdquo; numbers but only 3 are being passed. So it doesn&rsquo;t know how to handle it.</p>
 
 <p>If <em>string</em> is longer than expected, the method returns a formatted NSString until the expected length:</p>
 
-<p>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@&ldquo;(\d).(\d{4})&rdquo;
+<pre><code>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{4})"
 options:NSRegularExpressionCaseInsensitive
-error:&amp;error];</p>
+error:&amp;error];
 
-<p>[NSStringMask maskString:@&ldquo;1234567890&rdquo; withRegex:regex];
-// result: @&ldquo;1.2345&rdquo;;</p><div class="warning"><p><strong>Warning:</strong> If <em>regex</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
+[NSStringMask maskString:@"1234567890" withRegex:regex];
+// result: @"1.2345";
+</code></pre><div class="warning"><p><strong>Warning:</strong> If <em>regex</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
 	</div>
 	
 	
@@ -675,21 +682,23 @@ error:&amp;error];</p>
 
 <p>Similar to <a href="#//api/name/maskString:withRegex:">maskString:withRegex:</a> except when <em>string</em> is shorted than expected. Then it fills the missing characters with the placeholder:</p>
 
-<p>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@&ldquo;(\d).(\d{3}).(\d{2})&rdquo;
+<pre><code>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{3}).(\\d{2})"
 options:NSRegularExpressionCaseInsensitive
-error:&amp;error];</p>
+error:&amp;error];
 
-<p>[NSStringMask maskString:@&ldquo;123&rdquo; withRegex:regex placeholder:@&ldquo;_&rdquo;];
-// result: @&ldquo;1.23__&rdquo;;</p>
+[NSStringMask maskString:@"123" withRegex:regex placeholder:@"_"];
+// result: @"1.23__";
+</code></pre>
 
 <p>The <em>placeholder</em> length can be bigger than 1, then the method will repeat the <em>placeholder</em> for each group:</p>
 
-<p>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@&ldquo;(\d).(\d{3}).(\d{2})&rdquo;
+<pre><code>NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{3}).(\\d{2})"
 options:NSRegularExpressionCaseInsensitive
-error:&amp;error];</p>
+error:&amp;error];
 
-<p>[NSStringMask maskString:@&ldquo;123&rdquo; withRegex:regex placeholder:@&ldquo;abcdefg&rdquo;];
-// result: @&ldquo;1.23a.ab&rdquo;;</p><div class="warning"><p><strong>Warning:</strong> If <em>regex</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
+[NSStringMask maskString:@"123" withRegex:regex placeholder:@"abcdefg"];
+// result: @"1.23a.ab";
+</code></pre><div class="warning"><p><strong>Warning:</strong> If <em>regex</em> doesn&rsquo;t have at least one capturing parentheses <code>[group]</code> it&rsquo;s considered invalid and the method returns nil.</p></div>
 	</div>
 	
 	
@@ -1078,7 +1087,7 @@ error:&amp;error];</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Flávio Caetano. All rights reserved. (Last updated: 2013-05-14)</span><br />
+						<p><span class="copyright">&copy; 2013 Flávio Caetano. All rights reserved. (Last updated: 2013-05-15)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
