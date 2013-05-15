@@ -266,7 +266,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"NSStringMask\" \\\n--project-company \"Flávio Caetano\" \\\n--company-id \"com.flaviocaetano\" \\\n--docset-desc \"References to the API and concept documentation for NSStringMask classes.\" \\\n--output ~/help \\\n--ignore .m \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--exit-threshold 2 \\\n.";
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"NSStringMask\" \\\n--project-company \"Flávio Caetano\" \\\n--company-id \"com.flaviocaetano\" \\\n--docset-desc \"References to the API and concept documentation for NSStringMask classes.\" \\\n--output ~/help \\\n--ignore .m \\\n--ignore NSStringMaskTests \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--exit-threshold 2 \\\n.";
 		};
 /* End PBXShellScriptBuildPhase section */
 

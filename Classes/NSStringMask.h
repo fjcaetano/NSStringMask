@@ -24,6 +24,7 @@
  
  1. Social Security Number: `(\d{3})-(\d{2})-(\d{3})`
  2. Phone numbers: `(\d{3})-(\d{3})-(\d{4})`
+ 3. Zip Codes: `(\d{5})` or `(\d{5})-(\d{3})`
  
  @warning When passing a pattern or regex, at least one capturing parentheses `[group]` must be informed. This is because NSStringMask will only format the expressions within groups.  This way, if you have a pattern "`\d`" the formatting won't replace any numbers because in its understanding, that's part of the mask, and not a "replacing regex".
  
@@ -103,23 +104,23 @@
  
  If _string_ is shorter than expected, the method returns a cleaned NSString based on _regex_`s groups, but without format:
  
- NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{4})"
- options:NSRegularExpressionCaseInsensitive
- error:&error];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{4})"
+    options:NSRegularExpressionCaseInsensitive
+    error:&error];
  
- [NSStringMask maskString:@"123abcd" withRegex:regex];
- // result: "123"
+    [NSStringMask maskString:@"123abcd" withRegex:regex];
+    // result: "123"
  
  This is because _regex_ is expecting 5 "formattable" numbers but only 3 are being passed. So it doesn't know how to handle it.
  
  If _string_ is longer than expected, the method returns a formatted NSString until the expected length:
  
- NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{4})"
- options:NSRegularExpressionCaseInsensitive
- error:&error];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{4})"
+    options:NSRegularExpressionCaseInsensitive
+    error:&error];
  
- [NSStringMask maskString:@"1234567890" withRegex:regex];
- // result: @"1.2345";
+    [NSStringMask maskString:@"1234567890" withRegex:regex];
+    // result: @"1.2345";
  
  @warning If _regex_ doesn't have at least one capturing parentheses `[group]` it's considered invalid and the method returns nil.
  
@@ -135,21 +136,21 @@
  
  Similar to maskString:withRegex: except when _string_ is shorted than expected. Then it fills the missing characters with the placeholder:
  
- NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{3}).(\\d{2})"
- options:NSRegularExpressionCaseInsensitive
- error:&error];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{3}).(\\d{2})"
+    options:NSRegularExpressionCaseInsensitive
+    error:&error];
  
- [NSStringMask maskString:@"123" withRegex:regex placeholder:@"_"];
- // result: @"1.23__";
+    [NSStringMask maskString:@"123" withRegex:regex placeholder:@"_"];
+    // result: @"1.23__";
  
  The _placeholder_ length can be bigger than 1, then the method will repeat the _placeholder_ for each group:
  
- NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{3}).(\\d{2})"
- options:NSRegularExpressionCaseInsensitive
- error:&error];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{3}).(\\d{2})"
+    options:NSRegularExpressionCaseInsensitive
+    error:&error];
  
- [NSStringMask maskString:@"123" withRegex:regex placeholder:@"abcdefg"];
- // result: @"1.23a.ab";
+    [NSStringMask maskString:@"123" withRegex:regex placeholder:@"abcdefg"];
+    // result: @"1.23a.ab";
  
  @warning If _regex_ doesn't have at least one capturing parentheses `[group]` it's considered invalid and the method returns nil.
  
@@ -168,15 +169,15 @@
  
  If _string_ is shorter than expected, the method returns a cleaned [NSString](NSString) based on regex groups in _pattern_, but without format:
  
- [NSStringMask maskString:@"123abcd" withPattern:@"(\\d).(\\d{4})"];
- // result: @"123";
+    [NSStringMask maskString:@"123abcd" withPattern:@"(\\d).(\\d{4})"];
+    // result: @"123";
  
  This is because the _pattern_ is expecting 5 "formattable" numbers but only 3 are being passed. So it doesn't know how to handle it.
  
  If _string_ is longer than expected, the method returns a formatted NSString until the expected length:
  
- [NSStringMask maskString:@"314159265359" withPattern:@"(\\d).(\\d{4})"];
- // result: @"3.1415";
+    [NSStringMask maskString:@"314159265359" withPattern:@"(\\d).(\\d{4})"];
+    // result: @"3.1415";
  
  @warning If _pattern_ doesn't have at least one capturing parentheses `[group]` it's considered invalid and the method returns nil.
  
@@ -193,13 +194,13 @@
  
  Similar to maskString:withPattern: except when _string_ is shorter than expected. Then it fills the missing characters with the _placeholder_:
  
- [NSStringMask maskString:@"123" withPattern:@"(\\d).(\\d{3}).(\\d{2})" placeholder:@"_"];
- // result: @"1.23__";
+    [NSStringMask maskString:@"123" withPattern:@"(\\d).(\\d{3}).(\\d{2})" placeholder:@"_"];
+    // result: @"1.23__";
  
  The _placeholder_ length can be bigger than 1, then the method will repeat the _placeholder_ for each group:
  
- [NSStringMask maskString:@"123" withPattern:@"(\\d).(\\d{3}).(\\d{2})" placeholder:@"abcdefg"];
- // result: @"1.23a.ab";
+    [NSStringMask maskString:@"123" withPattern:@"(\\d).(\\d{3}).(\\d{2})" placeholder:@"abcdefg"];
+    // result: @"1.23a.ab";
  
  @warning If _pattern_ doesn't have at least one capturing parentheses `[group]` it's considered invalid and the method returns nil.
  
