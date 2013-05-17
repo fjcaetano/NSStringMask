@@ -23,7 +23,6 @@
 /* Begin PBXBuildFile section */
 		7209054117284FBF0091402D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7209053F17284FBF0091402D /* InfoPlist.strings */; };
 		7209054417284FBF0091402D /* NSStringMaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7209054317284FBF0091402D /* NSStringMaskTests.m */; };
-		F204F4231742D31300EE3885 /* UITextFieldMaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F230990E173460850028F669 /* UITextFieldMaskTests.m */; };
 		F230991217346F870028F669 /* CompleteExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F230991117346F870028F669 /* CompleteExtension.m */; };
 		F23B9FF617344AE5001957D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23B9FF417344ADE001957D5 /* UIKit.framework */; };
 		F23B9FFC17344B21001957D5 /* UITextFieldMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F23B9FFB17344B21001957D5 /* UITextFieldMask.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -277,7 +276,6 @@
 			files = (
 				F2E3992E172AF7DD007F4FC1 /* NSStringMask.m in Sources */,
 				7209054417284FBF0091402D /* NSStringMaskTests.m in Sources */,
-				F204F4231742D31300EE3885 /* UITextFieldMaskTests.m in Sources */,
 				F23B9FFC17344B21001957D5 /* UITextFieldMask.m in Sources */,
 				F230991217346F870028F669 /* CompleteExtension.m in Sources */,
 				F24E5BA0173833F10006CA92 /* IncompleteExtension.m in Sources */,

@@ -348,7 +348,7 @@ typedef struct
     NSError *error = nil;
     
     // Extracts the content of parentheses if it's not preceded by slash.
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(?<!\\\\)\\(([^(?:)()]*)(?<!\\\\)\\)"
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(?<!\\\\)\\(([^)(]*)(?<!\\\\)\\)"
                                                                            options:NSRegularExpressionCaseInsensitive
                                                                              error:&error];
     

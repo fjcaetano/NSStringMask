@@ -20,11 +20,7 @@
  
     // result: "123-45-678"
  
- ## Examples of valid patterns
- 
- 1. Social Security Number: `(\d{3})-(\d{2})-(\d{3})`
- 2. Phone numbers: `(\d{3})-(\d{3})-(\d{4})`
- 3. Zip Codes: `(\d{5})` or `(\d{5})-(\d{3})`
+ @note In [this link](https://gist.github.com/fjcaetano/5600452) you'll find a list with some common patterns. Feel free to improve it!
  
  @warning When passing a pattern or regex, at least one capturing parentheses `[group]` must be informed. This is because NSStringMask will only format the expressions within groups.  This way, if you have a pattern "`\d`" the formatting won't replace any numbers because in its understanding, that's part of the mask, and not a "replacing regex".
  
