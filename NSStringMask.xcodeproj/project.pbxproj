@@ -27,6 +27,7 @@
 		F23B9FF617344AE5001957D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23B9FF417344ADE001957D5 /* UIKit.framework */; };
 		F23B9FFC17344B21001957D5 /* UITextFieldMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F23B9FFB17344B21001957D5 /* UITextFieldMask.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F24E5BA0173833F10006CA92 /* IncompleteExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F24E5B9F173833F10006CA92 /* IncompleteExtension.m */; };
+		F26B29EA17469A4E00E7F3D7 /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = F26B29E917469A4E00E7F3D7 /* CHANGELOG */; };
 		F2DEFC9B17344A2800B6E00A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2DEFC9917344A2200B6E00A /* SenTestingKit.framework */; };
 		F2DEFC9C17344A3200B6E00A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7209052917284FBE0091402D /* Foundation.framework */; };
 		F2E39919172AF4ED007F4FC1 /* NSStringMask.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */; };
@@ -51,6 +52,7 @@
 		F23B9FFB17344B21001957D5 /* UITextFieldMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextFieldMask.m; sourceTree = "<group>"; };
 		F24E5B9E173833F10006CA92 /* IncompleteExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IncompleteExtension.h; path = UITextFieldMask/IncompleteExtension.h; sourceTree = "<group>"; };
 		F24E5B9F173833F10006CA92 /* IncompleteExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IncompleteExtension.m; path = UITextFieldMask/IncompleteExtension.m; sourceTree = "<group>"; };
+		F26B29E917469A4E00E7F3D7 /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		F2DEFC9917344A2200B6E00A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NSStringMask.podspec; sourceTree = "<group>"; };
 		F2E3992A172AF7D1007F4FC1 /* NSStringMask-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStringMask-Prefix.pch"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		F2E3992F172AF7F9007F4FC1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F26B29E917469A4E00E7F3D7 /* CHANGELOG */,
 				F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */,
 				F2E3992A172AF7D1007F4FC1 /* NSStringMask-Prefix.pch */,
 			);
@@ -235,6 +238,7 @@
 			files = (
 				7209054117284FBF0091402D /* InfoPlist.strings in Resources */,
 				F2E39919172AF4ED007F4FC1 /* NSStringMask.podspec in Resources */,
+				F26B29EA17469A4E00E7F3D7 /* CHANGELOG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

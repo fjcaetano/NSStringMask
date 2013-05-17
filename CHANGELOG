@@ -1,3 +1,6 @@
+- Upcoming:
+    - Bugfix: identifying groups.
+
 1.1 (2013-05-14):
 
 - [NSStringMask validCharactersForString:]

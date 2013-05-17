@@ -17,10 +17,7 @@ Please, note that this is still in development and may be unstable. Suggestions 
 
 I'll try to keep the branch `master` with the most stable updates, even before deploying new features.
 
-### Changelog:
-
-- [NSStringMask validCharactersForString:]
-- UITextFieldMask
+I've also created [this gist](https://gist.github.com/fjcaetano/5600452) with some commonly used patterns. Feel free to improve it!
 
 ### TODO:
 
