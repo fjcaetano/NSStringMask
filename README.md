@@ -11,7 +11,7 @@ You can clone the repository and copy the folder `Classes` to your project or in
 
 ## Documentation
 
-Take a look on the [complete documentation](http://fjcaetano.github.io/NSStringMask/1.1).
+Take a look on the [complete documentation](http://fjcaetano.github.io/NSStringMask/1.1.2).
 
 Please, note that this is still in development and may be unstable. Suggestions and improvements are always welcome, specially with tests that are not my greatest skill.
 
