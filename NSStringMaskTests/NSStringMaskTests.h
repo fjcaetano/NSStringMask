@@ -21,6 +21,7 @@
  
  - [NSStringMask init]
  - [NSStringMask initWithPattern:]
+ - [NSStringMask initWithPattern:placeholder:]
  */
 - (void)testInstanceInitsWithPatterns;
 

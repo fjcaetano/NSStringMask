@@ -59,6 +59,17 @@
  */
 + (id)maskWithRegex:(NSRegularExpression *)regex;
 
+/** Returns an NSStringMask instance set with the given _regex_ and _placeholder_.
+ 
+ @warning If _regex_ doesn't have at least one capturing parentheses `[group]` it's considered invalid and the method returns nil.
+ 
+ @param regex A given regular expression. If nil, no instance is created.
+ @param placeholder The placeholder string to fill the voids.
+ 
+ @return An instance or nil if regex is invalid.
+ */
++ (id)maskWithRegex:(NSRegularExpression *)regex placeholder:(NSString *)placeholder;
+
 /** Initiates the instance with a given _regex_.
  
  @warning If _regex_ doesn't have at least one capturing parentheses `[group]` it's considered invalid and the method returns nil.
@@ -68,6 +79,17 @@
  @return An instance or nil if regex is invalid.
  */
 - (id)initWithRegex:(NSRegularExpression *)regex;
+
+/** Initiates the instance with a given _regex_ and _placeholder_.
+ 
+ @warning If _regex_ doesn't have at least one capturing parentheses `[group]` it's considered invalid and the method returns nil.
+ 
+ @param regex A given regular expression. If nil, no instance is created.
+ @param placeholder The placeholder string to fill the voids.
+ 
+ @return An instance or nil if regex is invalid.
+ */
+- (id)initWithRegex:(NSRegularExpression *)regex placeholder:(NSString *)placeholder;
 
 /** Returns a NSStringMask instance set with the given _pattern_.
  
@@ -81,6 +103,19 @@
  */
 + (id)maskWithPattern:(NSString *)pattern;
 
+/** Returns a NSStringMask instance set with the given _pattern_ and _placeholder_.
+ 
+ A NSRegularExpression is created based on the _pattern_ passed.
+ 
+ @warning If _pattern_ doesn't have at least one capturing parentheses `[group]` it's considered invalid and the method returns nil.
+ 
+ @param pattern A given regular expression pattern. If invalid, no instance is created.
+ @param placeholder The placeholder string to fill the voids.
+ 
+ @return An instance or nil if pattern is invalid.
+ */
++ (id)maskWithPattern:(NSString *)pattern placeholder:(NSString *)placeholder;
+
 /** Initiates the instance with a given _pattern_.
  
  A NSRegularExpression is created based on the _pattern_ passed.
@@ -92,6 +127,19 @@
  @return An instance or nil if pattern is invalid.
  */
 - (id)initWithPattern:(NSString *)pattern;
+
+/** Initiates the instance with a given _pattern_ and _placeholder_.
+ 
+ A NSRegularExpression is created based on the _pattern_ passed.
+ 
+ @warning If _pattern_ doesn't have at least one capturing parentheses `[group]` it's considered invalid and the method returns nil.
+ 
+ @param pattern A given regular expression pattern. If invalid, no instance is created.
+ @param placeholder The placeholder string to fill the voids.
+ 
+ @return An instance or nil if pattern is invalid.
+ */
+- (id)initWithPattern:(NSString *)pattern placeholder:(NSString *)placeholder;
 
 #pragma mark - Class Methods
 /// @name Class Methods

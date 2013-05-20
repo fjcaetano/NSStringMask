@@ -80,6 +80,17 @@ typedef struct
     return self;
 }
 
+// Initiates the instance with a given _pattern_ and _placeholder_.
+- (id)initWithPattern:(NSString *)pattern placeholder:(NSString *)placeholder
+{
+    self = [self initWithPattern:pattern];
+    if (self)
+    {
+        self.placeholder = placeholder;
+    }
+    return self;
+}
+
 // Initiates the instance with a given NSRegularExpression.
 - (id)initWithRegex:(NSRegularExpression *)regex
 {
@@ -93,6 +104,17 @@ typedef struct
         [regex retain];
     }
     
+    return self;
+}
+
+// Initiates the instance with a given _regex_ and _placeholder_.
+- (id)initWithRegex:(NSRegularExpression *)regex placeholder:(NSString *)placeholder
+{
+    self = [self initWithRegex:regex];
+    if (self)
+    {
+        self.placeholder = placeholder;
+    }
     return self;
 }
 
@@ -112,10 +134,22 @@ typedef struct
     return [[[NSStringMask alloc] initWithRegex:regex] autorelease];
 }
 
+// Returns an NSStringMask instance set with the given _regex_ and _placeholder_.
++(id)maskWithRegex:(NSRegularExpression *)regex placeholder:(NSString *)placeholder
+{
+    return [[[NSStringMask alloc] initWithRegex:regex placeholder:placeholder] autorelease];
+}
+
 // Returns a NSStringMask instance set with the given pattern.
 + (id)maskWithPattern:(NSString *)pattern
 {
     return [[[NSStringMask alloc] initWithPattern:pattern] autorelease];
+}
+
+// Returns a NSStringMask instance set with the given _pattern_ and _placeholder_.
++(id)maskWithPattern:(NSString *)pattern placeholder:(NSString *)placeholder
+{
+    return [[[NSStringMask alloc] initWithPattern:pattern placeholder:placeholder] autorelease];
 }
 
 #pragma mark - Class Methods

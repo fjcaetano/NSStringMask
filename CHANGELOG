@@ -1,5 +1,10 @@
-- Upcoming:
-    - Bugfix: identifying groups.
+UPCOMING:
+
+- Bugfix: identifying groups.
+- [NSStringMask maskWithRegex:placeholder:]
+- [NSStringMask initWithRegex:placeholder:]
+- [NSStringMask maskWithPattern:placeholder:]
+- [NSStringMask initWithPattern:placeholder:]
 
 1.1 (2013-05-14):
 
