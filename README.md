@@ -11,17 +11,13 @@ You can clone the repository and copy the folder `Classes` to your project or in
 
 ## Documentation
 
-Take a look on the [complete documentation](http://fjcaetano.github.io/NSStringMask/).
+Take a look on the [complete documentation](http://fjcaetano.github.io/NSStringMask/1.1).
 
 Please, note that this is still in development and may be unstable. Suggestions and improvements are always welcome, specially with tests that are not my greatest skill.
 
 I'll try to keep the branch `master` with the most stable updates, even before deploying new features.
 
 I've also created [this gist](https://gist.github.com/fjcaetano/5600452) with some commonly used patterns. Feel free to improve it!
-
-### TODO:
-
-- Fix cursor position when editing UITextFieldMask
 
 
 ## Usage Example
@@ -34,11 +30,11 @@ Whenever you set a string pattern or a regex, it must have at least one capturin
 	[NSStringMask maskString:@"c" withPattern:@"(\\w)"]
 	// result: "c"
 
-	[NSStringMask maskString:@"c" withPattern:@"\\w-(\\w)"]
-	// result: w-c
-
 	[NSStringMask maskString:@"3" withPattern:@"\\((\\d)\\)"]
 	// result: (3)
+
+	[NSStringMask maskString:@"3" withPattern:@"\\((\\d{4})\\)" placeholder:@"_"]
+	// result: (3___)
 
 These are few of the many forms to use NSStringMask:
 
