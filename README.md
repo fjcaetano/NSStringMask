@@ -13,7 +13,7 @@ You can clone the repository and copy the folder `Classes` to your project or in
 References
 -------------
 
-Take a look on the [complete documentation >](http://fjcaetano.github.io/NSStringMask/1.1.2).
+Take a look on the [complete documentation >](http://fjcaetano.github.io/NSStringMask/docs).
 
 Please, note that this is still in development and may be unstable. Suggestions and improvements are always welcome, specially with tests that are not my greatest skill.
 
@@ -96,4 +96,4 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# [Complete Documentation >](http://fjcaetano.github.io/NSStringMask/1.1.2)
+# [Complete Documentation >](http://fjcaetano.github.io/NSStringMask/docs)
