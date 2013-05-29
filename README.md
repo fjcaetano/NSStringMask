@@ -1,6 +1,8 @@
 NSStringMask
 ============
 
+[![NSStringMask](http://cocoapod-badges.herokuapp.com/v/nsstringmask/badge.png)](http://cocoadocs.org/docsets/NSStringMask)
+
 This tiny library was developed to help you apply masks and formats to strings.
 
 For instance, suppose you have the string `12345678` and want to format it as a Social Security Number (which regex pattern is `\d{3}-\d{2}-\d{3}`). With NSStringMask, all you have to do is `[NSStringMask maskString:@"12345678" withPattern:@"(\\d{3})-(\\d{2})-(\\d{3})"]` and the result will be "123-45-678". Simple enough?
