@@ -1,8 +1,5 @@
-NSStringMask
+NSStringMask [![NSStringMask Version](http://cocoapod-badges.herokuapp.com/v/NSStringMask/badge.png)](http://cocoadocs.org/docsets/NSStringMask) [![NSStringMask Platforms](http://cocoapod-badges.herokuapp.com/p/NSStringMask/badge.svg)](http://cocoadocs.org/docsets/NSStringMask) 
 ============
-
-[![NSStringMask Version](http://cocoapod-badges.herokuapp.com/v/NSStringMask/badge.png)](http://cocoadocs.org/docsets/NSStringMask) 
-[![NSStringMask Platforms](http://cocoapod-badges.herokuapp.com/p/NSStringMask/badge.png)](http://cocoadocs.org/docsets/NSStringMask) 
 
 This tiny library was developed to help you apply masks and formats to strings.
 
