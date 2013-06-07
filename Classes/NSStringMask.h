@@ -12,7 +12,9 @@
 
 #import <Foundation/Foundation.h>
 
-/** The NSStringMask enables you to apply _masks_ or _formats_ to NSStrings using NSRegularExpression to input your format.
+/** [![NSStringMask Version](http://cocoapod-badges.herokuapp.com/v/NSStringMask/badge.png)](http://cocoadocs.org/docsets/NSStringMask) [![NSStringMask Platforms](http://cocoapod-badges.herokuapp.com/p/NSStringMask/badge.svg)](http://cocoadocs.org/docsets/NSStringMask) [![Build Status](https://travis-ci.org/fjcaetano/NSStringMask.png)](https://travis-ci.org/fjcaetano/NSStringMask)
+ 
+ The NSStringMask enables you to apply _masks_ or _formats_ to NSStrings using NSRegularExpression to input your format.
  
  Suppose you want to format a Social Security Number "12345678", its regex is "(\\d{3})-(\\d{2})-(\\d{3})". You can easily format it using:
  
