@@ -6,7 +6,8 @@
 //  Copyright (c) 2013 Flavio Caetano. All rights reserved.
 //
 
-#import "NSStringMaskTests.h"
+#import <SenTestingKit/SenTestingKit.h>
+
 
 #import "NSStringMask.h"
 
@@ -17,6 +18,10 @@
 /** _regex getter declaration.
  */
 - (NSRegularExpression *)regex;
+
+@end
+
+@interface NSStringMaskTests : SenTestCase
 
 @end
 

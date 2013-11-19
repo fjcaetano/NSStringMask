@@ -23,9 +23,8 @@
  Example.h
  
     @interface Example : UIView <UITextFieldDelegate>
-    {
-        UITextFieldMask *textFieldMask;
-    }
+    
+    @property (nonatomic, strong) UITextFieldMask *textFieldMask;
  
     - (BOOL)doSearch:(NSString *)text;
  
@@ -39,8 +38,8 @@
     {
         NSStringMask *mask = [NSStringMask maskWithPattern:@"(\\d+)"];
  
-        textFieldMask.mask = mask;
-        textFieldMask.delegate = self;
+        self.textFieldMask.mask = mask;
+        self.textFieldMask.delegate = self;
     }
  
     - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -62,7 +61,7 @@
 
 /** The mask to be applied to the text field.
  */
-@property (nonatomic, retain) NSStringMask *mask;
+@property (nonatomic, strong) NSStringMask *mask;
 
 #pragma mark - Instance Methods
 /// @name Instance Methods

@@ -6,16 +6,10 @@
 //  Copyright (c) 2013 FlavioCaetano. All rights reserved.
 //
 
-#import "NSStringMask.h"
+#define kRESULT_INDEX   0
+#define kLENGTH_INDEX   1
 
-/** Struct for returning multiple values.
- */
-typedef struct
-{
-    NSString *result;
-    
-    NSInteger length;
-} PatternAdaptingResult;
+#import "NSStringMask.h"
 
 /** Category declaring private ivars and methods for the NSStringMask
  */
@@ -62,7 +56,7 @@ typedef struct
  
  @return The adapted regex pattern and the maximum length allowed.
  */
-- (PatternAdaptingResult)adaptsFirstGroupPattern:(NSString *)group subtracting:(NSUInteger)n;
+- (NSArray *)adaptsFirstGroupPattern:(NSString *)group subtracting:(NSUInteger)n;
 
 @end
 
@@ -101,7 +95,6 @@ typedef struct
     if (self)
     {
         self.regex = regex;
-        [regex retain];
     }
     
     return self;
@@ -118,38 +111,30 @@ typedef struct
     return self;
 }
 
-// dealloc
-- (void)dealloc
-{
-    [_regex release], _regex = nil;
-    
-    [super dealloc];
-}
-
 #pragma mark - Class Initializers
 
 // Returns an NSStringMask instance set with the given NSRegularExpression.
 + (id)maskWithRegex:(NSRegularExpression *)regex
 {
-    return [[[NSStringMask alloc] initWithRegex:regex] autorelease];
+    return [[NSStringMask alloc] initWithRegex:regex];
 }
 
 // Returns an NSStringMask instance set with the given _regex_ and _placeholder_.
 +(id)maskWithRegex:(NSRegularExpression *)regex placeholder:(NSString *)placeholder
 {
-    return [[[NSStringMask alloc] initWithRegex:regex placeholder:placeholder] autorelease];
+    return [[NSStringMask alloc] initWithRegex:regex placeholder:placeholder];
 }
 
 // Returns a NSStringMask instance set with the given pattern.
 + (id)maskWithPattern:(NSString *)pattern
 {
-    return [[[NSStringMask alloc] initWithPattern:pattern] autorelease];
+    return [[NSStringMask alloc] initWithPattern:pattern];
 }
 
 // Returns a NSStringMask instance set with the given _pattern_ and _placeholder_.
 +(id)maskWithPattern:(NSString *)pattern placeholder:(NSString *)placeholder
 {
-    return [[[NSStringMask alloc] initWithPattern:pattern placeholder:placeholder] autorelease];
+    return [[NSStringMask alloc] initWithPattern:pattern placeholder:placeholder];
 }
 
 #pragma mark - Class Methods
@@ -198,7 +183,7 @@ typedef struct
     NSString *validCharacters = [self validCharactersForString:string];
     
     NSMutableString *pattern = [NSMutableString stringWithString:self.regex.pattern];
-    NSMutableString *formattedString = [[NSMutableString new] autorelease];
+    NSMutableString *formattedString = [NSMutableString new];
     
     NSString *newPattern = [self patternStep:&pattern onString:validCharacters iterCount:1 resultFetcher:&formattedString range:NSMakeRange(0, validCharacters.length) placeholder:self.placeholder];
     
@@ -226,16 +211,16 @@ typedef struct
     for (int i = 2; firstGroupPattern != nil; i++)
     {
         NSUInteger n = 0;
-        PatternAdaptingResult adaptingResult;
+        NSArray *adaptingResult;
         NSTextCheckingResult *result;
         
         do
         {
             // Add a capturing group to the pattern
             adaptingResult = [self adaptsFirstGroupPattern:firstGroupPattern subtracting:n];
-            if (adaptingResult.length == 0) break;
+            if (adaptingResult[kLENGTH_INDEX] == 0) break;
             
-            firstGroupPattern = adaptingResult.result;
+            firstGroupPattern = adaptingResult[kRESULT_INDEX];
             
             // Try to match the pattern
             NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:firstGroupPattern
@@ -254,7 +239,7 @@ typedef struct
             
             n += result.range.length;
         }
-        while (result.range.length != adaptingResult.length);
+        while (result.range.length != [adaptingResult[kLENGTH_INDEX] integerValue]);
         
         firstGroupPattern = [self getStepPattern:&pattern iter:i];
     }
@@ -279,7 +264,7 @@ typedef struct
 #pragma mark - Private Methods
 
 // Adjusts the expected repetitions in _group_ to accept variable results from 0 to the maximum accepted.
-- (PatternAdaptingResult)adaptsFirstGroupPattern:(NSString *)group subtracting:(NSUInteger)n
+- (NSArray *)adaptsFirstGroupPattern:(NSString *)group subtracting:(NSUInteger)n
 {
     NSError *error = nil;
     
@@ -300,18 +285,14 @@ typedef struct
     // Replaces the the content of braces with {1, numberOfRepetitions}
     if (numberOfRepetitions > 0)
     {
-        group = [group stringByReplacingCharactersInRange:[numRep rangeAtIndex:1] withString:[NSString stringWithFormat:@"1,%d", numberOfRepetitions - n]];
+        group = [group stringByReplacingCharactersInRange:[numRep rangeAtIndex:1] withString:[NSString stringWithFormat:@"1,%lu", numberOfRepetitions - n]];
     }
     else
     {
         numberOfRepetitions = INFINITY;
     }
     
-    PatternAdaptingResult result;
-    result.result = group;
-    result.length = numberOfRepetitions;
-    
-    return result;
+    return @[group, @(numberOfRepetitions)];
 }
 
 // Recursive method to format the given string based on the given pattern and placeholder, returning the new regex pattern to be used on NSMutableString's replaceOccurrencesOfString:withString:options:range: and editing the pattern to match this method's replacement string.

@@ -9,25 +9,19 @@
 #import "UITextFieldMask.h"
 
 @interface UITextFieldMask ()
-{
-    id<UITextFieldDelegate> extension;
-}
+
+/**
+ *  The user defined `UITextFieldDelegate`.
+ */
+@property (nonatomic, strong) id<UITextFieldDelegate> _extension;
 
 @end
 
 @implementation UITextFieldMask
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    [super setDelegate:self];
-}
-
 // An adapter of UITextFieldDelegate to easily integrate with NSStringMask.
 - (id)initWithMask:(NSStringMask *)mask
 {
-    if (! mask) return nil;
-    
     self = [super init];
     if (self)
     {
@@ -40,20 +34,28 @@
 
 - (void)setDelegate:(id<UITextFieldDelegate>)delegate
 {
-    extension = delegate;
+    self._extension = delegate;
+}
+
+- (void)setMask:(NSStringMask *)mask
+{
+    _mask = mask;
+    
+    [super setDelegate:(mask ? self : nil)];
 }
 
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if ([extension respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)] &&
-        ! [extension textField:textField shouldChangeCharactersInRange:range replacementString:string])
+    if ([self._extension respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)] &&
+        ! [self._extension textField:textField shouldChangeCharactersInRange:range replacementString:string])
     {
         return NO;
     }
     
     NSString *mutableString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
     NSString *clean = [self.mask validCharactersForString:mutableString];
     
     mutableString = [self.mask format:mutableString];
@@ -75,33 +77,33 @@
         newRange.length = 0;
     }
     
-    textField.text = mutableString;
     [textField setValue:[NSValue valueWithRange:newRange] forKey:@"selectionRange"];
+    textField.text = mutableString;
     
     return NO;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    if ([extension respondsToSelector:@selector(textFieldDidBeginEditing:)])
+    if ([self._extension respondsToSelector:@selector(textFieldDidBeginEditing:)])
     {
-        [extension textFieldDidBeginEditing:textField];
+        [self._extension textFieldDidBeginEditing:textField];
     }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if ([extension respondsToSelector:@selector(textFieldDidEndEditing:)])
+    if ([self._extension respondsToSelector:@selector(textFieldDidEndEditing:)])
     {
-        [extension textFieldDidEndEditing:textField];
+        [self._extension textFieldDidEndEditing:textField];
     }
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    if ([extension respondsToSelector:@selector(textFieldShouldBeginEditing:)])
+    if ([self._extension respondsToSelector:@selector(textFieldShouldBeginEditing:)])
     {
-        return [extension textFieldShouldBeginEditing:textField];
+        return [self._extension textFieldShouldBeginEditing:textField];
     }
     
     return YES;
@@ -109,9 +111,9 @@
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField
 {
-    if ([extension respondsToSelector:@selector(textFieldShouldClear:)])
+    if ([self._extension respondsToSelector:@selector(textFieldShouldClear:)])
     {
-        return [extension textFieldShouldClear:textField];
+        return [self._extension textFieldShouldClear:textField];
     }
     
     return YES;
@@ -119,9 +121,9 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
-    if ([extension respondsToSelector:@selector(textFieldShouldEndEditing:)])
+    if ([self._extension respondsToSelector:@selector(textFieldShouldEndEditing:)])
     {
-        return [extension textFieldShouldEndEditing:textField];
+        return [self._extension textFieldShouldEndEditing:textField];
     }
     
     return YES;
@@ -129,20 +131,25 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if ([extension respondsToSelector:@selector(textFieldShouldReturn:)])
+    if ([self._extension respondsToSelector:@selector(textFieldShouldReturn:)])
     {
         textField.text = [self.mask validCharactersForString:textField.text];
-        return [extension textFieldShouldReturn:textField];
+        return [self._extension textFieldShouldReturn:textField];
     }
     
     return YES;
 }
 
-- (void)dealloc
+#pragma mark - Overridden Methods
+
+- (void)awakeFromNib
 {
-    [_mask release], _mask = nil;
+    [super awakeFromNib];
     
-    [super dealloc];
+    if (self.mask)
+    {
+        [super setDelegate:self];
+    }
 }
 
 @end

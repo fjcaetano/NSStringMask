@@ -5,10 +5,6 @@
 //  Created by Flávio Caetano on 4/17/13.
 //  Copyright (c) 2013 FlavioCaetano. All rights reserved.
 //
-//  Alo alo bla bla.
-//
-//  Lorem ipsum dolor sit amet
-//
 
 #import <Foundation/Foundation.h>
 
@@ -46,7 +42,7 @@
  - "" -> result = "0" `// same as above`
  
  */
-@property (nonatomic, retain) NSString *placeholder;
+@property (nonatomic, strong) NSString *placeholder;
 
 #pragma mark - inits
 /// @name inits

@@ -24,14 +24,15 @@
 		7209054117284FBF0091402D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7209053F17284FBF0091402D /* InfoPlist.strings */; };
 		7209054417284FBF0091402D /* NSStringMaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7209054317284FBF0091402D /* NSStringMaskTests.m */; };
 		F230991217346F870028F669 /* CompleteExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F230991117346F870028F669 /* CompleteExtension.m */; };
-		F23B9FF617344AE5001957D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23B9FF417344ADE001957D5 /* UIKit.framework */; };
-		F23B9FFC17344B21001957D5 /* UITextFieldMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F23B9FFB17344B21001957D5 /* UITextFieldMask.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F23B9FFC17344B21001957D5 /* UITextFieldMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F23B9FFB17344B21001957D5 /* UITextFieldMask.m */; };
 		F24E5BA0173833F10006CA92 /* IncompleteExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F24E5B9F173833F10006CA92 /* IncompleteExtension.m */; };
+		F25F360E183BF2D8009D3F47 /* UITextFieldMaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F230990E173460850028F669 /* UITextFieldMaskTests.m */; };
+		F25F3610183BFB8E009D3F47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F25F360F183BFB8E009D3F47 /* UIKit.framework */; };
 		F26B29EA17469A4E00E7F3D7 /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = F26B29E917469A4E00E7F3D7 /* CHANGELOG */; };
 		F2DEFC9B17344A2800B6E00A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2DEFC9917344A2200B6E00A /* SenTestingKit.framework */; };
 		F2DEFC9C17344A3200B6E00A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7209052917284FBE0091402D /* Foundation.framework */; };
 		F2E39919172AF4ED007F4FC1 /* NSStringMask.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */; };
-		F2E3992E172AF7DD007F4FC1 /* NSStringMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E3992D172AF7DD007F4FC1 /* NSStringMask.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F2E3992E172AF7DD007F4FC1 /* NSStringMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E3992D172AF7DD007F4FC1 /* NSStringMask.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,9 +42,7 @@
 		7209053517284FBF0091402D /* NSStringMaskTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NSStringMaskTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7209053E17284FBF0091402D /* NSStringMaskTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NSStringMaskTests-Info.plist"; sourceTree = "<group>"; };
 		7209054017284FBF0091402D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7209054217284FBF0091402D /* NSStringMaskTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NSStringMaskTests.h; path = NSStringMaskTests/NSStringMaskTests.h; sourceTree = SOURCE_ROOT; };
 		7209054317284FBF0091402D /* NSStringMaskTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSStringMaskTests.m; sourceTree = "<group>"; };
-		F230990D173460850028F669 /* UITextFieldMaskTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UITextFieldMaskTests.h; path = UITextFieldMask/UITextFieldMaskTests.h; sourceTree = "<group>"; };
 		F230990E173460850028F669 /* UITextFieldMaskTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UITextFieldMaskTests.m; path = UITextFieldMask/UITextFieldMaskTests.m; sourceTree = "<group>"; };
 		F230991017346F870028F669 /* CompleteExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompleteExtension.h; path = UITextFieldMask/CompleteExtension.h; sourceTree = "<group>"; };
 		F230991117346F870028F669 /* CompleteExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CompleteExtension.m; path = UITextFieldMask/CompleteExtension.m; sourceTree = "<group>"; };
@@ -52,6 +51,7 @@
 		F23B9FFB17344B21001957D5 /* UITextFieldMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextFieldMask.m; sourceTree = "<group>"; };
 		F24E5B9E173833F10006CA92 /* IncompleteExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IncompleteExtension.h; path = UITextFieldMask/IncompleteExtension.h; sourceTree = "<group>"; };
 		F24E5B9F173833F10006CA92 /* IncompleteExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IncompleteExtension.m; path = UITextFieldMask/IncompleteExtension.m; sourceTree = "<group>"; };
+		F25F360F183BFB8E009D3F47 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F26B29E917469A4E00E7F3D7 /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		F2DEFC9917344A2200B6E00A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NSStringMask.podspec; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F23B9FF617344AE5001957D5 /* UIKit.framework in Frameworks */,
+				F25F3610183BFB8E009D3F47 /* UIKit.framework in Frameworks */,
 				F2DEFC9B17344A2800B6E00A /* SenTestingKit.framework in Frameworks */,
 				F2DEFC9C17344A3200B6E00A /* Foundation.framework in Frameworks */,
 			);
@@ -96,6 +96,7 @@
 		7209052317284FBE0091402D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F25F360F183BFB8E009D3F47 /* UIKit.framework */,
 				F23B9FF417344ADE001957D5 /* UIKit.framework */,
 				F2DEFC9917344A2200B6E00A /* SenTestingKit.framework */,
 				7209052617284FBE0091402D /* Other Frameworks */,
@@ -135,7 +136,6 @@
 		F230990517345F640028F669 /* NSStringMask */ = {
 			isa = PBXGroup;
 			children = (
-				7209054217284FBF0091402D /* NSStringMaskTests.h */,
 				7209054317284FBF0091402D /* NSStringMaskTests.m */,
 			);
 			name = NSStringMask;
@@ -145,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				F24E5B9C173833C90006CA92 /* Extensions */,
-				F230990D173460850028F669 /* UITextFieldMaskTests.h */,
 				F230990E173460850028F669 /* UITextFieldMaskTests.m */,
 			);
 			name = UITextFieldMask;
@@ -279,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E3992E172AF7DD007F4FC1 /* NSStringMask.m in Sources */,
+				F25F360E183BF2D8009D3F47 /* UITextFieldMaskTests.m in Sources */,
 				7209054417284FBF0091402D /* NSStringMaskTests.m in Sources */,
 				F23B9FFC17344B21001957D5 /* UITextFieldMask.m in Sources */,
 				F230991217346F870028F669 /* CompleteExtension.m in Sources */,
@@ -356,6 +356,7 @@
 		7209054B17284FBF0091402D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
@@ -377,6 +378,7 @@
 		7209054C17284FBF0091402D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
