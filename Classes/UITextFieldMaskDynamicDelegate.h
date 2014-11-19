@@ -20,7 +20,7 @@
 /** The mask to be applied to the text field.
  */
 @property (nonatomic, strong) NSStringMask *mask;
-@property (nonatomic, strong) id<UITextFieldDelegate> realDelegate;
+@property (nonatomic, weak) id<UITextFieldDelegate> realDelegate;
 
 
 @end
