@@ -201,7 +201,7 @@
 			name = NSStringMaskTests;
 			productName = NSStringMaskTests;
 			productReference = 7209053517284FBF0091402D /* NSStringMaskTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
