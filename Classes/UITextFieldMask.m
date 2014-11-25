@@ -7,13 +7,16 @@
 //
 
 #import "UITextFieldMask.h"
+#import "UITextFieldMaskDynamicDelegate.h"
 
 @interface UITextFieldMask ()
 
 /**
  *  The user defined `UITextFieldDelegate`.
  */
-@property (nonatomic, strong) id<UITextFieldDelegate> _extension;
+//@property (nonatomic, strong) id<UITextFieldDelegate> _extension;
+
+@property (nonatomic) UITextFieldMaskDynamicDelegate *maskDelegate;
 
 @end
 
@@ -32,112 +35,31 @@
 
 #pragma mark - Properties
 
+-(UITextFieldMaskDynamicDelegate *)maskDelegate{
+    if (!_maskDelegate) {
+        _maskDelegate = [UITextFieldMaskDynamicDelegate new];
+    }
+    return _maskDelegate;
+}
+
 - (void)setDelegate:(id<UITextFieldDelegate>)delegate
 {
-    self._extension = delegate;
+    self.maskDelegate.realDelegate = delegate;
+}
+
+-(id<UITextFieldDelegate>)delegate{
+    return self.maskDelegate.realDelegate;
 }
 
 - (void)setMask:(NSStringMask *)mask
 {
-    _mask = mask;
+    self.maskDelegate.mask = mask;
     
-    [super setDelegate:(mask ? self : nil)];
+    [super setDelegate:(mask ? self.maskDelegate : nil)];
 }
 
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    if ([self._extension respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)] &&
-        ! [self._extension textField:textField shouldChangeCharactersInRange:range replacementString:string])
-    {
-        return NO;
-    }
-    
-    NSString *mutableString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    
-    NSString *clean = [self.mask validCharactersForString:mutableString];
-    
-    mutableString = [self.mask format:mutableString];
-    
-    NSRange newRange = NSMakeRange(0, 0);
-    
-    if (clean.length > 0)
-    {
-        newRange = [mutableString rangeOfString:[clean substringFromIndex:clean.length-1] options:NSBackwardsSearch];
-        if (newRange.location == NSNotFound)
-        {
-            newRange.location = mutableString.length;
-        }
-        else
-        {
-            newRange.location += newRange.length;
-        }
-        
-        newRange.length = 0;
-    }
-    
-    [textField setValue:[NSValue valueWithRange:newRange] forKey:@"selectionRange"];
-    textField.text = mutableString;
-    
-    return NO;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    if ([self._extension respondsToSelector:@selector(textFieldDidBeginEditing:)])
-    {
-        [self._extension textFieldDidBeginEditing:textField];
-    }
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    if ([self._extension respondsToSelector:@selector(textFieldDidEndEditing:)])
-    {
-        [self._extension textFieldDidEndEditing:textField];
-    }
-}
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    if ([self._extension respondsToSelector:@selector(textFieldShouldBeginEditing:)])
-    {
-        return [self._extension textFieldShouldBeginEditing:textField];
-    }
-    
-    return YES;
-}
-
-- (BOOL)textFieldShouldClear:(UITextField *)textField
-{
-    if ([self._extension respondsToSelector:@selector(textFieldShouldClear:)])
-    {
-        return [self._extension textFieldShouldClear:textField];
-    }
-    
-    return YES;
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
-{
-    if ([self._extension respondsToSelector:@selector(textFieldShouldEndEditing:)])
-    {
-        return [self._extension textFieldShouldEndEditing:textField];
-    }
-    
-    return YES;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    if ([self._extension respondsToSelector:@selector(textFieldShouldReturn:)])
-    {
-        textField.text = [self.mask validCharactersForString:textField.text];
-        return [self._extension textFieldShouldReturn:textField];
-    }
-    
-    return YES;
+-(NSStringMask *)mask{
+    return self.maskDelegate.mask;
 }
 
 #pragma mark - Overridden Methods
@@ -148,7 +70,7 @@
     
     if (self.mask)
     {
-        [super setDelegate:self];
+        [super setDelegate:self.maskDelegate];
     }
 }
 

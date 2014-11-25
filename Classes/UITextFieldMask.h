@@ -22,34 +22,34 @@
  
  Example.h
  
-    @interface Example : UIView <UITextFieldDelegate>
-    
-    @property (nonatomic, strong) UITextFieldMask *textFieldMask;
+ @interface Example : UIView <UITextFieldDelegate>
  
-    - (BOOL)doSearch:(NSString *)text;
+ @property (nonatomic, strong) UITextFieldMask *textFieldMask;
  
-    @end
+ - (BOOL)doSearch:(NSString *)text;
+ 
+ @end
  
  Example.m
  
-    @implementation Example
+ @implementation Example
  
-    - (void)awakeFromNib
-    {
-        NSStringMask *mask = [NSStringMask maskWithPattern:@"(\\d+)"];
+ - (void)awakeFromNib
+ {
+ NSStringMask *mask = [NSStringMask maskWithPattern:@"(\\d+)"];
  
-        self.textFieldMask.mask = mask;
-        self.textFieldMask.delegate = self;
-    }
+ self.textFieldMask.mask = mask;
+ self.textFieldMask.delegate = self;
+ }
  
-    - (BOOL)textFieldShouldReturn:(UITextField *)textField
-    {
-        return [self doSearch:textField.text];
-    }
+ - (BOOL)textFieldShouldReturn:(UITextField *)textField
+ {
+ return [self doSearch:textField.text];
+ }
  
-    ...
+ ...
  
-    @end
+ @end
  
  The instance's methods that conforms to UITextFieldDelegate will always be called __before__ UITextFieldMask's methods and their results have preference. Therefore, if _Example_'s `textFieldShouldReturn:` return `NO`, UITextFieldMask will not evaluate the mask.
  
