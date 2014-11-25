@@ -226,7 +226,6 @@
             NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:firstGroupPattern
                                                                                    options:NSRegularExpressionCaseInsensitive
                                                                                      error:&error];
-            if (error) NSLog(@"%@", error);
             
             result = [regex firstMatchInString:string options:NSMatchingWithoutAnchoringBounds range:NSMakeRange(0, string.length)];
             if (! result) break;
