@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Flavio Caetano. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 #import "UITextFieldMask.h"
 
 #import "CompleteExtension.h"
 #import "IncompleteExtension.h"
 
-@interface UITextFieldMaskTests : SenTestCase
+@interface UITextFieldMaskTests : XCTestCase
 
 /**
  *  Asserts same behavior between `tfMask` and `defaultTextField`.
@@ -40,8 +40,8 @@
     UITextFieldMask *tfMask;
     UITextField *defaultTextField = [UITextField new];
     
-    STAssertNoThrow((tfMask = [[UITextFieldMask alloc] initWithMask:nil]), @"[no throw] empty mask");
-    STAssertNotNil(tfMask, [NSString stringWithFormat:@"[nil] %@", tfMask]);
+    XCTAssertNoThrow((tfMask = [[UITextFieldMask alloc] initWithMask:nil]), @"[no throw] empty mask");
+    XCTAssertNotNil(tfMask, @"[nil] %@", tfMask);
     
     CompleteExtension *completeExtension = [CompleteExtension new];
     tfMask.delegate = completeExtension;
@@ -103,13 +103,13 @@
     
     UITextFieldMask *tfMask;
     
-    STAssertNoThrow((tfMask = [[UITextFieldMask alloc] initWithMask:mask]), @"[no throw] empty mask");
-    STAssertNotNil(tfMask, [NSString stringWithFormat:@"[%@]", tfMask]);
+    XCTAssertNoThrow((tfMask = [[UITextFieldMask alloc] initWithMask:mask]), @"[no throw] empty mask");
+    XCTAssertNotNil(tfMask, @"[%@]", tfMask);
     
     mask.placeholder = @"_";
     
-    STAssertNoThrow((tfMask = [[UITextFieldMask alloc] initWithMask:mask]), @"[no throw] empty mask");
-    STAssertNotNil(tfMask, [NSString stringWithFormat:@"[%@]", tfMask]);
+    XCTAssertNoThrow((tfMask = [[UITextFieldMask alloc] initWithMask:mask]), @"[no throw] empty mask");
+    XCTAssertNotNil(tfMask, @"[%@]", tfMask);
 }
 
 // Testing UITextFieldDelegate methods without extension.
@@ -122,37 +122,37 @@
     tfMask.text = @"";
     
     // Nil placeholder
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"1"]), @"[no throw] appending character");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"1"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"1"]), @"[no throw] appending character");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"1"], @"[%@]", tfMask.text);
     
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(1, 0) replacementString:@"234"]), @"[no throw] appending big range");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"1234"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(1, 0) replacementString:@"234"]), @"[no throw] appending big range");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"1234"], @"[%@]", tfMask.text);
     
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"0"]), @"[no throw] inserting character");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"01234"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"0"]), @"[no throw] inserting character");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"01234"], @"[%@]", tfMask.text);
     
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(5, 0) replacementString:@"abd[awjd*]\\],"]), @"[no throw] appending garbage");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"01234"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(5, 0) replacementString:@"abd[awjd*]\\],"]), @"[no throw] appending garbage");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"01234"], @"[%@]", tfMask.text);
     
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(4, 1) replacementString:@"789"]), @"[no throw] replacing string");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"0123789"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(4, 1) replacementString:@"789"]), @"[no throw] replacing string");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"0123789"], @"[%@]", tfMask.text);
     
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(6, 1) replacementString:@""]), @"[no throw] deleting last char");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"012378"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(6, 1) replacementString:@""]), @"[no throw] deleting last char");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"012378"], @"[%@]", tfMask.text);
     
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(1, 2) replacementString:@""]), @"[no throw] deleting middle");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"0378"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(1, 2) replacementString:@""]), @"[no throw] deleting middle");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"0378"], @"[%@]", tfMask.text);
     
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(1, 3) replacementString:@"1234"]), @"[no throw] replacing middle string");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"01234"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(1, 3) replacementString:@"1234"]), @"[no throw] replacing middle string");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"01234"], @"[%@]", tfMask.text);
     
     // Valid Placeholder
     mask = [NSStringMask maskWithPattern:@"(\\d).(\\d{3})"];
@@ -161,37 +161,37 @@
     tfMask = [[UITextFieldMask alloc] initWithMask:mask];
     
     tfMask.text = @"";
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"1"]), @"[no throw] appending character");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"1.___"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"1"]), @"[no throw] appending character");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"1.___"], @"[%@]", tfMask.text);
     
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(1, 0) replacementString:@"234"]), @"[no throw] appending big range");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"1.234"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(1, 0) replacementString:@"234"]), @"[no throw] appending big range");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"1.234"], @"[%@]", tfMask.text);
     
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"0"]), @"[no throw] inserting character");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"0.123"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"0"]), @"[no throw] inserting character");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"0.123"], @"[%@]", tfMask.text);
     
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(5, 0) replacementString:@"abd[awjd*]\\],"]), @"[no throw] appending garbage");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"0.123"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(5, 0) replacementString:@"abd[awjd*]\\],"]), @"[no throw] appending garbage");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"0.123"], @"[%@]", tfMask.text);
     
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(4, 1) replacementString:@"789"]), @"[no throw] replacing string");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"0.127"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(4, 1) replacementString:@"789"]), @"[no throw] replacing string");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"0.127"], @"[%@]", tfMask.text);
     
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(4, 1) replacementString:@""]), @"[no throw] deleting last char");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"0.12_"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(4, 1) replacementString:@""]), @"[no throw] deleting last char");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"0.12_"], @"[%@]", tfMask.text);
     
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(1, 2) replacementString:@""]), @"[no throw] deleting middle");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"0.2__"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(1, 2) replacementString:@""]), @"[no throw] deleting middle");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"0.2__"], @"[%@]", tfMask.text);
     
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(1, 3) replacementString:@"1234"]), @"[no throw] replacing middle string");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"0.123"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(1, 3) replacementString:@"1234"]), @"[no throw] replacing middle string");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"0.123"], @"[%@]", tfMask.text);
 }
 
 #pragma mark - Testing Extensions
@@ -210,30 +210,30 @@
     
     BOOL result = NO;
     
-    STAssertNoThrow(([tfMask.delegate textFieldDidBeginEditing:tfMask]), @"[no throw] textFieldDidBeginEditing:");
+    XCTAssertNoThrow(([tfMask.delegate textFieldDidBeginEditing:tfMask]), @"[no throw] textFieldDidBeginEditing:");
     
-    STAssertNoThrow(([tfMask.delegate textFieldDidEndEditing:tfMask]), @"[no throw] textFieldDidEndEditing:");
-    
-    result = NO;
-    STAssertNoThrow((result = [tfMask.delegate textFieldShouldBeginEditing:tfMask]), @"[no throw] textFieldShouldBeginEditing:");
-    STAssertTrue(result, [NSString stringWithFormat:@"[%d]", result]);
+    XCTAssertNoThrow(([tfMask.delegate textFieldDidEndEditing:tfMask]), @"[no throw] textFieldDidEndEditing:");
     
     result = NO;
-    STAssertNoThrow((result = [tfMask.delegate textFieldShouldClear:tfMask]), @"[no throw] textFieldShouldClear:");
-    STAssertTrue(result, [NSString stringWithFormat:@"[%d]", result]);
+    XCTAssertNoThrow((result = [tfMask.delegate textFieldShouldBeginEditing:tfMask]), @"[no throw] textFieldShouldBeginEditing:");
+    XCTAssertTrue(result, @"[%d]", result);
     
     result = NO;
-    STAssertNoThrow((result = [tfMask.delegate textFieldShouldEndEditing:tfMask]), @"[no throw] textFieldShouldEndEditing:");
-    STAssertTrue(result, [NSString stringWithFormat:@"[%d]", result]);
+    XCTAssertNoThrow((result = [tfMask.delegate textFieldShouldClear:tfMask]), @"[no throw] textFieldShouldClear:");
+    XCTAssertTrue(result, @"[%d]", result);
     
     result = NO;
-    STAssertNoThrow((result = [tfMask.delegate textFieldShouldReturn:tfMask]), @"[no throw] textFieldShouldReturn:");
-    STAssertTrue(result, [NSString stringWithFormat:@"[%d]", result]);
+    XCTAssertNoThrow((result = [tfMask.delegate textFieldShouldEndEditing:tfMask]), @"[no throw] textFieldShouldEndEditing:");
+    XCTAssertTrue(result, @"[%d]", result);
+    
+    result = NO;
+    XCTAssertNoThrow((result = [tfMask.delegate textFieldShouldReturn:tfMask]), @"[no throw] textFieldShouldReturn:");
+    XCTAssertTrue(result, @"[%d]", result);
     
     result = YES;
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"1234567890987654321"]), @"[no throw] textField:shouldChangeCharactersInRange:replacementString:");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@"1234567890987654321"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@"1234567890987654321"]), @"[no throw] textField:shouldChangeCharactersInRange:replacementString:");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@"1234567890987654321"], @"[%@]", tfMask.text);
 }
 
 // Testing fully implemented UITextFieldDelegate methods with extension.
@@ -251,47 +251,47 @@
     BOOL result = YES;
     
     tfMask.text = @"";
-    STAssertNoThrow(([tfMask.delegate textFieldDidBeginEditing:tfMask]), @"[no throw] textFieldDidBeginEditing:");
-    STAssertTrue([tfMask.text isEqualToString:@"-[CompleteExtension textFieldDidBeginEditing:]"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow(([tfMask.delegate textFieldDidBeginEditing:tfMask]), @"[no throw] textFieldDidBeginEditing:");
+    XCTAssertTrue([tfMask.text isEqualToString:@"-[CompleteExtension textFieldDidBeginEditing:]"], @"[%@]", tfMask.text);
     
-    STAssertNoThrow(([tfMask.delegate textFieldDidEndEditing:tfMask]), @"[no throw] textFieldDidEndEditing:");
-    STAssertTrue([tfMask.text isEqualToString:@"-[CompleteExtension textFieldDidEndEditing:]"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
-    
-    result = YES;
-    tfMask.text = @"";
-    STAssertNoThrow((result = [tfMask.delegate textFieldShouldBeginEditing:tfMask]), @"[no throw] textFieldShouldBeginEditing:");
-    STAssertTrue([tfMask.text isEqualToString:@"-[CompleteExtension textFieldShouldBeginEditing:]"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
+    XCTAssertNoThrow(([tfMask.delegate textFieldDidEndEditing:tfMask]), @"[no throw] textFieldDidEndEditing:");
+    XCTAssertTrue([tfMask.text isEqualToString:@"-[CompleteExtension textFieldDidEndEditing:]"], @"[%@]", tfMask.text);
     
     result = YES;
     tfMask.text = @"";
-    STAssertNoThrow((result = [tfMask.delegate textFieldShouldClear:tfMask]), @"[no throw] textFieldShouldClear:");
-    STAssertTrue([tfMask.text isEqualToString:@"-[CompleteExtension textFieldShouldClear:]"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
+    XCTAssertNoThrow((result = [tfMask.delegate textFieldShouldBeginEditing:tfMask]), @"[no throw] textFieldShouldBeginEditing:");
+    XCTAssertTrue([tfMask.text isEqualToString:@"-[CompleteExtension textFieldShouldBeginEditing:]"], @"[%@]", tfMask.text);
+    XCTAssertFalse(result, @"[%d]", result);
     
     result = YES;
     tfMask.text = @"";
-    STAssertNoThrow((result = [tfMask.delegate textFieldShouldEndEditing:tfMask]), @"[no throw] textFieldShouldEndEditing:");
-    STAssertTrue([tfMask.text isEqualToString:@"-[CompleteExtension textFieldShouldEndEditing:]"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
+    XCTAssertNoThrow((result = [tfMask.delegate textFieldShouldClear:tfMask]), @"[no throw] textFieldShouldClear:");
+    XCTAssertTrue([tfMask.text isEqualToString:@"-[CompleteExtension textFieldShouldClear:]"], @"[%@]", tfMask.text);
+    XCTAssertFalse(result, @"[%d]", result);
     
     result = YES;
     tfMask.text = @"";
-    STAssertNoThrow((result = [tfMask.delegate textFieldShouldReturn:tfMask]), @"[no throw] textFieldShouldReturn:");
-    STAssertTrue([tfMask.text isEqualToString:@"-[CompleteExtension textFieldShouldReturn:]"], [NSString stringWithFormat:@"[%@]", tfMask.text]);
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
+    XCTAssertNoThrow((result = [tfMask.delegate textFieldShouldEndEditing:tfMask]), @"[no throw] textFieldShouldEndEditing:");
+    XCTAssertTrue([tfMask.text isEqualToString:@"-[CompleteExtension textFieldShouldEndEditing:]"], @"[%@]", tfMask.text);
+    XCTAssertFalse(result, @"[%d]", result);
     
     result = YES;
     tfMask.text = @"";
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(NSNotFound, 0) replacementString:@"1234567890987654321"]), @"[no throw] textField:shouldChangeCharactersInRange:replacementString:");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:@""], [NSString stringWithFormat:@"[%@]", tfMask.text]);
+    XCTAssertNoThrow((result = [tfMask.delegate textFieldShouldReturn:tfMask]), @"[no throw] textFieldShouldReturn:");
+    XCTAssertTrue([tfMask.text isEqualToString:@"-[CompleteExtension textFieldShouldReturn:]"], @"[%@]", tfMask.text);
+    XCTAssertFalse(result, @"[%d]", result);
+    
+    result = YES;
+    tfMask.text = @"";
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(NSNotFound, 0) replacementString:@"1234567890987654321"]), @"[no throw] textField:shouldChangeCharactersInRange:replacementString:");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:@""], @"[%@]", tfMask.text);
     
     result = YES;
     NSString *newString = @"1234567890987654321";
-    STAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:newString]), @"[no throw] textField:shouldChangeCharactersInRange:replacementString:");
-    STAssertFalse(result, [NSString stringWithFormat:@"[%d]", result]);
-    STAssertTrue([tfMask.text isEqualToString:newString], @"[%@] %@", newString, tfMask.text);
+    XCTAssertNoThrow((result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:newString]), @"[no throw] textField:shouldChangeCharactersInRange:replacementString:");
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:newString], @"[%@] %@", newString, tfMask.text);
 }
 
 #pragma mark - Private Methods
@@ -305,9 +305,9 @@
 {
     BOOL result;
     [defaultTextField.delegate textField:defaultTextField shouldChangeCharactersInRange:range replacementString:replacement];
-    STAssertNoThrow(result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:range replacementString:replacement], @"[no throw] %@", description);
-    STAssertFalse(result, @"[%d]", result);
-    STAssertTrue([tfMask.text isEqualToString:defaultTextField.text], @"[%@] %@", defaultTextField.text, tfMask.text);
+    XCTAssertNoThrow(result = [tfMask.delegate textField:tfMask shouldChangeCharactersInRange:range replacementString:replacement], @"[no throw] %@", description);
+    XCTAssertFalse(result, @"[%d]", result);
+    XCTAssertTrue([tfMask.text isEqualToString:defaultTextField.text], @"[%@] %@", defaultTextField.text, tfMask.text);
 }
 
 @end

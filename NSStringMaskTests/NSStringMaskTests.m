@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Flavio Caetano. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 
 #import "NSStringMask.h"
@@ -21,7 +21,7 @@
 
 @end
 
-@interface NSStringMaskTests : SenTestCase
+@interface NSStringMaskTests : XCTestCase
 
 @end
 
@@ -36,71 +36,71 @@
     NSString *placeholder, *placeholderMask;
     NSRegularExpression *regexMask;
     
-    STAssertNoThrow((mask = [NSStringMask new]), @"[no throw] init");
-    STAssertNotNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [NSStringMask new]), @"[no throw] init");
+    XCTAssertNotNil(mask, @"[%@]", mask);
     
     // Valid pattern
     mask = nil;
-    STAssertNoThrow((mask = [[NSStringMask alloc] initWithPattern:@"(\\d+)"]), @"[no throw] init with valid pattern");
-    STAssertNotNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [[NSStringMask alloc] initWithPattern:@"(\\d+)"]), @"[no throw] init with valid pattern");
+    XCTAssertNotNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertNotNil([mask regex], [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertNotNil([mask regex], @"[%@]", mask);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertNil(placeholderMask, [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertNil(placeholderMask, @"[%@]", placeholderMask);
     
     // Valid pattern; Invalid placeholder
     placeholder = nil;
-    STAssertNoThrow((mask = [[NSStringMask alloc] initWithPattern:@"(\\d+)" placeholder:placeholder]), @"[no throw] init with valid pattern; invalid placeholder");
-    STAssertNotNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [[NSStringMask alloc] initWithPattern:@"(\\d+)" placeholder:placeholder]), @"[no throw] init with valid pattern; invalid placeholder");
+    XCTAssertNotNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertNil(placeholderMask, [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertNil(placeholderMask, @"[%@]", placeholderMask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertNotNil(regexMask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertNotNil(regexMask, @"[%@]", mask);
     
     // Valid pattern; Valid placeholder
     placeholder = @"_";
-    STAssertNoThrow((mask = [[NSStringMask alloc] initWithPattern:@"(\\d+)" placeholder:placeholder]), @"[no throw] init with valid pattern; valid placeholder");
-    STAssertNotNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [[NSStringMask alloc] initWithPattern:@"(\\d+)" placeholder:placeholder]), @"[no throw] init with valid pattern; valid placeholder");
+    XCTAssertNotNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertTrue([placeholderMask isEqualToString:@"_"], [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertTrue([placeholderMask isEqualToString:@"_"], @"[%@]", placeholderMask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertNotNil(regexMask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertNotNil(regexMask, @"[%@]", mask);
     
     // Invalid pattern
     mask = nil;
-    STAssertNoThrow((mask = [[NSStringMask alloc] initWithPattern:@"\\d"]), @"[no throw] init with invalid pattern");
-    STAssertNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [[NSStringMask alloc] initWithPattern:@"\\d"]), @"[no throw] init with invalid pattern");
+    XCTAssertNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertNil([mask regex], [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertNil([mask regex], @"[%@]", mask);
     
     // Invalid pattern; Invalid placeholder
     placeholder = nil;
-    STAssertNoThrow((mask = [[NSStringMask alloc] initWithPattern:@"\\d"]), @"[no throw] init with invalid pattern; invalid placeholder");
-    STAssertNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [[NSStringMask alloc] initWithPattern:@"\\d"]), @"[no throw] init with invalid pattern; invalid placeholder");
+    XCTAssertNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertNil(placeholderMask, [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertNil(placeholderMask, @"[%@]", placeholderMask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertNil([mask regex], [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertNil([mask regex], @"[%@]", mask);
     
     // Invalid pattern; Valid placeholder
     placeholder = @"_";
-    STAssertNoThrow((mask = [[NSStringMask alloc] initWithPattern:@"\\d"]), @"[no throw] init with invalid pattern; valid placeholder");
-    STAssertNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [[NSStringMask alloc] initWithPattern:@"\\d"]), @"[no throw] init with invalid pattern; valid placeholder");
+    XCTAssertNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertNil(placeholderMask, [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertNil(placeholderMask, @"[%@]", placeholderMask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertNil([mask regex], [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertNil([mask regex], @"[%@]", mask);
 }
 
 // Tests for instance inits with regex.
@@ -114,63 +114,63 @@
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d+)" options:NSRegularExpressionCaseInsensitive error:&error];
     
     // Valid regex
-    STAssertNoThrow((mask = [[NSStringMask alloc] initWithRegex:regex]), @"[no throw] init with valid regex");
-    STAssertNotNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [[NSStringMask alloc] initWithRegex:regex]), @"[no throw] init with valid regex");
+    XCTAssertNotNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertEquals(regexMask, regex, [NSString stringWithFormat:@"[regexMask = %@, regex = %@]", regexMask, regex]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertEqual(regexMask, regex, @"[regexMask = %@, regex = %@]", regexMask, regex);
     
     // Valid regex; Invalid placeholder
     placeholder = nil;
-    STAssertNoThrow((mask = [[NSStringMask alloc] initWithRegex:regex placeholder:placeholder]), @"[no throw] init with valid regex; invalid placeholder");
-    STAssertNotNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [[NSStringMask alloc] initWithRegex:regex placeholder:placeholder]), @"[no throw] init with valid regex; invalid placeholder");
+    XCTAssertNotNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertEquals(regexMask, regex, [NSString stringWithFormat:@"[regexMask = %@, regex = %@]", regexMask, regex]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertEqual(regexMask, regex, @"[regexMask = %@, regex = %@]", regexMask, regex);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertNil(placeholderMask, [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertNil(placeholderMask, @"[%@]", placeholderMask);
     
     // Valid regex; Valid placeholder
     placeholder = @"_";
-    STAssertNoThrow((mask = [[NSStringMask alloc] initWithRegex:regex placeholder:placeholder]), @"[no throw] init with valid regex; valid placeholder");
-    STAssertNotNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [[NSStringMask alloc] initWithRegex:regex placeholder:placeholder]), @"[no throw] init with valid regex; valid placeholder");
+    XCTAssertNotNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertEquals(regexMask, regex, [NSString stringWithFormat:@"[regexMask = %@, regex = %@]", regexMask, regex]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertEqual(regexMask, regex, @"[regexMask = %@, regex = %@]", regexMask, regex);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertTrue([placeholderMask isEqualToString:@"_"], [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertTrue([placeholderMask isEqualToString:@"_"], @"[%@]", placeholderMask);
     
     // Nil regex
     regex = nil;
-    STAssertNoThrow((mask = [[NSStringMask alloc] initWithRegex:regex]), @"[no throw] init with invalid regex");
-    STAssertNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [[NSStringMask alloc] initWithRegex:regex]), @"[no throw] init with invalid regex");
+    XCTAssertNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertEquals(regexMask, regex, [NSString stringWithFormat:@"[regexMask = %@, regex = %@]", regexMask, regex]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertEqual(regexMask, regex, @"[regexMask = %@, regex = %@]", regexMask, regex);
     
     // Nil regex; Invalid placeholder
     placeholder = nil;
-    STAssertNoThrow((mask = [[NSStringMask alloc] initWithRegex:regex placeholder:placeholder]), @"[no throw] init with invalid regex; invalid placeholder");
-    STAssertNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [[NSStringMask alloc] initWithRegex:regex placeholder:placeholder]), @"[no throw] init with invalid regex; invalid placeholder");
+    XCTAssertNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertEquals(regexMask, regex, [NSString stringWithFormat:@"[regexMask = %@, regex = %@]", regexMask, regex]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertEqual(regexMask, regex, @"[regexMask = %@, regex = %@]", regexMask, regex);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertNil(placeholderMask, [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertNil(placeholderMask, @"[%@]", placeholderMask);
     
     // Nil regex; Valid placeholder
     placeholder = @"_";
-    STAssertNoThrow((mask = [[NSStringMask alloc] initWithRegex:regex placeholder:placeholder]), @"[no throw] init with invalid regex; valid placeholder");
-    STAssertNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [[NSStringMask alloc] initWithRegex:regex placeholder:placeholder]), @"[no throw] init with invalid regex; valid placeholder");
+    XCTAssertNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertEquals(regexMask, regex, [NSString stringWithFormat:@"[regexMask = %@, regex = %@]", regexMask, regex]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertEqual(regexMask, regex, @"[regexMask = %@, regex = %@]", regexMask, regex);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertNil(placeholderMask, [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertNil(placeholderMask, @"[%@]", placeholderMask);
 }
 
 #pragma mark - Class inits
@@ -183,62 +183,62 @@
     NSRegularExpression *regexMask;
     
     // Valid pattern
-    STAssertNoThrow((mask = [NSStringMask maskWithPattern:@"(\\d+)"]), @"[no throw] init with valid pattern");
-    STAssertNotNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [NSStringMask maskWithPattern:@"(\\d+)"]), @"[no throw] init with valid pattern");
+    XCTAssertNotNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertNotNil([mask regex], [NSString stringWithFormat:@"[%@]", [mask regex]]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertNotNil([mask regex], @"[%@]", [mask regex]);
     
     // Valid pattern; Invalid placeholder
     placeholder = nil;
-    STAssertNoThrow((mask = [NSStringMask maskWithPattern:@"(\\d+)" placeholder:placeholder]), @"[no throw] init with valid pattern; invalid placeholder");
-    STAssertNotNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [NSStringMask maskWithPattern:@"(\\d+)" placeholder:placeholder]), @"[no throw] init with valid pattern; invalid placeholder");
+    XCTAssertNotNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertNotNil([mask regex], [NSString stringWithFormat:@"[%@]", [mask regex]]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertNotNil([mask regex], @"[%@]", [mask regex]);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertNil(placeholderMask, [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertNil(placeholderMask, @"[%@]", placeholderMask);
     
     // Valid pattern; Valid placeholder
     placeholder = @"_";
-    STAssertNoThrow((mask = [NSStringMask maskWithPattern:@"(\\d+)" placeholder:placeholder]), @"[no throw] init with valid pattern; valid placeholder");
-    STAssertNotNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [NSStringMask maskWithPattern:@"(\\d+)" placeholder:placeholder]), @"[no throw] init with valid pattern; valid placeholder");
+    XCTAssertNotNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertNotNil([mask regex], [NSString stringWithFormat:@"[%@]", [mask regex]]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertNotNil([mask regex], @"[%@]", [mask regex]);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertTrue([placeholderMask isEqualToString:@"_"], [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertTrue([placeholderMask isEqualToString:@"_"], @"[%@]", placeholderMask);
     
     // Invalid pattern
-    STAssertNoThrow((mask = [NSStringMask maskWithPattern:@"\\d"]), @"[no throw] init with invalid pattern");
-    STAssertNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [NSStringMask maskWithPattern:@"\\d"]), @"[no throw] init with invalid pattern");
+    XCTAssertNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertNil([mask regex], [NSString stringWithFormat:@"[%@]", [mask regex]]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertNil([mask regex], @"[%@]", [mask regex]);
     
     // Invalid pattern; Invalid placeholder
     placeholder = nil;
-    STAssertNoThrow((mask = [NSStringMask maskWithPattern:@"\\d" placeholder:placeholder]), @"[no throw] init with invalid pattern; invalid placeholder");
-    STAssertNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [NSStringMask maskWithPattern:@"\\d" placeholder:placeholder]), @"[no throw] init with invalid pattern; invalid placeholder");
+    XCTAssertNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertNil([mask regex], [NSString stringWithFormat:@"[%@]", [mask regex]]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertNil([mask regex], @"[%@]", [mask regex]);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertNil(placeholderMask, [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertNil(placeholderMask, @"[%@]", placeholderMask);
     
     // Invalid pattern; Valid placeholder
     placeholder = @"_";
-    STAssertNoThrow((mask = [NSStringMask maskWithPattern:@"\\d" placeholder:placeholder]), @"[no throw] init with invalid pattern; valid placeholder");
-    STAssertNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [NSStringMask maskWithPattern:@"\\d" placeholder:placeholder]), @"[no throw] init with invalid pattern; valid placeholder");
+    XCTAssertNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertNil([mask regex], [NSString stringWithFormat:@"[%@]", [mask regex]]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertNil([mask regex], @"[%@]", [mask regex]);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertNil(placeholderMask, [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertNil(placeholderMask, @"[%@]", placeholderMask);
 }
 
 // Tests for class inits with regex.
@@ -252,63 +252,63 @@
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d+)" options:NSRegularExpressionCaseInsensitive error:&error];
     
     // Valid regex;
-    STAssertNoThrow((mask = [NSStringMask maskWithRegex:regex]), @"[no throw] init with valid regex");
-    STAssertNotNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [NSStringMask maskWithRegex:regex]), @"[no throw] init with valid regex");
+    XCTAssertNotNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertEquals(regexMask, regex, [NSString stringWithFormat:@"[regexMask = %@, regex = %@]", regexMask, regex]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertEqual(regexMask, regex, @"[regexMask = %@, regex = %@]", regexMask, regex);
     
     // Valid regex; Invalid placeholder
     placeholder = nil;
-    STAssertNoThrow((mask = [NSStringMask maskWithRegex:regex placeholder:placeholder]), @"[no throw] init with valid regex; invalid placeholder");
-    STAssertNotNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [NSStringMask maskWithRegex:regex placeholder:placeholder]), @"[no throw] init with valid regex; invalid placeholder");
+    XCTAssertNotNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertEquals(regexMask, regex, [NSString stringWithFormat:@"[regexMask = %@, regex = %@]", regexMask, regex]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertEqual(regexMask, regex, @"[regexMask = %@, regex = %@]", regexMask, regex);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertNil(placeholderMask, [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertNil(placeholderMask, @"[%@]", placeholderMask);
     
     // Valid regex; Valid placeholder
     placeholder = @"_";
-    STAssertNoThrow((mask = [NSStringMask maskWithRegex:regex placeholder:placeholder]), @"[no throw] init with valid regex; valid placeholder");
-    STAssertNotNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [NSStringMask maskWithRegex:regex placeholder:placeholder]), @"[no throw] init with valid regex; valid placeholder");
+    XCTAssertNotNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertEquals(regexMask, regex, [NSString stringWithFormat:@"[regexMask = %@, regex = %@]", regexMask, regex]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertEqual(regexMask, regex, @"[regexMask = %@, regex = %@]", regexMask, regex);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertTrue([placeholderMask isEqualToString:@"_"], [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertTrue([placeholderMask isEqualToString:@"_"], @"[%@]", placeholderMask);
     
     // Nil regex
     regex = nil;
-    STAssertNoThrow((mask = [NSStringMask maskWithRegex:regex]), @"[no throw] init with invalid regex");
-    STAssertNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [NSStringMask maskWithRegex:regex]), @"[no throw] init with invalid regex");
+    XCTAssertNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertEquals(regexMask, regex, [NSString stringWithFormat:@"[regexMask = %@, regex = %@]", regexMask, regex]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertEqual(regexMask, regex, @"[regexMask = %@, regex = %@]", regexMask, regex);
     
     // Nil regex; Invalid placeholder
     placeholder = nil;
-    STAssertNoThrow((mask = [NSStringMask maskWithRegex:regex placeholder:placeholder]), @"[no throw] init with invalid regex; invalid placeholder");
-    STAssertNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [NSStringMask maskWithRegex:regex placeholder:placeholder]), @"[no throw] init with invalid regex; invalid placeholder");
+    XCTAssertNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertEquals(regexMask, regex, [NSString stringWithFormat:@"[regexMask = %@, regex = %@]", regexMask, regex]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertEqual(regexMask, regex, @"[regexMask = %@, regex = %@]", regexMask, regex);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertNil(placeholderMask, [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertNil(placeholderMask, @"[%@]", placeholderMask);
     
     // Nil regex; Valid placeholder
     placeholder = @"_";
-    STAssertNoThrow((mask = [NSStringMask maskWithRegex:regex placeholder:placeholder]), @"[no throw] init with invalid regex; valid placeholder");
-    STAssertNil(mask, [NSString stringWithFormat:@"[%@]", mask]);
+    XCTAssertNoThrow((mask = [NSStringMask maskWithRegex:regex placeholder:placeholder]), @"[no throw] init with invalid regex; valid placeholder");
+    XCTAssertNil(mask, @"[%@]", mask);
     
-    STAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
-    STAssertEquals(regexMask, regex, [NSString stringWithFormat:@"[regexMask = %@, regex = %@]", regexMask, regex]);
+    XCTAssertNoThrow((regexMask = [mask regex]), @"[no throw] mask regex");
+    XCTAssertEqual(regexMask, regex, @"[regexMask = %@, regex = %@]", regexMask, regex);
     
-    STAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
-    STAssertNil(placeholderMask, [NSString stringWithFormat:@"[%@]", placeholderMask]);
+    XCTAssertNoThrow((placeholderMask = mask.placeholder), @"[no throw] mask placeholder");
+    XCTAssertNil(placeholderMask, @"[%@]", placeholderMask);
 }
 
 #pragma mark - Properties
@@ -317,19 +317,19 @@
 - (void)testPlaceholderProperty
 {
     NSStringMask *mask = [NSStringMask new];
-    STAssertNil(mask.placeholder, [NSString stringWithFormat:@"[%@]", mask.placeholder]);
+    XCTAssertNil(mask.placeholder, @"[%@]", mask.placeholder);
     
-    STAssertNoThrow((mask.placeholder = nil), @"[no throw] setting nil placeholder");
-    STAssertNil(mask.placeholder, [NSString stringWithFormat:@"[%@]", mask.placeholder]);
+    XCTAssertNoThrow((mask.placeholder = nil), @"[no throw] setting nil placeholder");
+    XCTAssertNil(mask.placeholder, @"[%@]", mask.placeholder);
     
-    STAssertNoThrow((mask.placeholder = @"1"), @"[no throw] setting 1 length placeholder");
-    STAssertNotNil(mask.placeholder, [NSString stringWithFormat:@"[%@]", mask.placeholder]);
+    XCTAssertNoThrow((mask.placeholder = @"1"), @"[no throw] setting 1 length placeholder");
+    XCTAssertNotNil(mask.placeholder, @"[%@]", mask.placeholder);
     
-    STAssertNoThrow((mask.placeholder = @"1234567890987654321"), @"[no throw] setting n length placeholder");
-    STAssertNotNil(mask.placeholder, [NSString stringWithFormat:@"[%@]", mask.placeholder]);
+    XCTAssertNoThrow((mask.placeholder = @"1234567890987654321"), @"[no throw] setting n length placeholder");
+    XCTAssertNotNil(mask.placeholder, @"[%@]", mask.placeholder);
     
-    STAssertNoThrow((mask.placeholder = @""), @"[no throw] setting empty placeholder");
-    STAssertNil(mask.placeholder, [NSString stringWithFormat:@"[%@]", mask.placeholder]);
+    XCTAssertNoThrow((mask.placeholder = @""), @"[no throw] setting empty placeholder");
+    XCTAssertNil(mask.placeholder, @"[%@]", mask.placeholder);
 }
 
 #pragma mark - Instance Methods
@@ -342,56 +342,56 @@
     NSStringMask *mask = [NSStringMask new];
     
     // Empty mask
-    STAssertNoThrow((result = [mask format:nil]), @"[no throw] empty mask formatting nil string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask format:nil]), @"[no throw] empty mask formatting nil string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [mask format:@""]), @"[no throw] empty mask formatting empty string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask format:@""]), @"[no throw] empty mask formatting empty string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [mask format:@"123"]), @"[no throw] empty mask formatting valid string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask format:@"123"]), @"[no throw] empty mask formatting valid string");
+    XCTAssertNil(result, @"[%@]", result);
     
     // Valid mask
     mask = [NSStringMask maskWithPattern:@"(\\d{3}).(\\d{3}).(\\d{3})-(\\d{2})"];
     
-    STAssertNoThrow((result = [mask format:nil]), @"[no throw] valid mask formatting nil string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask format:nil]), @"[no throw] valid mask formatting nil string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [mask format:@""]), @"[no throw] valid mask formatting empty string");
-    STAssertTrue(([result isEqualToString:@""]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask format:@""]), @"[no throw] valid mask formatting empty string");
+    XCTAssertTrue(([result isEqualToString:@""]), @"[%@]", result);
     
-    STAssertNoThrow((result = [mask format:@"12345678909"]), @"[no throw] empty mask formatting valid string");
-    STAssertTrue(([result isEqualToString:@"123.456.789-09"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask format:@"12345678909"]), @"[no throw] empty mask formatting valid string");
+    XCTAssertTrue(([result isEqualToString:@"123.456.789-09"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [mask format:@"12345"]), @"[no throw] valid mask formatting short string");
-    STAssertTrue(([result isEqualToString:@"12345"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask format:@"12345"]), @"[no throw] valid mask formatting short string");
+    XCTAssertTrue(([result isEqualToString:@"12345"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [mask format:@"1234567890987654321"]), @"[no throw] valid mask formatting big string");
-    STAssertTrue(([result isEqualToString:@"123.456.789-09"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask format:@"1234567890987654321"]), @"[no throw] valid mask formatting big string");
+    XCTAssertTrue(([result isEqualToString:@"123.456.789-09"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [mask format:@"123abc456def78909"]), @"[no throw] valid mask formatting alphanumeric string");
-    STAssertTrue(([result isEqualToString:@"123.456.789-09"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask format:@"123abc456def78909"]), @"[no throw] valid mask formatting alphanumeric string");
+    XCTAssertTrue(([result isEqualToString:@"123.456.789-09"]), @"[%@]", result);
     
     // Placeholder
     mask.placeholder = @"_";
     
-    STAssertNoThrow((result = [mask format:nil]), @"[no throw] valid mask formatting nil string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask format:nil]), @"[no throw] valid mask formatting nil string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [mask format:@""]), @"[no throw] valid mask formatting empty string");
-    STAssertTrue(([result isEqualToString:@"___.___.___-__"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask format:@""]), @"[no throw] valid mask formatting empty string");
+    XCTAssertTrue(([result isEqualToString:@"___.___.___-__"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [mask format:@"12345678909"]), @"[no throw] empty mask formatting valid string");
-    STAssertTrue(([result isEqualToString:@"123.456.789-09"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask format:@"12345678909"]), @"[no throw] empty mask formatting valid string");
+    XCTAssertTrue(([result isEqualToString:@"123.456.789-09"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [mask format:@"12345"]), @"[no throw] empty mask formatting short string");
-    STAssertTrue(([result isEqualToString:@"123.45_.___-__"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask format:@"12345"]), @"[no throw] empty mask formatting short string");
+    XCTAssertTrue(([result isEqualToString:@"123.45_.___-__"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [mask format:@"1234567890987654321"]), @"[no throw] empty mask formatting big string");
-    STAssertTrue(([result isEqualToString:@"123.456.789-09"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask format:@"1234567890987654321"]), @"[no throw] empty mask formatting big string");
+    XCTAssertTrue(([result isEqualToString:@"123.456.789-09"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [mask format:@"123abc456def78909"]), @"[no throw] empty mask formatting alphanumeric  string");
-    STAssertTrue(([result isEqualToString:@"123.456.789-09"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask format:@"123abc456def78909"]), @"[no throw] empty mask formatting alphanumeric  string");
+    XCTAssertTrue(([result isEqualToString:@"123.456.789-09"]), @"[%@]", result);
 }
 
 - (void)testValidCharactersForString
@@ -401,56 +401,56 @@
     NSStringMask *mask = [NSStringMask new];
     
     // Empty mask
-    STAssertNoThrow((result = [mask validCharactersForString:nil]), @"[no throw] empty mask validating nil string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask validCharactersForString:nil]), @"[no throw] empty mask validating nil string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [mask validCharactersForString:@""]), @"[no throw] empty mask validating empty string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask validCharactersForString:@""]), @"[no throw] empty mask validating empty string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [mask validCharactersForString:@"123"]), @"[no throw] empty mask validating valid string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask validCharactersForString:@"123"]), @"[no throw] empty mask validating valid string");
+    XCTAssertNil(result, @"[%@]", result);
     
     // Valid mask
     mask = [NSStringMask maskWithPattern:@"(\\d{3}).(\\d{3}).(\\d{3})-(\\d{2})"];
     
-    STAssertNoThrow((result = [mask validCharactersForString:nil]), @"[no throw] valid mask validating nil string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask validCharactersForString:nil]), @"[no throw] valid mask validating nil string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [mask validCharactersForString:@""]), @"[no throw] valid mask validating empty string");
-    STAssertTrue(([result isEqualToString:@""]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask validCharactersForString:@""]), @"[no throw] valid mask validating empty string");
+    XCTAssertTrue(([result isEqualToString:@""]), @"[%@]", result);
     
-    STAssertNoThrow((result = [mask validCharactersForString:@"12345678909"]), @"[no throw] valid mask validating valid string");
-    STAssertTrue(([result isEqualToString:@"12345678909"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask validCharactersForString:@"12345678909"]), @"[no throw] valid mask validating valid string");
+    XCTAssertTrue(([result isEqualToString:@"12345678909"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [mask validCharactersForString:@"1234567890987654321"]), @"[no throw] valid mask validating big string");
-    STAssertTrue(([result isEqualToString:@"12345678909"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask validCharactersForString:@"1234567890987654321"]), @"[no throw] valid mask validating big string");
+    XCTAssertTrue(([result isEqualToString:@"12345678909"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [mask validCharactersForString:@"123abc456def78909"]), @"[no throw] valid mask validating alphanumeric string");
-    STAssertTrue(([result isEqualToString:@"12345678909"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask validCharactersForString:@"123abc456def78909"]), @"[no throw] valid mask validating alphanumeric string");
+    XCTAssertTrue(([result isEqualToString:@"12345678909"]), @"[%@]", result);
     
     // Valid mask
     mask = [NSStringMask maskWithPattern:@"(\\d+)"];
     
-    STAssertNoThrow((result = [mask validCharactersForString:nil]), @"[no throw] valid mask validating nil string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask validCharactersForString:nil]), @"[no throw] valid mask validating nil string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [mask validCharactersForString:@""]), @"[no throw] valid mask validating empty string");
-    STAssertTrue(([result isEqualToString:@""]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask validCharactersForString:@""]), @"[no throw] valid mask validating empty string");
+    XCTAssertTrue(([result isEqualToString:@""]), @"[%@]", result);
     
-    STAssertNoThrow((result = [mask validCharactersForString:@"12345678909"]), @"[no throw] valid mask validating valid string");
-    STAssertTrue(([result isEqualToString:@"12345678909"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask validCharactersForString:@"12345678909"]), @"[no throw] valid mask validating valid string");
+    XCTAssertTrue(([result isEqualToString:@"12345678909"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [mask validCharactersForString:@"1234567890987654321"]), @"[no throw] valid mask validating big string");
-    STAssertTrue(([result isEqualToString:@"1234567890987654321"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask validCharactersForString:@"1234567890987654321"]), @"[no throw] valid mask validating big string");
+    XCTAssertTrue(([result isEqualToString:@"1234567890987654321"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [mask validCharactersForString:@"123abc456def78909"]), @"[no throw] valid mask validating alphanumeric string");
-    STAssertTrue(([result isEqualToString:@"12345678909"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask validCharactersForString:@"123abc456def78909"]), @"[no throw] valid mask validating alphanumeric string");
+    XCTAssertTrue(([result isEqualToString:@"12345678909"]), @"[%@]", result);
     
     // Valid mask
     mask = [NSStringMask maskWithPattern:@"(\\d{2}$)"];
     
-    STAssertNoThrow((result = [mask validCharactersForString:@"1234567890"]), @"[no throw] valid mask validating nil string");
-    STAssertTrue(([result isEqualToString:@"90"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [mask validCharactersForString:@"1234567890"]), @"[no throw] valid mask validating nil string");
+    XCTAssertTrue(([result isEqualToString:@"90"]), @"[%@]", result);
 }
 
 #pragma mark - Class Methods
@@ -464,48 +464,48 @@
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\((\\d{2})\\) (\\d{4})-(\\d{4,5})" options:NSRegularExpressionCaseInsensitive error:&error];
     
     //Valid regex
-    STAssertNoThrow((result = [NSStringMask maskString:nil withRegex:regex]), @"[no throw] class mask nil string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:nil withRegex:regex]), @"[no throw] class mask nil string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"" withRegex:regex]), @"[no throw] empty mask formatting empty string");
-    STAssertTrue(([result isEqualToString:@""]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"" withRegex:regex]), @"[no throw] empty mask formatting empty string");
+    XCTAssertTrue(([result isEqualToString:@""]), @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"123" withRegex:regex]), @"[no throw] empty mask formatting short string");
-    STAssertTrue(([result isEqualToString:@"123"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"123" withRegex:regex]), @"[no throw] empty mask formatting short string");
+    XCTAssertTrue(([result isEqualToString:@"123"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"1234567890" withRegex:regex]), @"[no throw] empty mask formatting valid string");
-    STAssertTrue(([result isEqualToString:@"(12) 3456-7890"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"1234567890" withRegex:regex]), @"[no throw] empty mask formatting valid string");
+    XCTAssertTrue(([result isEqualToString:@"(12) 3456-7890"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"1234567890987654321" withRegex:regex]), @"[no throw] empty mask formatting big string");
-    STAssertTrue(([result isEqualToString:@"(12) 3456-78909"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"1234567890987654321" withRegex:regex]), @"[no throw] empty mask formatting big string");
+    XCTAssertTrue(([result isEqualToString:@"(12) 3456-78909"]), @"[%@]", result);
     
     // Placeholder
-    STAssertNoThrow((result = [NSStringMask maskString:nil withRegex:regex placeholder:@"_"]), @"[no throw] class mask nil string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:nil withRegex:regex placeholder:@"_"]), @"[no throw] class mask nil string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"" withRegex:regex placeholder:@"abcdefghi"]), @"[no throw] empty mask formatting empty string");
-    STAssertTrue(([result isEqualToString:@"(ab) abcd-abcde"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"" withRegex:regex placeholder:@"abcdefghi"]), @"[no throw] empty mask formatting empty string");
+    XCTAssertTrue(([result isEqualToString:@"(ab) abcd-abcde"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"123" withRegex:regex placeholder:@"x"]), @"[no throw] empty mask formatting short string");
-    STAssertTrue(([result isEqualToString:@"(12) 3xxx-xxxxx"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"123" withRegex:regex placeholder:@"x"]), @"[no throw] empty mask formatting short string");
+    XCTAssertTrue(([result isEqualToString:@"(12) 3xxx-xxxxx"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"1234567890" withRegex:regex placeholder:@"_"]), @"[no throw] empty mask formatting valid string");
-    STAssertTrue(([result isEqualToString:@"(12) 3456-7890"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"1234567890" withRegex:regex placeholder:@"_"]), @"[no throw] empty mask formatting valid string");
+    XCTAssertTrue(([result isEqualToString:@"(12) 3456-7890"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"1234567890987654321" withRegex:regex placeholder:@"_"]), @"[no throw] empty mask formatting big string");
-    STAssertTrue(([result isEqualToString:@"(12) 3456-78909"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"1234567890987654321" withRegex:regex placeholder:@"_"]), @"[no throw] empty mask formatting big string");
+    XCTAssertTrue(([result isEqualToString:@"(12) 3456-78909"]), @"[%@]", result);
     
     // Invalid regex
     regex = nil;
     
-    STAssertNoThrow((result = [NSStringMask maskString:nil withRegex:nil]), @"[no throw] class mask nil string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:nil withRegex:nil]), @"[no throw] class mask nil string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"" withRegex:nil]), @"[no throw] empty mask formatting empty string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"" withRegex:nil]), @"[no throw] empty mask formatting empty string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"123" withRegex:nil]), @"[no throw] empty mask formatting valid string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"123" withRegex:nil]), @"[no throw] empty mask formatting valid string");
+    XCTAssertNil(result, @"[%@]", result);
 }
 
 // Tests for class methods with patterns.
@@ -515,58 +515,58 @@
     NSString *pattern = @"\\((\\d{2})\\) (\\d{4})-(\\d{4,5})";
     
     //Valid pattern
-    STAssertNoThrow((result = [NSStringMask maskString:nil withPattern:pattern]), @"[no throw] class mask nil string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:nil withPattern:pattern]), @"[no throw] class mask nil string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"" withPattern:pattern]), @"[no throw] empty mask formatting empty string");
-    STAssertTrue(([result isEqualToString:@""]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"" withPattern:pattern]), @"[no throw] empty mask formatting empty string");
+    XCTAssertTrue(([result isEqualToString:@""]), @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"123" withPattern:pattern]), @"[no throw] empty mask formatting short string");
-    STAssertTrue(([result isEqualToString:@"123"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"123" withPattern:pattern]), @"[no throw] empty mask formatting short string");
+    XCTAssertTrue(([result isEqualToString:@"123"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"1234567890" withPattern:pattern]), @"[no throw] empty mask formatting valid string");
-    STAssertTrue(([result isEqualToString:@"(12) 3456-7890"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"1234567890" withPattern:pattern]), @"[no throw] empty mask formatting valid string");
+    XCTAssertTrue(([result isEqualToString:@"(12) 3456-7890"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"1234567890987654321" withPattern:pattern]), @"[no throw] empty mask formatting big string");
-    STAssertTrue(([result isEqualToString:@"(12) 3456-78909"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"1234567890987654321" withPattern:pattern]), @"[no throw] empty mask formatting big string");
+    XCTAssertTrue(([result isEqualToString:@"(12) 3456-78909"]), @"[%@]", result);
     
     // Placeholder
-    STAssertNoThrow((result = [NSStringMask maskString:nil withPattern:pattern placeholder:@"_"]), @"[no throw] class mask nil string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:nil withPattern:pattern placeholder:@"_"]), @"[no throw] class mask nil string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"" withPattern:pattern placeholder:@"abcdefghi"]), @"[no throw] empty mask formatting empty string");
-    STAssertTrue(([result isEqualToString:@"(ab) abcd-abcde"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"" withPattern:pattern placeholder:@"abcdefghi"]), @"[no throw] empty mask formatting empty string");
+    XCTAssertTrue(([result isEqualToString:@"(ab) abcd-abcde"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"123" withPattern:pattern placeholder:@"x"]), @"[no throw] empty mask formatting short string");
-    STAssertTrue(([result isEqualToString:@"(12) 3xxx-xxxxx"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"123" withPattern:pattern placeholder:@"x"]), @"[no throw] empty mask formatting short string");
+    XCTAssertTrue(([result isEqualToString:@"(12) 3xxx-xxxxx"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"1234567890" withPattern:pattern placeholder:@"_"]), @"[no throw] empty mask formatting valid string");
-    STAssertTrue(([result isEqualToString:@"(12) 3456-7890"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"1234567890" withPattern:pattern placeholder:@"_"]), @"[no throw] empty mask formatting valid string");
+    XCTAssertTrue(([result isEqualToString:@"(12) 3456-7890"]), @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"1234567890987654321" withPattern:pattern placeholder:@"_"]), @"[no throw] empty mask formatting big string");
-    STAssertTrue(([result isEqualToString:@"(12) 3456-78909"]), [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"1234567890987654321" withPattern:pattern placeholder:@"_"]), @"[no throw] empty mask formatting big string");
+    XCTAssertTrue(([result isEqualToString:@"(12) 3456-78909"]), @"[%@]", result);
     
     // Invalid pattern
     pattern = @"\\d";
-    STAssertNoThrow((result = [NSStringMask maskString:nil withPattern:pattern]), @"[no throw] class mask nil string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:nil withPattern:pattern]), @"[no throw] class mask nil string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"" withPattern:pattern]), @"[no throw] empty mask formatting empty string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"" withPattern:pattern]), @"[no throw] empty mask formatting empty string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"123" withPattern:pattern]), @"[no throw] empty mask formatting valid string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"123" withPattern:pattern]), @"[no throw] empty mask formatting valid string");
+    XCTAssertNil(result, @"[%@]", result);
     
     // Nil pattern
     pattern = nil;
-    STAssertNoThrow((result = [NSStringMask maskString:nil withPattern:pattern]), @"[no throw] class mask nil string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:nil withPattern:pattern]), @"[no throw] class mask nil string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"" withPattern:pattern]), @"[no throw] empty mask formatting empty string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"" withPattern:pattern]), @"[no throw] empty mask formatting empty string");
+    XCTAssertNil(result, @"[%@]", result);
     
-    STAssertNoThrow((result = [NSStringMask maskString:@"123" withPattern:pattern]), @"[no throw] empty mask formatting valid string");
-    STAssertNil(result, [NSString stringWithFormat:@"[%@]", result]);
+    XCTAssertNoThrow((result = [NSStringMask maskString:@"123" withPattern:pattern]), @"[no throw] empty mask formatting valid string");
+    XCTAssertNil(result, @"[%@]", result);
 }
 
 @end

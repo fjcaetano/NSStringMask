@@ -29,7 +29,6 @@
 		F25F360E183BF2D8009D3F47 /* UITextFieldMaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F230990E173460850028F669 /* UITextFieldMaskTests.m */; };
 		F25F3610183BFB8E009D3F47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F25F360F183BFB8E009D3F47 /* UIKit.framework */; };
 		F26B29EA17469A4E00E7F3D7 /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = F26B29E917469A4E00E7F3D7 /* CHANGELOG */; };
-		F2DEFC9B17344A2800B6E00A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2DEFC9917344A2200B6E00A /* SenTestingKit.framework */; };
 		F2DEFC9C17344A3200B6E00A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7209052917284FBE0091402D /* Foundation.framework */; };
 		F2E39919172AF4ED007F4FC1 /* NSStringMask.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */; };
 		F2E3992E172AF7DD007F4FC1 /* NSStringMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E3992D172AF7DD007F4FC1 /* NSStringMask.m */; };
@@ -53,7 +52,6 @@
 		F24E5B9F173833F10006CA92 /* IncompleteExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IncompleteExtension.m; path = UITextFieldMask/IncompleteExtension.m; sourceTree = "<group>"; };
 		F25F360F183BFB8E009D3F47 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F26B29E917469A4E00E7F3D7 /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
-		F2DEFC9917344A2200B6E00A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NSStringMask.podspec; sourceTree = "<group>"; };
 		F2E3992A172AF7D1007F4FC1 /* NSStringMask-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStringMask-Prefix.pch"; sourceTree = "<group>"; };
 		F2E3992C172AF7DD007F4FC1 /* NSStringMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringMask.h; sourceTree = "<group>"; };
@@ -66,7 +64,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F25F3610183BFB8E009D3F47 /* UIKit.framework in Frameworks */,
-				F2DEFC9B17344A2800B6E00A /* SenTestingKit.framework in Frameworks */,
 				F2DEFC9C17344A3200B6E00A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,7 +95,6 @@
 			children = (
 				F25F360F183BFB8E009D3F47 /* UIKit.framework */,
 				F23B9FF417344ADE001957D5 /* UIKit.framework */,
-				F2DEFC9917344A2200B6E00A /* SenTestingKit.framework */,
 				7209052617284FBE0091402D /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -201,7 +197,7 @@
 			name = NSStringMaskTests;
 			productName = NSStringMaskTests;
 			productReference = 7209053517284FBF0091402D /* NSStringMaskTests.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -361,6 +357,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSStringMask-Prefix.pch";
@@ -371,7 +368,6 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -383,6 +379,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSStringMask-Prefix.pch";
@@ -393,7 +390,6 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
