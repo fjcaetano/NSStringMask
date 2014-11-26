@@ -49,15 +49,15 @@ In this case, the method will return the expected result _only_ if the provided 
 [NSStringMask maskString:@"1234567890" withPattern:@"(\\d{3})-(\\d{3})-(\\d{4})"]
 // result: 123-456-7890
 ```
-	
+
 If the string is shorter, the method won't apply the format, but instead, return a cleaned string with the valid characters:
 
 ``` objective-c
 [NSStringMask maskString:@"123foo456" withPattern:@"(\\d{3})#(\\d{4})]
 // result: 123456
 ```
-	
-	
+
+
 ## Pattern with Placeholder:
 
 Placeholders allow you to fill strings shorter than expected with characters to complete the formatting:
@@ -66,14 +66,14 @@ Placeholders allow you to fill strings shorter than expected with characters to 
 [NSStringMask maskString:@"" withPattern:@"(\\d{2})/(\\d{2})/(\\d{4})" placeholder:@"_"]
 // result: __/__/____
 ```
-	
+
 It can also be a long string. In this case, the replacement will restart for each group in your pattern:
 
 ``` objective-c
 [NSStringMask maskString:@"" withPattern:@"(\\d{2})/(\\d{2})/(\\d{4})" placeholder:@"abcde"]
 // result: ab/ab/abcd
 ```
-	
+
 ### NSRegularExpression
 
 You may also provide an instance of NSRegularExpression instead of a pattern, the result is the same.
@@ -83,12 +83,12 @@ When a pattern is passed, the class creates a NSRegularExpression object with NS
 ## UITextFieldMask
 
 To create a text field with a mask, just set it as an instance `UITextFieldMask` in your class or nib (if using the Interface Builder). It’s recommended that the mask is passed in the initialization of the text field, so if the text field is in a nib, the mask must be passed inside `[UIViewController viewDidLoad]` or `[UIView awakeFromNib]`.
-	
+
 # License
 
 NSStringMask is licensed under the MIT License:
 
-Copyright (c) 2014 Flávio Caetano ([http://flaviocaetano.com](http://flaviocaetano.com))
+Copyright (c) Flávio Caetano ([http://flaviocaetano.com](http://flaviocaetano.com))
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
