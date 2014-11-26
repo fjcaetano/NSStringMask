@@ -1,0 +1,5 @@
+[
+  "-scheme", "NSStringMaskTests",
+  "-sdk", "iphonesimulator",
+  "-arch", "i386"
+]
