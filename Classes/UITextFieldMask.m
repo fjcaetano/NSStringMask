@@ -20,7 +20,7 @@
 @implementation UITextFieldMask
 
 // An adapter of UITextFieldDelegate to easily integrate with NSStringMask.
-- (id)initWithMask:(NSStringMask *)mask
+- (instancetype)initWithMask:(NSStringMask *)mask
 {
     self = [super init];
     if (self)

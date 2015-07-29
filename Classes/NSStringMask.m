@@ -63,7 +63,7 @@
 @implementation NSStringMask
 
 // Initiates the instance with a given pattern.
-- (id)initWithPattern:(NSString *)pattern
+- (instancetype)initWithPattern:(NSString *)pattern
 {
     NSError *error = nil;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
@@ -75,7 +75,7 @@
 }
 
 // Initiates the instance with a given _pattern_ and _placeholder_.
-- (id)initWithPattern:(NSString *)pattern placeholder:(NSString *)placeholder
+- (instancetype)initWithPattern:(NSString *)pattern placeholder:(NSString *)placeholder
 {
     self = [self initWithPattern:pattern];
     if (self)
@@ -86,7 +86,7 @@
 }
 
 // Initiates the instance with a given NSRegularExpression.
-- (id)initWithRegex:(NSRegularExpression *)regex
+- (instancetype)initWithRegex:(NSRegularExpression *)regex
 {
     if (regex == nil || regex.numberOfCaptureGroups == 0) return nil;
     
@@ -101,7 +101,7 @@
 }
 
 // Initiates the instance with a given _regex_ and _placeholder_.
-- (id)initWithRegex:(NSRegularExpression *)regex placeholder:(NSString *)placeholder
+- (instancetype)initWithRegex:(NSRegularExpression *)regex placeholder:(NSString *)placeholder
 {
     self = [self initWithRegex:regex];
     if (self)
@@ -114,25 +114,25 @@
 #pragma mark - Class Initializers
 
 // Returns an NSStringMask instance set with the given NSRegularExpression.
-+ (id)maskWithRegex:(NSRegularExpression *)regex
++ (instancetype)maskWithRegex:(NSRegularExpression *)regex
 {
     return [[NSStringMask alloc] initWithRegex:regex];
 }
 
 // Returns an NSStringMask instance set with the given _regex_ and _placeholder_.
-+(id)maskWithRegex:(NSRegularExpression *)regex placeholder:(NSString *)placeholder
++ (instancetype)maskWithRegex:(NSRegularExpression *)regex placeholder:(NSString *)placeholder
 {
     return [[NSStringMask alloc] initWithRegex:regex placeholder:placeholder];
 }
 
 // Returns a NSStringMask instance set with the given pattern.
-+ (id)maskWithPattern:(NSString *)pattern
++ (instancetype)maskWithPattern:(NSString *)pattern
 {
     return [[NSStringMask alloc] initWithPattern:pattern];
 }
 
 // Returns a NSStringMask instance set with the given _pattern_ and _placeholder_.
-+(id)maskWithPattern:(NSString *)pattern placeholder:(NSString *)placeholder
++ (instancetype)maskWithPattern:(NSString *)pattern placeholder:(NSString *)placeholder
 {
     return [[NSStringMask alloc] initWithPattern:pattern placeholder:placeholder];
 }
