@@ -55,7 +55,7 @@
  
  @return An instance or nil if regex is invalid.
  */
-+ (id)maskWithRegex:(NSRegularExpression *)regex;
++ (instancetype)maskWithRegex:(NSRegularExpression *)regex;
 
 /** Returns an NSStringMask instance set with the given _regex_ and _placeholder_.
  
@@ -66,7 +66,7 @@
  
  @return An instance or nil if regex is invalid.
  */
-+ (id)maskWithRegex:(NSRegularExpression *)regex placeholder:(NSString *)placeholder;
++ (instancetype)maskWithRegex:(NSRegularExpression *)regex placeholder:(NSString *)placeholder;
 
 /** Initiates the instance with a given _regex_.
  
@@ -76,7 +76,7 @@
  
  @return An instance or nil if regex is invalid.
  */
-- (id)initWithRegex:(NSRegularExpression *)regex;
+- (instancetype)initWithRegex:(NSRegularExpression *)regex;
 
 /** Initiates the instance with a given _regex_ and _placeholder_.
  
@@ -87,7 +87,7 @@
  
  @return An instance or nil if regex is invalid.
  */
-- (id)initWithRegex:(NSRegularExpression *)regex placeholder:(NSString *)placeholder;
+- (instancetype)initWithRegex:(NSRegularExpression *)regex placeholder:(NSString *)placeholder;
 
 /** Returns a NSStringMask instance set with the given _pattern_.
  
@@ -99,7 +99,7 @@
  
  @return An instance or nil if pattern is invalid.
  */
-+ (id)maskWithPattern:(NSString *)pattern;
++ (instancetype)maskWithPattern:(NSString *)pattern;
 
 /** Returns a NSStringMask instance set with the given _pattern_ and _placeholder_.
  
@@ -112,7 +112,7 @@
  
  @return An instance or nil if pattern is invalid.
  */
-+ (id)maskWithPattern:(NSString *)pattern placeholder:(NSString *)placeholder;
++ (instancetype)maskWithPattern:(NSString *)pattern placeholder:(NSString *)placeholder;
 
 /** Initiates the instance with a given _pattern_.
  
@@ -124,7 +124,7 @@
  
  @return An instance or nil if pattern is invalid.
  */
-- (id)initWithPattern:(NSString *)pattern;
+- (instancetype)initWithPattern:(NSString *)pattern;
 
 /** Initiates the instance with a given _pattern_ and _placeholder_.
  
@@ -137,7 +137,7 @@
  
  @return An instance or nil if pattern is invalid.
  */
-- (id)initWithPattern:(NSString *)pattern placeholder:(NSString *)placeholder;
+- (instancetype)initWithPattern:(NSString *)pattern placeholder:(NSString *)placeholder;
 
 #pragma mark - Class Methods
 /// @name Class Methods

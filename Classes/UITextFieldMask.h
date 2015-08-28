@@ -75,7 +75,7 @@
  @return An instance of UITextFieldMask
  @return nil if _mask_ is nil
  */
-- (id)initWithMask:(NSStringMask *)mask;
+- (instancetype)initWithMask:(NSStringMask *)mask;
 
 @end
 
