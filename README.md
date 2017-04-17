@@ -1,19 +1,28 @@
-NSStringMask [![NSStringMask Version](https://cocoapod-badges.herokuapp.com/v/NSStringMask/badge.png)](http://cocoadocs.org/docsets/NSStringMask) [![NSStringMask Platforms](https://cocoapod-badges.herokuapp.com/p/NSStringMask/badge.svg)](http://cocoadocs.org/docsets/NSStringMask) [![Build Status](https://travis-ci.org/fjcaetano/NSStringMask.png)](https://travis-ci.org/fjcaetano/NSStringMask)
-============
+# NSStringMask
+
+[![CI Status](https://travis-ci.org/fjcaetano/NSStringMask.svg?branch=master)](https://travis-ci.org/fjcaetano/NSStringMask)
+[![Version](https://img.shields.io/cocoapods/v/NSStringMask.svg?style=flat)](http://cocoapods.org/pods/NSStringMask)
+[![License](https://img.shields.io/cocoapods/l/NSStringMask.svg?style=flat)](http://cocoapods.org/pods/NSStringMask)
+[![Platform](https://img.shields.io/cocoapods/p/NSStringMask.svg?style=flat)](http://cocoapods.org/pods/NSStringMask)
+[![codecov](https://codecov.io/gh/fjcaetano/NSStringMask/branch/master/graph/badge.svg)](https://codecov.io/gh/fjcaetano/NSStringMask)
+
+-----
 
 This tiny library was developed to help you apply masks and formats to strings.
 
 For instance, suppose you have the string `12345678` and want to format it as a Social Security Number (which regex pattern is `\d{3}-\d{2}-\d{3}`). With NSStringMask, all you have to do is `[NSStringMask maskString:@"12345678" withPattern:@"(\\d{3})-(\\d{2})-(\\d{3})"]` and the result will be "123-45-678". Simple enough?
 
-Installation
-------------
+## Installation
 
 You can clone the repository and copy the folder `Classes` to your project or install it via cocoa pods.
 
-References
--------------
+``` ruby
+pod "NSStringMask"
+```
 
-Take a look on the [complete documentation >](http://fjcaetano.github.io/NSStringMask/docs).
+## References
+
+Take a look on the [complete documentation >](http://cocoadocs.org/docsets/NSStringMask/).
 
 Please, note that this is still in development and may be unstable. Suggestions and improvements are always welcome, specially with tests that are not my greatest skill.
 
@@ -84,16 +93,8 @@ When a pattern is passed, the class creates a NSRegularExpression object with NS
 
 To create a text field with a mask, just set it as an instance `UITextFieldMask` in your class or nib (if using the Interface Builder). It’s recommended that the mask is passed in the initialization of the text field, so if the text field is in a nib, the mask must be passed inside `[UIViewController viewDidLoad]` or `[UIView awakeFromNib]`.
 
-# License
+# [Complete Documentation >](http://cocoadocs.org/docsets/NSStringMask/)
 
-NSStringMask is licensed under the MIT License:
+## License
 
-Copyright (c) Flávio Caetano ([http://flaviocaetano.com](http://flaviocaetano.com))
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-# [Complete Documentation >](http://fjcaetano.github.io/NSStringMask/docs)
+NSStringMask is available under the MIT license. See the LICENSE file for more info.

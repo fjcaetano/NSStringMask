@@ -1,0 +1,12 @@
+platform :ios, "4.0"
+use_frameworks!
+
+target 'NSStringMask_Example' do
+  pod 'NSStringMask', :path => '../'
+
+  target 'NSStringMask_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

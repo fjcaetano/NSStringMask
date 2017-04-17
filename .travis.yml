@@ -1,2 +1,32 @@
 language: objective-c
-script: xctool test
+osx_image: xcode8.3
+
+podfile: Example/Podfile
+
+before_install:
+  - echo $(which wstest)
+#  - echo $(which xcpretty)
+  - gem install cocoapods -v '1.2.1'
+  - pod --version
+#  - pod repo update
+
+#install:
+#  - if [[ ! $(which xcpretty) ]]; then gem install xcpretty --user-install; fi;
+
+env:
+  matrix:
+    - DESTINATION="platform=iOS Simulator,OS=10.3,name=iPhone 7"    POD_LINT="YES"
+    - DESTINATION="platform=iOS Simulator,OS=9.0,name=iPhone 6"     POD_LINT="NO"
+    - DESTINATION="platform=iOS Simulator,OS=8.3,name=iPhone 4S"    POD_LINT="NO"
+
+script:
+  - xcodebuild -workspace Example/NSStringMask.xcworkspace -scheme NSStringMask-Example -destination "$DESTINATION" build
+  - xcodebuild -workspace Example/NSStringMask.xcworkspace -scheme NSStringMask-Example -destination "$DESTINATION" test
+
+  # Run `pod lib lint` if specified
+  - if [ $POD_LINT == "YES" ]; then
+      pod lib lint --verbose --allow-warnings;
+    fi
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -J 'NSStringMask'

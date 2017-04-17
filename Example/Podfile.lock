@@ -1,0 +1,16 @@
+PODS:
+  - NSStringMask (1.2.1)
+
+DEPENDENCIES:
+  - NSStringMask (from `../`)
+
+EXTERNAL SOURCES:
+  NSStringMask:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  NSStringMask: 2583426c245523c0b6ea92d54fb39c4896e53f08
+
+PODFILE CHECKSUM: 942c258220fcd1b653f57509285c78df0384e605
+
+COCOAPODS: 1.2.1
