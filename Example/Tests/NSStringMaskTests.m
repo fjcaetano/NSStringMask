@@ -29,7 +29,7 @@
 #pragma mark - Instance inits
 
 // Tests for instance inits giving patterns.
-- (void)testInstanceInitsWithPatterns
+- (void)test__Instance_Inits_With_Patterns
 {
     NSStringMask *mask;
     NSString *placeholder, *placeholderMask;
@@ -103,14 +103,14 @@
 }
 
 // Tests for instance inits with regex.
-- (void)testInstanceInitsWithRegex
+- (void)test__Instance_Inits_With_Regex
 {
     NSStringMask *mask;
     NSString *placeholder, *placeholderMask;
     NSRegularExpression *regexMask;
     
     NSError *error;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d+)" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d+)" options:0 error:&error];
     
     // Valid regex
     XCTAssertNoThrow((mask = [[NSStringMask alloc] initWithRegex:regex]), @"[no throw] init with valid regex");
@@ -175,7 +175,7 @@
 #pragma mark - Class inits
 
 // Tests for class inits with patterns.
-- (void)testClassInitsWithPatterns
+- (void)test__Class_Inits_With_Patterns
 {
     NSStringMask *mask;
     NSString *placeholder, *placeholderMask;
@@ -241,14 +241,14 @@
 }
 
 // Tests for class inits with regex.
-- (void)testClassInitsWithRegex
+- (void)test__Class_Inits_With_Regex
 {
     NSStringMask *mask;
     NSString *placeholder, *placeholderMask;
     NSRegularExpression *regexMask;
     
     NSError *error;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d+)" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d+)" options:0 error:&error];
     
     // Valid regex;
     XCTAssertNoThrow((mask = [NSStringMask maskWithRegex:regex]), @"[no throw] init with valid regex");
@@ -313,7 +313,7 @@
 #pragma mark - Properties
 
 // Tests for the placeholder property.
-- (void)testPlaceholderProperty
+- (void)test__Placeholder_Property
 {
     NSStringMask *mask = [NSStringMask new];
     XCTAssertNil(mask.placeholder, @"[%@]", mask.placeholder);
@@ -334,7 +334,7 @@
 #pragma mark - Instance Methods
 
 // Tests for the instance method format:
-- (void)testFormat
+- (void)test__Format
 {
     NSString *result;
     
@@ -393,7 +393,7 @@
     XCTAssertTrue(([result isEqualToString:@"123.456.789-09"]), @"[%@]", result);
 }
 
-- (void)testValidCharactersForString
+- (void)test__Valid_Characters_For_String
 {
     NSString *result;
     
@@ -452,15 +452,101 @@
     XCTAssertTrue(([result isEqualToString:@"90"]), @"[%@]", result);
 }
 
+#pragma mark Partial Matching Pattern
+
+- (void)test__Valid_Characters__Partial_Matching_Pattern
+{
+    NSString *result;
+
+    NSStringMask *mask = [[NSStringMask alloc] initWithPattern:@"([a-z]{2})([0-9]{2}) ([a-zA-Z0-9]{4})"];
+
+    // Partial matching
+    XCTAssertNoThrow(result = [mask validCharactersForString:@"aB2c3"]);
+    XCTAssertTrue([result isEqualToString:@"ac3"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask validCharactersForString:@"ab1c2"]);
+    XCTAssertTrue([result isEqualToString:@"ab12"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask validCharactersForString:@"ab12c"]);
+    XCTAssertTrue([result isEqualToString:@"ab12c"], @"[%@]", result);
+
+    // Mimmicking typing
+    XCTAssertNoThrow(result = [mask validCharactersForString:@"a"]);
+    XCTAssertTrue([result isEqualToString:@"a"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask validCharactersForString:@"aB"]);
+    XCTAssertTrue([result isEqualToString:@"a"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask validCharactersForString:@"a1"]);
+    XCTAssertTrue([result isEqualToString:@"a"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask validCharactersForString:@"ab"]);
+    XCTAssertTrue([result isEqualToString:@"ab"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask validCharactersForString:@"ab1"]);
+    XCTAssertTrue([result isEqualToString:@"ab1"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask validCharactersForString:@"ab1c"]);
+    XCTAssertTrue([result isEqualToString:@"ab1"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask validCharactersForString:@"ab12"]);
+    XCTAssertTrue([result isEqualToString:@"ab12"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask validCharactersForString:@"ab12c"]);
+    XCTAssertTrue([result isEqualToString:@"ab12c"], @"[%@]", result);
+}
+
+- (void)test__Format__Partial_Matching_Pattern
+{
+    NSString *result;
+
+    NSStringMask *mask = [[NSStringMask alloc] initWithPattern:@"([a-z]{2})([0-9]{2}) ([a-zA-Z0-9]{4})" placeholder:@"_"];
+
+    // Partial matching
+    XCTAssertNoThrow(result = [mask format:@"aB2c3"]);
+    XCTAssertTrue([result isEqualToString:@"ac3_ ____"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask format:@"ab1c2"]);
+    XCTAssertTrue([result isEqualToString:@"ab12 ____"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask format:@"ab12c"]);
+    XCTAssertTrue([result isEqualToString:@"ab12 c___"], @"[%@]", result);
+
+    // Mimmicking typing
+    XCTAssertNoThrow(result = [mask format:@"a"]);
+    XCTAssertTrue([result isEqualToString:@"a___ ____"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask format:@"aB"]);
+    XCTAssertTrue([result isEqualToString:@"a___ ____"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask format:@"a1"]);
+    XCTAssertTrue([result isEqualToString:@"a___ ____"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask format:@"ab"]);
+    XCTAssertTrue([result isEqualToString:@"ab__ ____"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask format:@"ab1"]);
+    XCTAssertTrue([result isEqualToString:@"ab1_ ____"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask format:@"ab1c"]);
+    XCTAssertTrue([result isEqualToString:@"ab1_ ____"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask format:@"ab12"]);
+    XCTAssertTrue([result isEqualToString:@"ab12 ____"], @"[%@]", result);
+
+    XCTAssertNoThrow(result = [mask format:@"ab12c"]);
+    XCTAssertTrue([result isEqualToString:@"ab12 c___"], @"[%@]", result);
+}
+
 #pragma mark - Class Methods
 
 // Tests for class methods with regex.
-- (void)testClassWithRegex
+- (void)test__Class_With_Regex
 {
     NSString *result;
     
     NSError *error;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\((\\d{2})\\) (\\d{4})-(\\d{4,5})" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\((\\d{2})\\) (\\d{4})-(\\d{4,5})" options:0 error:&error];
     
     //Valid regex
     XCTAssertNoThrow((result = [NSStringMask maskString:nil withRegex:regex]), @"[no throw] class mask nil string");
@@ -508,7 +594,7 @@
 }
 
 // Tests for class methods with patterns.
-- (void)testClassWithPattern
+- (void)test__Class_With_Pattern
 {
     NSString *result;
     NSString *pattern = @"\\((\\d{2})\\) (\\d{4})-(\\d{4,5})";

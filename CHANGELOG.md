@@ -1,3 +1,7 @@
+# 1.2.2 (2017-08-03)
+
+- Improves partial pattern matching
+
 # 1.2.1 (2017-04-17):
 
 - Mitigating warnings

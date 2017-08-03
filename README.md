@@ -87,7 +87,7 @@ It can also be a long string. In this case, the replacement will restart for eac
 
 You may also provide an instance of NSRegularExpression instead of a pattern, the result is the same.
 
-When a pattern is passed, the class creates a NSRegularExpression object with NSRegularExpressionCaseInsensitive option. If you need it to be different, it may be interesting to provide the regex and not a string pattern.
+When a pattern is passed, the class creates a NSRegularExpression object with 0 option. If you need it to be different, it may be interesting to provide the regex and not a string pattern.
 
 ## UITextFieldMask
 

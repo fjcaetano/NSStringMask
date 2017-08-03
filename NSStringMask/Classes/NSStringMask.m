@@ -67,7 +67,7 @@
 {
     NSError *error = nil;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
-                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                           options:0
                                                                              error:&error];
     
     self = (error ? nil : [self initWithRegex:regex]);
@@ -167,7 +167,7 @@
     
     NSError *error = nil;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
-                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                           options:0
                                                                              error:&error];
     
     return [NSStringMask maskString:string withRegex:regex placeholder:placeholder];
@@ -218,21 +218,21 @@
         {
             // Add a capturing group to the pattern
             adaptingResult = [self adaptsFirstGroupPattern:firstGroupPattern subtracting:n];
-            if (adaptingResult[kLENGTH_INDEX] == 0) break;
+            if ([adaptingResult[kLENGTH_INDEX] integerValue] == 0) break;
             
             firstGroupPattern = adaptingResult[kRESULT_INDEX];
             
             // Try to match the pattern
             NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:firstGroupPattern
-                                                                                   options:NSRegularExpressionCaseInsensitive
+                                                                                   options:0
                                                                                      error:&error];
             
             result = [regex firstMatchInString:string options:NSMatchingWithoutAnchoringBounds range:NSMakeRange(0, string.length)];
-            if (! result) break;
-            
+            if (! result) return validCharacters;
+
             NSString *matchedString = [string substringWithRange:result.range];
             
-            string = [string stringByReplacingCharactersInRange:result.range withString:@""];
+            string = [string stringByReplacingCharactersInRange:NSMakeRange(0, result.range.location + result.range.length) withString:@""];
             
             [validCharacters appendString:matchedString];
             
@@ -286,10 +286,14 @@
     {
         long reps = numberOfRepetitions - n;
         group = [group stringByReplacingCharactersInRange:[numRep rangeAtIndex:1] withString:[NSString stringWithFormat:@"1,%ld", reps]];
+
+        if (reps < 1) {
+            return @[@"", @0];
+        }
     }
     else
     {
-        numberOfRepetitions = INFINITY;
+        numberOfRepetitions = NSIntegerMax;
     }
     
     return @[group, @(numberOfRepetitions)];
@@ -364,7 +368,7 @@
     
     // Extracts the content of parentheses if it's not preceded by slash.
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(?<!\\\\)\\(([^)(]*)(?<!\\\\)\\)"
-                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                           options:0
                                                                              error:&error];
     
     NSTextCheckingResult *checkingResult = [regex firstMatchInString:*pattern options:NSMatchingWithoutAnchoringBounds range:NSMakeRange(0, (*pattern).length)];

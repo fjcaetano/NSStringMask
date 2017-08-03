@@ -148,7 +148,7 @@
  If _string_ is shorter than expected, the method returns a cleaned NSString based on _regex_`s groups, but without format:
  
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{4})"
-    options:NSRegularExpressionCaseInsensitive
+    options:0
     error:&error];
  
     [NSStringMask maskString:@"123abcd" withRegex:regex];
@@ -159,7 +159,7 @@
  If _string_ is longer than expected, the method returns a formatted NSString until the expected length:
  
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{4})"
-    options:NSRegularExpressionCaseInsensitive
+    options:0
     error:&error];
  
     [NSStringMask maskString:@"1234567890" withRegex:regex];
@@ -180,7 +180,7 @@
  Similar to maskString:withRegex: except when _string_ is shorted than expected. Then it fills the missing characters with the placeholder:
  
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{3}).(\\d{2})"
-    options:NSRegularExpressionCaseInsensitive
+    options:0
     error:&error];
  
     [NSStringMask maskString:@"123" withRegex:regex placeholder:@"_"];
@@ -189,7 +189,7 @@
  The _placeholder_ length can be bigger than 1, then the method will repeat the _placeholder_ for each group:
  
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\d).(\\d{3}).(\\d{2})"
-    options:NSRegularExpressionCaseInsensitive
+    options:0
     error:&error];
  
     [NSStringMask maskString:@"123" withRegex:regex placeholder:@"abcdefg"];
