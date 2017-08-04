@@ -8,6 +8,9 @@
 
 @import Foundation;
 
+// This file is also the umbrella header
+#import "UITextFieldMask.h"
+
 
 /** [![NSStringMask Version](http://cocoapod-badges.herokuapp.com/v/NSStringMask/badge.png)](http://cocoadocs.org/docsets/NSStringMask) [![NSStringMask Platforms](http://cocoapod-badges.herokuapp.com/p/NSStringMask/badge.svg)](http://cocoadocs.org/docsets/NSStringMask) [![Build Status](https://travis-ci.org/fjcaetano/NSStringMask.png)](https://travis-ci.org/fjcaetano/NSStringMask)
  
