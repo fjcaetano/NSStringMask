@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Flavio Caetano. All rights reserved.
 //
 
-#if TARGET_OS_IPHONE || TARGET_OS_IPHONE_SIMULATOR || CARTHAGE
+#if TARGET_OS_IPHONE || TARGET_OS_IPHONE_SIMULATOR
 
-@import Foundation;
+@import UIKit;
 
 @class NSStringMask;
 
