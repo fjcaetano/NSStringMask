@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0620"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -9,30 +9,30 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7209053417284FBF0091402D"
-               BuildableName = "NSStringMaskTests.xctest"
-               BlueprintName = "NSStringMaskTests"
+               BlueprintIdentifier = "F2548A1A1F350C32002F84DB"
+               BuildableName = "NSStringMask.framework"
+               BlueprintName = "NSStringMask"
                ReferencedContainer = "container:NSStringMask.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7209053417284FBF0091402D"
+               BlueprintIdentifier = "F2548A221F350C32002F84DB"
                BuildableName = "NSStringMaskTests.xctest"
                BlueprintName = "NSStringMaskTests"
                ReferencedContainer = "container:NSStringMask.xcodeproj">
@@ -42,28 +42,31 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7209053417284FBF0091402D"
-            BuildableName = "NSStringMaskTests.xctest"
-            BlueprintName = "NSStringMaskTests"
+            BlueprintIdentifier = "F2548A1A1F350C32002F84DB"
+            BuildableName = "NSStringMask.framework"
+            BlueprintName = "NSStringMask"
             ReferencedContainer = "container:NSStringMask.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7209053417284FBF0091402D"
-            BuildableName = "NSStringMaskTests.xctest"
-            BlueprintName = "NSStringMaskTests"
+            BlueprintIdentifier = "F2548A1A1F350C32002F84DB"
+            BuildableName = "NSStringMask.framework"
+            BlueprintName = "NSStringMask"
             ReferencedContainer = "container:NSStringMask.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -71,17 +74,17 @@
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7209053417284FBF0091402D"
-            BuildableName = "NSStringMaskTests.xctest"
-            BlueprintName = "NSStringMaskTests"
+            BlueprintIdentifier = "F2548A1A1F350C32002F84DB"
+            BuildableName = "NSStringMask.framework"
+            BlueprintName = "NSStringMask"
             ReferencedContainer = "container:NSStringMask.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -6,65 +6,65 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		F2E3990C1729A1D8007F4FC1 /* Documentation */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = F2E3990D1729A1D8007F4FC1 /* Build configuration list for PBXAggregateTarget "Documentation" */;
-			buildPhases = (
-				F2E399101729A1EA007F4FC1 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = Documentation;
-			productName = Documentation;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
-		7209054117284FBF0091402D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7209053F17284FBF0091402D /* InfoPlist.strings */; };
-		7209054417284FBF0091402D /* NSStringMaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7209054317284FBF0091402D /* NSStringMaskTests.m */; };
-		F230991217346F870028F669 /* CompleteExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F230991117346F870028F669 /* CompleteExtension.m */; };
-		F23B9FFC17344B21001957D5 /* UITextFieldMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F23B9FFB17344B21001957D5 /* UITextFieldMask.m */; };
-		F24E5BA0173833F10006CA92 /* IncompleteExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F24E5B9F173833F10006CA92 /* IncompleteExtension.m */; };
-		F25F360E183BF2D8009D3F47 /* UITextFieldMaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F230990E173460850028F669 /* UITextFieldMaskTests.m */; };
-		F25F3610183BFB8E009D3F47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F25F360F183BFB8E009D3F47 /* UIKit.framework */; };
-		F26B29EA17469A4E00E7F3D7 /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = F26B29E917469A4E00E7F3D7 /* CHANGELOG */; };
-		F2DEFC9C17344A3200B6E00A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7209052917284FBE0091402D /* Foundation.framework */; };
-		F2E39919172AF4ED007F4FC1 /* NSStringMask.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */; };
-		F2E3992E172AF7DD007F4FC1 /* NSStringMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E3992D172AF7DD007F4FC1 /* NSStringMask.m */; };
+		F2548A241F350C32002F84DB /* NSStringMask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2548A1B1F350C32002F84DB /* NSStringMask.framework */; };
+		F2548A291F350C32002F84DB /* NSStringMaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2548A281F350C32002F84DB /* NSStringMaskTests.m */; };
+		F2548A2B1F350C32002F84DB /* NSStringMask.h in Headers */ = {isa = PBXBuildFile; fileRef = F2548A1D1F350C32002F84DB /* NSStringMask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2548A391F350C3F002F84DB /* NSStringMask.h in Headers */ = {isa = PBXBuildFile; fileRef = F2548A341F350C3F002F84DB /* NSStringMask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2548A3A1F350C3F002F84DB /* NSStringMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F2548A351F350C3F002F84DB /* NSStringMask.m */; };
+		F2548A3B1F350C3F002F84DB /* UITextFieldMask.h in Headers */ = {isa = PBXBuildFile; fileRef = F2548A361F350C3F002F84DB /* UITextFieldMask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2548A3E1F350CFF002F84DB /* UITextFieldMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F2548A371F350C3F002F84DB /* UITextFieldMask.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F2548A251F350C32002F84DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7209051817284FBE0091402D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2548A1A1F350C32002F84DB;
+			remoteInfo = NSStringMask;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7209052717284FBE0091402D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		7209052817284FBE0091402D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7209052917284FBE0091402D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		7209053517284FBF0091402D /* NSStringMaskTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NSStringMaskTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7209053E17284FBF0091402D /* NSStringMaskTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NSStringMaskTests-Info.plist"; sourceTree = "<group>"; };
-		7209054017284FBF0091402D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7209054317284FBF0091402D /* NSStringMaskTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSStringMaskTests.m; sourceTree = "<group>"; };
 		F230990E173460850028F669 /* UITextFieldMaskTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UITextFieldMaskTests.m; path = UITextFieldMask/UITextFieldMaskTests.m; sourceTree = "<group>"; };
 		F230991017346F870028F669 /* CompleteExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompleteExtension.h; path = UITextFieldMask/CompleteExtension.h; sourceTree = "<group>"; };
 		F230991117346F870028F669 /* CompleteExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CompleteExtension.m; path = UITextFieldMask/CompleteExtension.m; sourceTree = "<group>"; };
 		F23B9FF417344ADE001957D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		F23B9FFA17344B21001957D5 /* UITextFieldMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextFieldMask.h; sourceTree = "<group>"; };
-		F23B9FFB17344B21001957D5 /* UITextFieldMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextFieldMask.m; sourceTree = "<group>"; };
 		F24E5B9E173833F10006CA92 /* IncompleteExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IncompleteExtension.h; path = UITextFieldMask/IncompleteExtension.h; sourceTree = "<group>"; };
 		F24E5B9F173833F10006CA92 /* IncompleteExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IncompleteExtension.m; path = UITextFieldMask/IncompleteExtension.m; sourceTree = "<group>"; };
+		F2548A1B1F350C32002F84DB /* NSStringMask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSStringMask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2548A1D1F350C32002F84DB /* NSStringMask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSStringMask.h; sourceTree = "<group>"; };
+		F2548A1E1F350C32002F84DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2548A231F350C32002F84DB /* NSStringMaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NSStringMaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2548A281F350C32002F84DB /* NSStringMaskTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSStringMaskTests.m; sourceTree = "<group>"; };
+		F2548A2A1F350C32002F84DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2548A341F350C3F002F84DB /* NSStringMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringMask.h; sourceTree = "<group>"; };
+		F2548A351F350C3F002F84DB /* NSStringMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringMask.m; sourceTree = "<group>"; };
+		F2548A361F350C3F002F84DB /* UITextFieldMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextFieldMask.h; sourceTree = "<group>"; };
+		F2548A371F350C3F002F84DB /* UITextFieldMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextFieldMask.m; sourceTree = "<group>"; };
 		F25F360F183BFB8E009D3F47 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		F26B29E917469A4E00E7F3D7 /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NSStringMask.podspec; sourceTree = "<group>"; };
 		F2E3992A172AF7D1007F4FC1 /* NSStringMask-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStringMask-Prefix.pch"; sourceTree = "<group>"; };
-		F2E3992C172AF7DD007F4FC1 /* NSStringMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringMask.h; sourceTree = "<group>"; };
-		F2E3992D172AF7DD007F4FC1 /* NSStringMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringMask.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7209053117284FBF0091402D /* Frameworks */ = {
+		F2548A171F350C32002F84DB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F25F3610183BFB8E009D3F47 /* UIKit.framework in Frameworks */,
-				F2DEFC9C17344A3200B6E00A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2548A201F350C32002F84DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2548A241F350C32002F84DB /* NSStringMask.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,8 +75,8 @@
 			isa = PBXGroup;
 			children = (
 				F2E3992F172AF7F9007F4FC1 /* Supporting Files */,
-				F2E3992B172AF7DD007F4FC1 /* Classes */,
-				7209053C17284FBF0091402D /* NSStringMaskTests */,
+				F2548A1C1F350C32002F84DB /* NSStringMask */,
+				F2548A271F350C32002F84DB /* NSStringMaskTests */,
 				7209052317284FBE0091402D /* Frameworks */,
 				7209052217284FBE0091402D /* Products */,
 			);
@@ -85,7 +85,8 @@
 		7209052217284FBE0091402D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7209053517284FBF0091402D /* NSStringMaskTests.octest */,
+				F2548A1B1F350C32002F84DB /* NSStringMask.framework */,
+				F2548A231F350C32002F84DB /* NSStringMaskTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,25 +109,6 @@
 				7209052917284FBE0091402D /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		7209053C17284FBF0091402D /* NSStringMaskTests */ = {
-			isa = PBXGroup;
-			children = (
-				F230990617345F6D0028F669 /* UITextFieldMask */,
-				F230990517345F640028F669 /* NSStringMask */,
-				7209053D17284FBF0091402D /* Supporting Files */,
-			);
-			path = NSStringMaskTests;
-			sourceTree = "<group>";
-		};
-		7209053D17284FBF0091402D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				7209053E17284FBF0091402D /* NSStringMaskTests-Info.plist */,
-				7209053F17284FBF0091402D /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		F230990517345F640028F669 /* NSStringMask */ = {
@@ -157,13 +139,34 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		F2E3992B172AF7DD007F4FC1 /* Classes */ = {
+		F2548A1C1F350C32002F84DB /* NSStringMask */ = {
 			isa = PBXGroup;
 			children = (
-				F2E3992C172AF7DD007F4FC1 /* NSStringMask.h */,
-				F2E3992D172AF7DD007F4FC1 /* NSStringMask.m */,
-				F23B9FFA17344B21001957D5 /* UITextFieldMask.h */,
-				F23B9FFB17344B21001957D5 /* UITextFieldMask.m */,
+				F2548A321F350C3F002F84DB /* Classes */,
+				F2548A1D1F350C32002F84DB /* NSStringMask.h */,
+				F2548A1E1F350C32002F84DB /* Info.plist */,
+			);
+			path = NSStringMask;
+			sourceTree = "<group>";
+		};
+		F2548A271F350C32002F84DB /* NSStringMaskTests */ = {
+			isa = PBXGroup;
+			children = (
+				F230990617345F6D0028F669 /* UITextFieldMask */,
+				F230990517345F640028F669 /* NSStringMask */,
+				F2548A281F350C32002F84DB /* NSStringMaskTests.m */,
+				F2548A2A1F350C32002F84DB /* Info.plist */,
+			);
+			path = NSStringMaskTests;
+			sourceTree = "<group>";
+		};
+		F2548A321F350C3F002F84DB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F2548A341F350C3F002F84DB /* NSStringMask.h */,
+				F2548A351F350C3F002F84DB /* NSStringMask.m */,
+				F2548A361F350C3F002F84DB /* UITextFieldMask.h */,
+				F2548A371F350C3F002F84DB /* UITextFieldMask.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -171,7 +174,6 @@
 		F2E3992F172AF7F9007F4FC1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F26B29E917469A4E00E7F3D7 /* CHANGELOG */,
 				F2E39918172AF4ED007F4FC1 /* NSStringMask.podspec */,
 				F2E3992A172AF7D1007F4FC1 /* NSStringMask-Prefix.pch */,
 			);
@@ -180,23 +182,54 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		F2548A181F350C32002F84DB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2548A391F350C3F002F84DB /* NSStringMask.h in Headers */,
+				F2548A2B1F350C32002F84DB /* NSStringMask.h in Headers */,
+				F2548A3B1F350C3F002F84DB /* UITextFieldMask.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		7209053417284FBF0091402D /* NSStringMaskTests */ = {
+		F2548A1A1F350C32002F84DB /* NSStringMask */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7209054A17284FBF0091402D /* Build configuration list for PBXNativeTarget "NSStringMaskTests" */;
+			buildConfigurationList = F2548A2C1F350C32002F84DB /* Build configuration list for PBXNativeTarget "NSStringMask" */;
 			buildPhases = (
-				7209053017284FBF0091402D /* Sources */,
-				7209053117284FBF0091402D /* Frameworks */,
-				7209053217284FBF0091402D /* Resources */,
-				7209053317284FBF0091402D /* ShellScript */,
+				F2548A161F350C32002F84DB /* Sources */,
+				F2548A171F350C32002F84DB /* Frameworks */,
+				F2548A181F350C32002F84DB /* Headers */,
+				F2548A191F350C32002F84DB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			name = NSStringMask;
+			productName = NSStringMask;
+			productReference = F2548A1B1F350C32002F84DB /* NSStringMask.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F2548A221F350C32002F84DB /* NSStringMaskTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2548A2F1F350C32002F84DB /* Build configuration list for PBXNativeTarget "NSStringMaskTests" */;
+			buildPhases = (
+				F2548A1F1F350C32002F84DB /* Sources */,
+				F2548A201F350C32002F84DB /* Frameworks */,
+				F2548A211F350C32002F84DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F2548A261F350C32002F84DB /* PBXTargetDependency */,
+			);
 			name = NSStringMaskTests;
 			productName = NSStringMaskTests;
-			productReference = 7209053517284FBF0091402D /* NSStringMaskTests.octest */;
+			productReference = F2548A231F350C32002F84DB /* NSStringMaskTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -205,8 +238,18 @@
 		7209051817284FBE0091402D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Flavio Caetano";
+				TargetAttributes = {
+					F2548A1A1F350C32002F84DB = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+					F2548A221F350C32002F84DB = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 7209051B17284FBE0091402D /* Build configuration list for PBXProject "NSStringMask" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -220,96 +263,81 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7209053417284FBF0091402D /* NSStringMaskTests */,
-				F2E3990C1729A1D8007F4FC1 /* Documentation */,
+				F2548A1A1F350C32002F84DB /* NSStringMask */,
+				F2548A221F350C32002F84DB /* NSStringMaskTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7209053217284FBF0091402D /* Resources */ = {
+		F2548A191F350C32002F84DB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7209054117284FBF0091402D /* InfoPlist.strings in Resources */,
-				F2E39919172AF4ED007F4FC1 /* NSStringMask.podspec in Resources */,
-				F26B29EA17469A4E00E7F3D7 /* CHANGELOG in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2548A211F350C32002F84DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		7209053317284FBF0091402D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-		F2E399101729A1EA007F4FC1 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"NSStringMask\" \\\n--project-company \"Flávio Caetano\" \\\n--company-id \"com.flaviocaetano\" \\\n--docset-desc \"References to the API and concept documentation for NSStringMask classes.\" \\\n--output ~/help \\\n--ignore .m \\\n--ignore NSStringMaskTests \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--exit-threshold 2 \\\n.";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		7209053017284FBF0091402D /* Sources */ = {
+		F2548A161F350C32002F84DB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2E3992E172AF7DD007F4FC1 /* NSStringMask.m in Sources */,
-				F25F360E183BF2D8009D3F47 /* UITextFieldMaskTests.m in Sources */,
-				7209054417284FBF0091402D /* NSStringMaskTests.m in Sources */,
-				F23B9FFC17344B21001957D5 /* UITextFieldMask.m in Sources */,
-				F230991217346F870028F669 /* CompleteExtension.m in Sources */,
-				F24E5BA0173833F10006CA92 /* IncompleteExtension.m in Sources */,
+				F2548A3A1F350C3F002F84DB /* NSStringMask.m in Sources */,
+				F2548A3E1F350CFF002F84DB /* UITextFieldMask.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2548A1F1F350C32002F84DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2548A291F350C32002F84DB /* NSStringMaskTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		7209053F17284FBF0091402D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7209054017284FBF0091402D /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		F2548A261F350C32002F84DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2548A1A1F350C32002F84DB /* NSStringMask */;
+			targetProxy = F2548A251F350C32002F84DB /* PBXContainerItemProxy */;
 		};
-/* End PBXVariantGroup section */
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7209054517284FBF0091402D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -318,7 +346,9 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -330,80 +360,196 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		7209054B17284FBF0091402D /* Debug */ = {
+		F2548A2D1F350C32002F84DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NSStringMask-Prefix.pch";
-				INFOPLIST_FILE = "NSStringMaskTests/NSStringMaskTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = NSStringMask/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flaviocaetano.NSStringMask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		7209054C17284FBF0091402D /* Release */ = {
+		F2548A2E1F350C32002F84DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NSStringMask-Prefix.pch";
-				INFOPLIST_FILE = "NSStringMaskTests/NSStringMaskTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = NSStringMask/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flaviocaetano.NSStringMask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		F2E3990E1729A1D8007F4FC1 /* Debug */ = {
+		F2548A301F350C32002F84DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = NSStringMaskTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flaviocaetano.NSStringMaskTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
-		F2E3990F1729A1D8007F4FC1 /* Release */ = {
+		F2548A311F350C32002F84DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = NSStringMaskTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flaviocaetano.NSStringMaskTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -419,23 +565,21 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7209054A17284FBF0091402D /* Build configuration list for PBXNativeTarget "NSStringMaskTests" */ = {
+		F2548A2C1F350C32002F84DB /* Build configuration list for PBXNativeTarget "NSStringMask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7209054B17284FBF0091402D /* Debug */,
-				7209054C17284FBF0091402D /* Release */,
+				F2548A2D1F350C32002F84DB /* Debug */,
+				F2548A2E1F350C32002F84DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		F2E3990D1729A1D8007F4FC1 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+		F2548A2F1F350C32002F84DB /* Build configuration list for PBXNativeTarget "NSStringMaskTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F2E3990E1729A1D8007F4FC1 /* Debug */,
-				F2E3990F1729A1D8007F4FC1 /* Release */,
+				F2548A301F350C32002F84DB /* Debug */,
+				F2548A311F350C32002F84DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
