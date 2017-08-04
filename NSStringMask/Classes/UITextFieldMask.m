@@ -9,6 +9,7 @@
 #if TARGET_OS_IPHONE || TARGET_OS_IPHONE_SIMULATOR
 
 #import "UITextFieldMask.h"
+#import "NSStringMask.h"
 
 
 @interface UITextFieldMask ()

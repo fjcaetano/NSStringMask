@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Flavio Caetano. All rights reserved.
 //
 
-#if TARGET_OS_IPHONE || TARGET_OS_IPHONE_SIMULATOR
+#if TARGET_OS_IPHONE || TARGET_OS_IPHONE_SIMULATOR || CARTHAGE
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
-#import "NSStringMask.h"
+@class NSStringMask;
 
 /** This subclass of UITextField is used to adapt a text field to NSStringMask.
  

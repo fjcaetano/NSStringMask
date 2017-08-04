@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F2548A241F350C32002F84DB /* NSStringMask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2548A1B1F350C32002F84DB /* NSStringMask.framework */; };
 		F2548A291F350C32002F84DB /* NSStringMaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2548A281F350C32002F84DB /* NSStringMaskTests.m */; };
-		F2548A2B1F350C32002F84DB /* NSStringMask.h in Headers */ = {isa = PBXBuildFile; fileRef = F2548A1D1F350C32002F84DB /* NSStringMask.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2548A391F350C3F002F84DB /* NSStringMask.h in Headers */ = {isa = PBXBuildFile; fileRef = F2548A341F350C3F002F84DB /* NSStringMask.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2548A3A1F350C3F002F84DB /* NSStringMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F2548A351F350C3F002F84DB /* NSStringMask.m */; };
 		F2548A3B1F350C3F002F84DB /* UITextFieldMask.h in Headers */ = {isa = PBXBuildFile; fileRef = F2548A361F350C3F002F84DB /* UITextFieldMask.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -38,7 +37,6 @@
 		F24E5B9E173833F10006CA92 /* IncompleteExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IncompleteExtension.h; path = UITextFieldMask/IncompleteExtension.h; sourceTree = "<group>"; };
 		F24E5B9F173833F10006CA92 /* IncompleteExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IncompleteExtension.m; path = UITextFieldMask/IncompleteExtension.m; sourceTree = "<group>"; };
 		F2548A1B1F350C32002F84DB /* NSStringMask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSStringMask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F2548A1D1F350C32002F84DB /* NSStringMask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSStringMask.h; sourceTree = "<group>"; };
 		F2548A1E1F350C32002F84DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2548A231F350C32002F84DB /* NSStringMaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NSStringMaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2548A281F350C32002F84DB /* NSStringMaskTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSStringMaskTests.m; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				F2548A321F350C3F002F84DB /* Classes */,
-				F2548A1D1F350C32002F84DB /* NSStringMask.h */,
 				F2548A1E1F350C32002F84DB /* Info.plist */,
 			);
 			path = NSStringMask;
@@ -188,7 +185,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2548A391F350C3F002F84DB /* NSStringMask.h in Headers */,
-				F2548A2B1F350C32002F84DB /* NSStringMask.h in Headers */,
 				F2548A3B1F350C3F002F84DB /* UITextFieldMask.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
