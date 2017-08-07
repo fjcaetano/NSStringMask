@@ -1,15 +1,15 @@
 PODS:
-  - NSStringMask (1.2.1)
+  - NSStringMask (1.2.2)
 
 DEPENDENCIES:
   - NSStringMask (from `../`)
 
 EXTERNAL SOURCES:
   NSStringMask:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
-  NSStringMask: 2583426c245523c0b6ea92d54fb39c4896e53f08
+  NSStringMask: c0969955b28c4286418197696469665d9dcba313
 
 PODFILE CHECKSUM: 942c258220fcd1b653f57509285c78df0384e605
 
