@@ -93,6 +93,11 @@ When a pattern is passed, the class creates a NSRegularExpression object with 0 
 
 To create a text field with a mask, just set it as an instance `UITextFieldMask` in your class or nib (if using the Interface Builder). It’s recommended that the mask is passed in the initialization of the text field, so if the text field is in a nib, the mask must be passed inside `[UIViewController viewDidLoad]` or `[UIView awakeFromNib]`.
 
+## Help Wanted
+
+Do you love NSStringMask and work actively on apps that use it? We'd love if you could help us keep improving it!
+Feel free to message us or to start contributing right away!
+
 # [Complete Documentation >](http://cocoadocs.org/docsets/NSStringMask/)
 
 ## License
