@@ -5,8 +5,9 @@
 [![License](https://img.shields.io/cocoapods/l/NSStringMask.svg?style=flat)](http://cocoapods.org/pods/NSStringMask)
 [![Platform](https://img.shields.io/cocoapods/p/NSStringMask.svg?style=flat)](http://cocoapods.org/pods/NSStringMask)
 [![codecov](https://codecov.io/gh/fjcaetano/NSStringMask/branch/master/graph/badge.svg)](https://codecov.io/gh/fjcaetano/NSStringMask)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
------
+---
 
 This tiny library was developed to help you apply masks and formats to strings.
 
@@ -16,7 +17,7 @@ For instance, suppose you have the string `12345678` and want to format it as a 
 
 You can clone the repository and copy the folder `Classes` to your project or install it via cocoa pods.
 
-``` ruby
+```ruby
 pod "NSStringMask"
 ```
 
@@ -34,7 +35,7 @@ I've also created [this gist](https://gist.github.com/fjcaetano/5600452) with so
 
 Whenever you set a string pattern or a regex, it must have at least one capturing parentheses `[group]`. This is because the class comprehends that everything that is in between parentheses are the strings that must be matched and replaced. If you need explicit parentheses in your format, escape it with slashes:
 
-``` objective-c
+```objective-c
 [NSStringMask maskString:@"c" withPattern:@"\\w"]
 // result: nil
 
@@ -54,31 +55,30 @@ These are few of the many forms to use NSStringMask:
 
 In this case, the method will return the expected result _only_ if the provided string's length is equal or longer than expected:
 
-``` objective-c
+```objective-c
 [NSStringMask maskString:@"1234567890" withPattern:@"(\\d{3})-(\\d{3})-(\\d{4})"]
 // result: 123-456-7890
 ```
 
 If the string is shorter, the method won't apply the format, but instead, return a cleaned string with the valid characters:
 
-``` objective-c
+```objective-c
 [NSStringMask maskString:@"123foo456" withPattern:@"(\\d{3})#(\\d{4})]
 // result: 123456
 ```
-
 
 ## Pattern with Placeholder:
 
 Placeholders allow you to fill strings shorter than expected with characters to complete the formatting:
 
-``` objective-c
+```objective-c
 [NSStringMask maskString:@"" withPattern:@"(\\d{2})/(\\d{2})/(\\d{4})" placeholder:@"_"]
 // result: __/__/____
 ```
 
 It can also be a long string. In this case, the replacement will restart for each group in your pattern:
 
-``` objective-c
+```objective-c
 [NSStringMask maskString:@"" withPattern:@"(\\d{2})/(\\d{2})/(\\d{4})" placeholder:@"abcde"]
 // result: ab/ab/abcd
 ```
