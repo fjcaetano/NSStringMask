@@ -1,4 +1,4 @@
-platform :ios, "4.0"
+platform :ios, "8.0"
 use_frameworks!
 
 target 'NSStringMask_Example' do
@@ -6,7 +6,5 @@ target 'NSStringMask_Example' do
 
   target 'NSStringMask_Tests' do
     inherit! :search_paths
-
-    
   end
 end

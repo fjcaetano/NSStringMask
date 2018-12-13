@@ -8,6 +8,7 @@
 
 #import "NSViewController.h"
 
+#import <NSStringMask/NSStringMask.h>
 #import <NSStringMask/UITextFieldMask.h>
 
 

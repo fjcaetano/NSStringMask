@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <NSStringMask/NSStringMask.h>
 #import <NSStringMask/UITextFieldMask.h>
 
 #import "CompleteExtension.h"
