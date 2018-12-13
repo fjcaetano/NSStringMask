@@ -15,7 +15,7 @@ For instance, suppose you have the string `12345678` and want to format it as a 
   s.source           = { :git => 'https://github.com/fjcaetano/NSStringMask.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/flavio_caetano'
 
-  s.ios.deployment_target = '4.0'
+  s.ios.deployment_target = '8.0'
 
   s.source_files = 'NSStringMask/Classes/**/*'
 end
