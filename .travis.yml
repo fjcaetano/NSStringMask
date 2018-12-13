@@ -12,7 +12,7 @@ env:
   matrix:
     - DESTINATION="platform=iOS Simulator,OS=12.0,name=iPhone X"    POD_LINT="YES"
     - DESTINATION="platform=iOS Simulator,OS=11.0.1,name=iPhone 8"  POD_LINT="NO"
-    - DESTINATION="platform=iOS Simulator,OS=10.0,name=iPhone 6s"   POD_LINT="NO"
+    - DESTINATION="platform=iOS Simulator,OS=10.1,name=iPhone 7"    POD_LINT="NO"
     - DESTINATION="platform=iOS Simulator,OS=9.0,name=iPhone 6"     POD_LINT="NO"
     - DESTINATION="platform=iOS Simulator,OS=8.1,name=iPhone 4S"    POD_LINT="NO"
 
