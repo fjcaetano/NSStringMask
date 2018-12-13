@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'NSStringMask'
-  s.version          = '1.2.2'
+  s.version          = '1.3.0'
   s.summary          = 'NSStringMask enables you to apply masks or formats to NSStrings using NSRegularExpression to input your format.'
 
   s.description      = <<-DESC

@@ -1,3 +1,9 @@
+# 1.3.0 (2018-13-12)
+
+- Update deployment target on podspec to iOS 8.0
+- Added call to event EditingChanged after process mask pattern (#19)
+- Carthage compatibility
+
 # 1.2.2 (2017-08-03)
 
 - Improves partial pattern matching
